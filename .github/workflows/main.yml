@@ -12,4 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make_module00_ex00
-      run:  cd module_00/ex00 && make
+      run:  make -C module_00/ex00
+    - name: make_module00_ex01
+      run:  make -C module_00/ex01
