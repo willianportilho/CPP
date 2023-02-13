@@ -9,7 +9,8 @@ int main (void)
 	std::cout << "Please, enter a command (ADD, SEARCH or EXIT)" << std::endl;
 	while (1)
 	{
-		std::getline(std::cin, command);
+		if (!std::cin.eof())
+			std::getline(std::cin, command);
 		if (command == "EXIT" || std::cin.eof())
 		{
 			std::cout << "exit" << std::endl;
