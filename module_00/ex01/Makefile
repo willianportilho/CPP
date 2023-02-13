@@ -1,4 +1,4 @@
-SOURCES 	=		cell_phone.cpp
+SOURCES 	=		cell_phone.cpp PhoneBook.cpp Contact.cpp
 
 NAME		=		cell_phone
 
