@@ -3,7 +3,7 @@ SOURCES 	=		cell_phone.cpp PhoneBook.cpp Contact.cpp
 NAME		=		cell_phone
 
 CC			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98
+CFLAGS		=		-g3 Wall -Wextra -Werror -std=c++98
 
 SRC_PATH 	=		./
 SRCS		=		${addprefix ${SRC_PATH}, ${SOURCES}}
