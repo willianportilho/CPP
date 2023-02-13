@@ -12,7 +12,7 @@ int main (void)
 		std::getline(std::cin, command);
 		if (command == "EXIT" || std::cin.eof())
 		{
-			std::cout << "exiting..." << std::endl;
+			std::cout << "exit" << std::endl;
 			break;
 		}
 		else if (command == "SEARCH")
