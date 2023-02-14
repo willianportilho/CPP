@@ -6,11 +6,10 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 09:15:08 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:19:15 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Contact.hpp"
 
 Contact::Contact(void)
