@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/13 23:02:32 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:06:18 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ void	Contact::clean_data(std::string *data)
 					i = 0;
 				}
 			}
+			while (((*data)[size - 1] == ' ') || ((*data)[size - 1] == '\t'))
+			{
+				(*data).erase((size - 1), 1);
+				size = (*data).length();
+			}
 			while (((*data)[0] == ' ') || ((*data)[0] == '\t'))
 				(*data).erase(0, 1);
 		}
-		std::cout << *data << std::endl;
 	}
 }
 
