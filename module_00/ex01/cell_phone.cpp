@@ -6,9 +6,9 @@ int main (void)
 	std::string	command;
 	PhoneBook	phone_book;
 
-	std::cout << "Please, enter a command (ADD, SEARCH or EXIT):" << std::endl;
 	while (1)
 	{
+		std::cout << "Please, enter a command (ADD, SEARCH or EXIT):" << std::endl;
 		if (!std::cin.eof())
 			std::getline(std::cin, command);
 		if (command == "EXIT" || std::cin.eof())
