@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 16:53:05 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:28:18 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	Contact::_check_phone_number(std::string *phone_number)
 {
 	int	size;
 
+	size = phone_number->length();
 	if (size)
 	{
 		_clean_phone_number(phone_number);
