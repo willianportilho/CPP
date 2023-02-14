@@ -6,12 +6,12 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:34:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 16:53:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:02:16 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
 #include <iostream>
 #include <iomanip>

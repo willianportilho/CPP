@@ -6,12 +6,12 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:34:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 16:51:47 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:02:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CONTACT_H
+# define CONTACT_H
 
 #include <iostream>
 
