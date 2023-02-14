@@ -8,12 +8,15 @@ int main (void)
 
 	while (1)
 	{
-		std::cout << "Please, enter a command (ADD, SEARCH or EXIT):" << std::endl;
 		if (!std::cin.eof())
+		{
+			std::cout << "Please, enter a command (ADD, SEARCH or EXIT):" << std::endl;
 			std::getline(std::cin, command);
+		}
 		if (command == "EXIT" || std::cin.eof())
 		{
 			std::cout << "exit" << std::endl;
+			std::cout << "all contacts are lost forever!" << std::endl;
 			break;
 		}
 		else if (command == "SEARCH")

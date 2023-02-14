@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:34:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 13:19:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:23:38 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ class	PhoneBook
 		void		add_contact(void);
 		void		search_contact(void);
 		void		print_phone_book(void);
+		void		format_data(std::string orig_data, std::string *new_data);
+		void		print_one_contact(void);
+		int			print_contact(int index);
 		static int	amount_of_contacts;
 		static int	index;
 };
