@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 15:24:09 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:55:14 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	PhoneBook::print_one_contact(void)
 				std::cout << std::endl << "error: invalid index!" << std::endl << std::endl;
 			else
 			{
-				if (print_contact(index[0] - 49) == true)
+				if (print_contact(index[0] - '1') == true)
 					return ;
 			}
 		}
