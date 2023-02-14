@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 15:51:55 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:53:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ Contact::Contact(void)
 	this->_nickname = "";
 	this->_phone_number = "";
 	this->_darkest_secret = "";
-	// std::cout << "constructor called" << std::endl;
 	return ;
 }
 
 Contact::~Contact(void)
 {
-	// std::cout << "destructor called" << std::endl;
 	return ;
 }
 
-void	Contact::check_characters(std::string *data)
+void	Contact::_check_characters(std::string *data)
 {
 	int	size;
 
@@ -45,7 +43,7 @@ void	Contact::check_characters(std::string *data)
 	}
 }
 
-void	Contact::clean_phone_number(std::string *phone_number)
+void	Contact::_clean_phone_number(std::string *phone_number)
 {
 	int	size;
 
@@ -61,13 +59,13 @@ void	Contact::clean_phone_number(std::string *phone_number)
 	}
 }
 
-void	Contact::check_phone_number(std::string *phone_number)
+void	Contact::_check_phone_number(std::string *phone_number)
 {
 	int	size;
 
 	if (size)
 	{
-		clean_phone_number(phone_number);
+		_clean_phone_number(phone_number);
 		size = phone_number->length();
 		for (int i = 0; i < size; i++)
 		{
@@ -89,7 +87,7 @@ void	Contact::check_phone_number(std::string *phone_number)
 	}
 }
 
-void	Contact::clean_data(std::string *data)
+void	Contact::_clean_data(std::string *data)
 {
 	int	size;
 
@@ -134,11 +132,11 @@ void	Contact::get_contact_data(void)
 				return ;
 			}
 			std::getline(std::cin, data[i]);
-			clean_data(&data[i]);
+			_clean_data(&data[i]);
 			if (cout_message[i] == "Phone Number")
-				check_phone_number(&data[i]);
+				_check_phone_number(&data[i]);
 			else
-				check_characters(&data[i]);
+				_check_characters(&data[i]);
 		}
 	}
 	set_first_name(data[0]);
