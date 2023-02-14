@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 09:19:15 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:30:45 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,56 @@ Contact::~Contact(void)
 	return ;
 }
 
+void	Contact::clean_phone_number(std::string *phone_number)
+{
+	int	size;
+
+	size = phone_number->length();
+	for (int i = 0; i < size; i++)
+	{
+		if (((*phone_number)[i] == ' ') || ((*phone_number)[i] == '\t'))
+		{
+			phone_number->erase(i, 1);
+			size = phone_number->length();
+			i = 0;
+		}
+	}
+}
+
+void	Contact::check_phone_number(std::string *phone_number)
+{
+	int	size;
+
+	if (size)
+	{
+		clean_phone_number(phone_number);
+		size = phone_number->length();
+		for (int i = 0; i < size; i++)
+		{
+			if (((!isdigit((*phone_number)[i])) && ((*phone_number)[i] != '+'))
+			|| ((i > 0) && ((*phone_number)[i] == '+')))
+			{
+				std::cout << std::endl << "error: wrong character" << std::endl;
+				phone_number->erase();
+				return ;
+			}
+		}
+		if (((((*phone_number)[0] == '+') && (size != 14))
+		|| (((*phone_number)[0] != '+') && (size > 13))) || (size < 8))
+		{
+			std::cout << std::endl << "error: wrong lenght" << std::endl;
+			phone_number->erase();
+			return ;
+		}
+	}
+	std::cout << "result = " << *phone_number << std::endl;
+}
+
 void	Contact::clean_data(std::string *data)
 {
 	int	size;
 
-	size = (*data).length();
+	size = data->length();
 	if (size)
 	{
 		for (int i = 0; i < size; i++)
@@ -41,18 +86,18 @@ void	Contact::clean_data(std::string *data)
 			if ((((*data)[i] == ' ') || ((*data)[i] == '\t'))
 			&& (((*data)[i + 1] == ' ') || ((*data)[i + 1] == '\t')))
 			{
-				(*data).erase(i, 1);
-				size = (*data).length();
+				data->erase(i, 1);
+				size = data->length();
 				i = 0;
 			}
 		}
 		while (((*data)[size - 1] == ' ') || ((*data)[size - 1] == '\t'))
 		{
-			(*data).erase((size - 1), 1);
-			size = (*data).length();
+			data->erase((size - 1), 1);
+			size = data->length();
 		}
 		while (((*data)[0] == ' ') || ((*data)[0] == '\t'))
-			(*data).erase(0, 1);
+			data->erase(0, 1);
 	}
 }
 
@@ -75,6 +120,8 @@ void	Contact::get_contact_data(void)
 			}
 			std::getline(std::cin, data[i]);
 			clean_data(&data[i]);
+			if (cout_message[i] == "Phone Number")
+				check_phone_number(&data[i]);
 		}
 	}
 	set_first_name(data[0]);
@@ -82,6 +129,7 @@ void	Contact::get_contact_data(void)
 	set_nickname(data[2]);
 	set_phone_number(data[3]);
 	set_darkest_secret(data[4]);
+	std::cout << std::endl << "contact added!" << std::endl << std::endl;
 }
 
 void	Contact::set_first_name(std::string first_name)
