@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 17:28:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:45:47 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	Contact::get_contact_data(void)
 		while (data[i].empty())
 		{
 			if (!std::cin.eof())
-				std::cout << cout_message[i] << ": ";
+				std::cout << cout_message[i] << ": " << std::endl;
 			if (std::cin.eof())
 			{
 				std::cout << std::endl;

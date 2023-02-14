@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 16:57:37 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:46:08 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	PhoneBook::_print_one_contact(void)
 	{
 		if (!std::cin.eof())
 		{
-			std::cout << "Please, enter a index: ";
+			std::cout << "Please, enter a index: " << std::endl;
 			std::getline(std::cin, index);
 		}
 		if (std::cin.eof())
