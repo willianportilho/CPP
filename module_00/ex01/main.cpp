@@ -24,7 +24,8 @@ int main (void)
 		else if (command == "ADD")
 			phone_book.add_contact();
 		else
-			std::cout << "Only ADD, SEARCH and EXIT are acceptable commands" << std::endl;
+			std::cout << std::endl << "Only ADD, SEARCH and EXIT are acceptable commands"
+			<< std::endl << std::endl;
 	}
 	return (0);
 }

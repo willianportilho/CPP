@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 17:46:08 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:56:56 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	PhoneBook::add_contact(void)
 {
 	Contact tmp;
 
-	if (PhoneBook::_amount_of_contacts == 8)
-		PhoneBook::_index = 0;
 	tmp.get_contact_data();
+	if (PhoneBook::_index == 8)
+		PhoneBook::_index = 0;
 	_contacts[PhoneBook::_index].set_first_name(tmp.get_first_name());
 	_contacts[PhoneBook::_index].set_last_name(tmp.get_last_name());
 	_contacts[PhoneBook::_index].set_nickname(tmp.get_nickname());
@@ -37,6 +37,7 @@ void	PhoneBook::add_contact(void)
 	if (PhoneBook::_amount_of_contacts < 8)
 		PhoneBook::_amount_of_contacts += 1;
 	PhoneBook::_index += 1;
+	
 }
 
 int	PhoneBook::_print_contact(int index)
