@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 09:51:11 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:20:07 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,18 @@ void	PhoneBook::add_contact(void)
 
 void	PhoneBook::search_contact(void)
 {
-	std::cout << "search contact called" << std::endl;
+	std::string	column_title[4] =
+	{"index", "first name", "last name", "nickname"};
+
+	std::cout << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		std::cout << std::right << std::setw(10) << column_title[i];
+		if (column_title[i] != "nickname")
+			std::cout << "|";
+		else
+			std::cout << std::endl;
+	}
 }
 
 int	PhoneBook::amount_of_contacts = 0;
