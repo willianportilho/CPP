@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 11:30:45 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:39:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	Contact::check_phone_number(std::string *phone_number)
 			if (((!isdigit((*phone_number)[i])) && ((*phone_number)[i] != '+'))
 			|| ((i > 0) && ((*phone_number)[i] == '+')))
 			{
-				std::cout << std::endl << "error: wrong character" << std::endl;
+				std::cout << std::endl << "error: wrong character" << std::endl << std::endl;
 				phone_number->erase();
 				return ;
 			}
@@ -66,12 +66,11 @@ void	Contact::check_phone_number(std::string *phone_number)
 		if (((((*phone_number)[0] == '+') && (size != 14))
 		|| (((*phone_number)[0] != '+') && (size > 13))) || (size < 8))
 		{
-			std::cout << std::endl << "error: wrong lenght" << std::endl;
+			std::cout << std::endl << "error: wrong lenght" << std::endl << std::endl;
 			phone_number->erase();
 			return ;
 		}
 	}
-	std::cout << "result = " << *phone_number << std::endl;
 }
 
 void	Contact::clean_data(std::string *data)
