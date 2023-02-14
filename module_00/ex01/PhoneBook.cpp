@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/13 20:57:16 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:02:38 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	PhoneBook::add_contact(void)
 {
 	Contact tmp;
 
-	if (PhoneBook::amount_of_contacts >= 8)
+	if (PhoneBook::amount_of_contacts == 8)
 		index = 0;
 	tmp.get_contact_data();
 	// std::cout << "add contact called" << std::endl;
@@ -48,7 +48,8 @@ void	PhoneBook::add_contact(void)
 	// std::cout << contacts[1].get_nickname() << std::endl;
 	// std::cout << contacts[1].get_phone_number() << std::endl;
 	// std::cout << contacts[1].get_darkest_secret() << std::endl;
-	PhoneBook::amount_of_contacts += 1;
+	if (PhoneBook::amount_of_contacts < 8)
+		PhoneBook::amount_of_contacts += 1;
 	PhoneBook::index += 1;
 }
 

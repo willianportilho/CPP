@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/13 19:33:49 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/13 22:54:32 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,54 @@ Contact::~Contact(void)
 	return ;
 }
 
+void	Contact::clean_data(std::string *data)
+{
+	int	size;
+
+	size = (*data).length();
+	if (size)
+	{
+		if (!(*data).find("\t"))
+			std::cout << "argument not valid" << std::endl;
+		if (size == 1 && (*data)[0] == ' ')
+			(*data).erase(0, 1);
+		else
+		{
+			for (int i = 0; i < size; i++)
+			{
+				if (((*data)[i] == ' ') && ((*data)[i + 1] == ' '))
+				{
+					(*data).erase(i, 1);
+					size = (*data).length();
+					i = 0;
+				}
+			}
+			while ((*data)[0] == ' ')
+				(*data).erase(0, 1);
+		}
+	}
+}
+
 void	Contact::get_contact_data(void)
 {
+	std::string	data[5];
 	std::string	cout_message[5] = 
 	{"First Name", "Last Name", "Nickname", "Phone Number", "Darkest Secret"};
-	std::string	data[5];
 
 	for (int i = 0; i < 5; i++)
 	{
-		if (!std::cin.eof())
-			std::cout << cout_message[i] << ": ";
-		if (std::cin.eof())
+		while (data[i].empty())
 		{
-			std::cout << std::endl;
-			return ;
+			if (!std::cin.eof())
+				std::cout << cout_message[i] << ": ";
+			if (std::cin.eof())
+			{
+				std::cout << std::endl;
+				return ;
+			}
+			std::getline(std::cin, data[i]);
+			clean_data(&data[i]);
 		}
-		std::getline(std::cin, data[i]);
 	}
 	set_first_name(data[0]);
 	set_last_name(data[1]);

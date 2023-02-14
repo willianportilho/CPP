@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:34:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/13 18:15:58 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:43:08 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	Contact
 		void	set_nickname(std::string nickname);
 		void	set_phone_number(std::string phone_number);
 		void	set_darkest_secret(std::string darkest_secret);
+		void	clean_data(std::string *data);
 		std::string	get_first_name(void);
 		std::string	get_last_name(void);
 		std::string	get_nickname(void);
