@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 11:39:58 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:51:55 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ Contact::~Contact(void)
 {
 	// std::cout << "destructor called" << std::endl;
 	return ;
+}
+
+void	Contact::check_characters(std::string *data)
+{
+	int	size;
+
+	size = data->length();
+	for (int i = 0; i < size; i++)
+	{
+		if (((*data)[i] < ' ') || ((*data)[i] > '~'))
+		{
+			std::cout << std::endl << "error: wrong character" << std::endl << std::endl;
+			data->erase();
+			return ;
+		}
+	}
 }
 
 void	Contact::clean_phone_number(std::string *phone_number)
@@ -121,6 +137,8 @@ void	Contact::get_contact_data(void)
 			clean_data(&data[i]);
 			if (cout_message[i] == "Phone Number")
 				check_phone_number(&data[i]);
+			else
+				check_characters(&data[i]);
 		}
 	}
 	set_first_name(data[0]);

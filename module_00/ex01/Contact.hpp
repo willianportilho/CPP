@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:34:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 11:29:12 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:44:03 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Contact
 		void	clean_data(std::string *data);
 		void	clean_phone_number(std::string *data);
 		void	check_phone_number(std::string *phone_number);
+		void	check_characters(std::string *data);
 		std::string	get_first_name(void);
 		std::string	get_last_name(void);
 		std::string	get_nickname(void);
