@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:40:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/14 09:06:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:15:08 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,23 @@ void	Contact::clean_data(std::string *data)
 	size = (*data).length();
 	if (size)
 	{
-		if (size == 1 && (*data)[0] == ' ')
-			(*data).erase(0, 1);
-		else
+		for (int i = 0; i < size; i++)
 		{
-			for (int i = 0; i < size; i++)
+			if ((((*data)[i] == ' ') || ((*data)[i] == '\t'))
+			&& (((*data)[i + 1] == ' ') || ((*data)[i + 1] == '\t')))
 			{
-				if ((((*data)[i] == ' ') || ((*data)[i] == '\t'))
-				&& (((*data)[i + 1] == ' ') || ((*data)[i + 1] == '\t')))
-				{
-					(*data).erase(i, 1);
-					size = (*data).length();
-					i = 0;
-				}
-			}
-			while (((*data)[size - 1] == ' ') || ((*data)[size - 1] == '\t'))
-			{
-				(*data).erase((size - 1), 1);
+				(*data).erase(i, 1);
 				size = (*data).length();
+				i = 0;
 			}
-			while (((*data)[0] == ' ') || ((*data)[0] == '\t'))
-				(*data).erase(0, 1);
 		}
+		while (((*data)[size - 1] == ' ') || ((*data)[size - 1] == '\t'))
+		{
+			(*data).erase((size - 1), 1);
+			size = (*data).length();
+		}
+		while (((*data)[0] == ' ') || ((*data)[0] == '\t'))
+			(*data).erase(0, 1);
 	}
 }
 
