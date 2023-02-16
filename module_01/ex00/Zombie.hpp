@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 18:22:45 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 12:47:25 by wportilh         ###   ########.fr       */
+/*   Created: 2023/02/16 12:39:49 by wportilh          #+#    #+#             */
+/*   Updated: 2023/02/16 12:48:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef	ZOMBIE_H
+# define ZOMBIE_H
 
-int main (void)
+#include <iostream>
+
+class Zombie
 {
-	Zombie	instance;
+	public:
+		Zombie(void);
+		~Zombie(void);
+	private:
+		std::string	name;
+};
 
-	return (0);
-}
+#endif

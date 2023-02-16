@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 18:22:45 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 12:47:25 by wportilh         ###   ########.fr       */
+/*   Created: 2023/02/16 12:44:11 by wportilh          #+#    #+#             */
+/*   Updated: 2023/02/16 12:48:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main (void)
+Zombie::Zombie(void)
 {
-	Zombie	instance;
+	std::cout << "constructor called" << std::endl;
+	return ;
+}
 
-	return (0);
+Zombie::~Zombie(void)
+{
+	std::cout << "destructor called" << std::endl;
+	return ;
 }

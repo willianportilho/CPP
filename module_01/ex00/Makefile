@@ -1,4 +1,4 @@
-SOURCES 	=		main.cpp
+SOURCES 	=		main.cpp Zombie.cpp
 
 NAME		=		test
 
