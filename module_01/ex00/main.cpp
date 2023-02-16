@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:22:45 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 12:47:25 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:33:39 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main (void)
 {
-	Zombie	instance;
+	Zombie	kratos("Kratos");
+	kratos.announce();
 
 	return (0);
 }

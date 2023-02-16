@@ -6,20 +6,25 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:44:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 12:48:35 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:41:27 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void)
+Zombie::Zombie(std::string zombie_name) : name(zombie_name)
 {
-	std::cout << "constructor called" << std::endl;
 	return ;
 }
 
 Zombie::~Zombie(void)
 {
-	std::cout << "destructor called" << std::endl;
+	std::cout << "unfortunately, the treasured zombie '" << this->name
+	<< "', was destroyed. :(" << std::endl;
 	return ;
+}
+
+void	Zombie::announce(void)
+{
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
