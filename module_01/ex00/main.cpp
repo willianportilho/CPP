@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:22:45 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 14:14:06 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:24:51 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int main (void)
 {
-	Zombie	michael("Leon Kennedy");
-	michael.announce();
+	Zombie	leon("Leon Kennedy");
+	leon.announce();
 
-	Zombie	*ashley;
-	ashley = newZombie("Ashley Graham");
-	ashley->announce();
-	delete	ashley;
+	Zombie	*ada;
+	ada = newZombie("Ada Wong");
+	ada->announce();
+	delete	ada;
 
-	randomChump("Ada Wong");
+	randomChump("Ashley Graham");
 
 	return (0);
 }
