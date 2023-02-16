@@ -1,9 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/16 18:26:08 by wportilh          #+#    #+#              #
+#    Updated: 2023/02/16 18:26:10 by wportilh         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SOURCES 	=		main.cpp Zombie.cpp zombieHorde.cpp
 
 NAME		=		horde
 
 CC			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98
+CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_PATH 	=		./
 SRCS		=		$(addprefix $(SRC_PATH), $(SOURCES))

@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/16 18:21:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/16 18:21:22 by wportilh         ###   ########.fr        #
+#    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
+#    Updated: 2023/02/16 18:26:20 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SOURCES 	=		main.cpp
 
-NAME		=		braiiiiiiinnnzzzz
+NAME		=		possibilities
 
 CC			=		c++
 CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
