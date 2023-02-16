@@ -1,4 +1,4 @@
-SOURCES 	=		main.cpp Zombie.cpp
+SOURCES 	=		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 NAME		=		test
 

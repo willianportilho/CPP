@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 12:39:49 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 14:06:54 by wportilh         ###   ########.fr       */
+/*   Created: 2023/02/16 13:46:52 by wportilh          #+#    #+#             */
+/*   Updated: 2023/02/16 13:52:33 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ZOMBIE_H
-# define ZOMBIE_H
+#include "Zombie.hpp"
 
-#include <iostream>
-
-class Zombie
+Zombie	*newZombie(std::string name)
 {
-	public:
-		Zombie(std::string zombie_name);
-		~Zombie(void);
-		void		announce(void);
-	private:
-		std::string	name;
-};
-
-Zombie	*newZombie(std::string name);
-void randomChump(std::string name);
-
-#endif
+	Zombie	*new_zombie = new Zombie(name);
+	return (new_zombie);
+}
