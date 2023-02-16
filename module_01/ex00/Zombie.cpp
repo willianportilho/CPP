@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:44:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 13:41:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:20:08 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie::Zombie(std::string zombie_name) : name(zombie_name)
 
 Zombie::~Zombie(void)
 {
-	std::cout << "unfortunately, the treasured zombie '" << this->name
+	std::cout << "Unfortunately, the treasured zombie '" << this->name
 	<< "', was destroyed. :(" << std::endl;
 	return ;
 }

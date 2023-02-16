@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:39:49 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 14:06:54 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:21:33 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class Zombie
 };
 
 Zombie	*newZombie(std::string name);
-void randomChump(std::string name);
+void 	randomChump(std::string name);
 
 #endif
