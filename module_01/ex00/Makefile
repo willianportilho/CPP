@@ -1,6 +1,6 @@
 SOURCES 	=		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
-NAME		=		test
+NAME		=		braiiiiiiinnnzzzz
 
 CC			=		c++
 CFLAGS		=		-Wall -Wextra -Werror -std=c++98
