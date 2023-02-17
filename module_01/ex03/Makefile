@@ -6,11 +6,11 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/16 22:00:50 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/17 09:44:27 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp Weapon.cpp HumanA.cpp
+SOURCES 	=		main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 NAME		=		war
 
