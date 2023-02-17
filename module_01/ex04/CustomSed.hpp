@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 14:19:50 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/17 15:38:59 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:13:52 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ class	CustomSed
 	public:
 		CustomSed(void);
 		~CustomSed(void);
+		void	replace(std::string const filename, \
+						std::string const s1, std::string const s2);
 };
 
-// std::string const filename, std::string const s1, std::string const s2
 #endif
