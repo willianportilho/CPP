@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:44:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 17:23:40 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:44:44 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	Zombie::announce(void)
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::set_name(std::string zombie_name)
+void	Zombie::set_name(std::string name)
 {
-	this->_name = zombie_name;
+	this->_name = name;
 	return ;
 }
 

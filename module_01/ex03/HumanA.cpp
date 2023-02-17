@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:38:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 19:45:37 by wportilh         ###   ########.fr       */
+/*   Created: 2023/02/16 21:45:55 by wportilh          #+#    #+#             */
+/*   Updated: 2023/02/16 22:26:31 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-Zombie	*zombieHorde(int N, std::string name)
+HumanA::HumanA(std::string name, Weapon &club) : _name(name), _club(club)
 {
-	Zombie	*horde = new Zombie[N];
+	return ;
+}
 
-	for(int i = 0; i < N; i++)
-		horde[i].set_name(name);
-	return (horde);
+HumanA::~HumanA(void)
+{
+	return ;
+}
+
+void	HumanA::attack(void)
+{
+	std::cout << this->_name << " attacks with their " << _club.getType()
+	<< std::endl;
 }

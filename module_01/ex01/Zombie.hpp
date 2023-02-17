@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:39:49 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/16 17:00:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:45:17 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 #include <iostream>
 
-class Zombie
+class	Zombie
 {
 	public:
 		Zombie(void);
 		~Zombie(void);
 		void		announce(void);
-		void		set_name(std::string zombie_name);
+		void		set_name(std::string name);
 	private:
 		std::string	_name;
 		static int	_number_constructed_zombie;
 		static int	_number_destroyed_zombie;
 };
 
-Zombie	*zombieHorde(int N, std::string zombie_name);
+Zombie	*zombieHorde(int N, std::string name);
 
 #endif
