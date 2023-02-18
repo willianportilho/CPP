@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/17 17:35:45 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/17 21:28:44 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					@$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					@$(VAL) ./$(NAME) ./main.cpp "int" "char"
+					@$(VAL) ./$(NAME) \
+					./the_hound_of_the_baskervilles_by_arthur_conan_doyle.txt \
+					"Holmes" "Cristiano Ronaldo"
 
 clean:
 					$(RM) $(OBJ_PATH)
