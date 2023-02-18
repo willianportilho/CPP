@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/18 10:28:44 by wportilh         ###   ########.fr       */
+/*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
+/*   Updated: 2023/02/18 10:28:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int	main(int argc, char *argv[])
+Harl::Harl(void)
 {
-	return (0);
+	return ;
+}
+
+Harl::Harl(void)
+{
+	return ;
 }
