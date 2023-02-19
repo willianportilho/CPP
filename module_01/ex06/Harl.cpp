@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 15:35:34 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:12:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,32 @@ void	Harl::complain(std::string level)
 	{&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 	std::string	s_level[4] = \
 	{"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			n_level;
 
+	n_level = -1;
 	for (int i = 0; i < 4; i++)
 	{
 		if (level == s_level[i])
-		{
-			(this->*p_level[i])();
-			return ;
-		}
+			n_level = i;
 	}
-	std::cerr << "harl: error: invalid level" << std::endl;
+	switch (n_level)
+	{
+		case DEBUG:
+			std::cout << "[ DEBUG ]" << std::endl; (this->*p_level[DEBUG])();
+			std::cout << std::endl;
+		case INFO:
+			std::cout << "[ INFO ]" << std::endl; (this->*p_level[INFO])();
+			std::cout << std::endl;
+		case WARNING:
+			std::cout << "[ WARNING ]" << std::endl; (this->*p_level[WARNING])();
+			std::cout << std::endl;
+		case ERROR:
+			std::cout << "[ ERROR ]" << std::endl; (this->*p_level[ERROR])();
+			break ;
+		default:
+			std::cerr << "[ Probably complaining about insignificant problems ]"
+			<< std::endl;
+			break;
+	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 16:14:13 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:31:45 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main(int argc, char *argv[])
 		<< std::endl;
 		return (-1);
 	}
+	level.complain(argv[1]);
 	return (0);
 }

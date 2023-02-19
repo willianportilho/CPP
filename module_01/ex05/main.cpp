@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 16:10:37 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:15:17 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	main(void)
 
 	std::cout << "[ TWO WORDS ]: " << "invalid" << std::endl;
 	level.complain("TWO WORDS");
-	std::cout << std::endl;
 
 	return (0);
 }

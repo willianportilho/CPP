@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:26:09 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 15:25:10 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:19:50 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ class Harl
 		~Harl(void);
 		void	complain(std::string level);
 	private:
+		enum e_level
+		{
+    		DEBUG,
+			INFO,
+			WARNING,
+			ERROR	
+		};
 		void _debug(void);
 		void _info(void);
 		void _warning(void);
