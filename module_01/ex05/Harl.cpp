@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 15:25:45 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:35:34 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	Harl::_debug(void)
 	std::cout
 	<< "I love having extra bacon for my"
 	<< "7XL-double-cheese-triple-pickle-special-ketchup burger. "
+	<< std::endl
 	<< "I really do!"
 	<< std::endl;
 	return ;
@@ -36,7 +37,9 @@ void	Harl::_info(void)
 {
 	std::cout
 	<< "I cannot believe adding extra bacon costs more money." 
+	<< std::endl
 	<< "You didn't put enough bacon in my burger! "
+	<< std::endl
 	<< "If you did, I wouldn't be asking for more!"
 	<< std::endl;
 	return ;
@@ -46,6 +49,7 @@ void	Harl::_warning(void)
 {
 	std::cout
 	<< "I think I deserve to have some extra bacon for free. "
+	<< std::endl
 	<< "I've been coming for years whereas you started working "
 	<< "here since last month."
 	<< std::endl;
