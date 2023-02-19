@@ -6,11 +6,11 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/17 22:47:34 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/18 11:21:02 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp
+SOURCES 	=		main.cpp Harl.cpp
 
 NAME		=		harl
 
