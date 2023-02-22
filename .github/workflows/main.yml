@@ -27,3 +27,7 @@ jobs:
       run:  make -C module_01/ex04
     - name: make_module01_ex05
       run:  make -C module_01/ex05
+    - name: make_module01_ex06
+      run:  make -C module_01/ex06
+    - name: make_module02_ex00
+      run:  make -C module_02/ex00
