@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/16 18:26:20 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/22 11:13:25 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCES 	=		main.cpp
 NAME		=		possibilities
 
 CC			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_PATH 	=		./
 SRCS		=		$(addprefix $(SRC_PATH), $(SOURCES))

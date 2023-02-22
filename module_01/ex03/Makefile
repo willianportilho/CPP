@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/17 09:44:27 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/22 11:13:32 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCES 	=		main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 NAME		=		war
 
 CC			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_PATH 	=		./
 SRCS		=		$(addprefix $(SRC_PATH), $(SOURCES))

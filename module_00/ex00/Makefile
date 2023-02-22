@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:21:45 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/16 18:23:42 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/22 11:02:30 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCES 	=		megaphone.cpp
 NAME		=		megaphone
 
 CC			=		c++
-CFLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
 
 SRC_PATH 	=		./
 SRCS		=		${addprefix ${SRC_PATH}, ${SOURCES}}

@@ -6,13 +6,13 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/02/22 11:10:01 by wportilh         ###   ########.fr        #
+#    Updated: 2023/02/22 11:02:11 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp  Contact.cpp PhoneBook.cpp
+SOURCES 	=		main.cpp  Fixed.cpp
 
-NAME		=		cell_phone
+NAME		=		fixed_point
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3

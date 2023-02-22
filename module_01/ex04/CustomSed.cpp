@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 14:21:07 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/17 22:22:25 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:15:51 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ void	CustomSed::_replace_line(std::string &line, std::string const s1,
 }
 
 void	CustomSed::_send_text_output(std::string const filename,
-										std::string const line,
-										std::string const s1,
-										std::string const s2)
+										std::string const line)
 {
 	std::ofstream	outfile;
 
-	outfile.open(filename + ".replace", std::ofstream::trunc);
+	outfile.open(filename.c_str(), std::ofstream::trunc);
 	if (!outfile.is_open())
 		std::cerr << "replace: error: file creation or opening" << std::endl;
 	outfile << line;
@@ -65,8 +63,9 @@ void	CustomSed::replace(std::string const filename, std::string const s1,
 	{
 		std::cerr << "replace: error: the first and/or second argument are/is empty"
 		<< std::endl;
+		return ;
 	}
-	infile.open(filename);
+	infile.open(filename.c_str());
 	if (!infile.is_open())
 	{
 		std::cerr << "replace: error: cannot open the file" << std::endl;
@@ -79,6 +78,6 @@ void	CustomSed::replace(std::string const filename, std::string const s1,
 		if (!infile.eof())
 			all_text += '\n';
 	}
-	_send_text_output(filename, all_text, s1, s2);
+	_send_text_output(filename + ".replace", all_text);
 	infile.close();
 }

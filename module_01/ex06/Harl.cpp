@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/19 17:12:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:20:13 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,15 @@ void	Harl::complain(std::string level)
 		case DEBUG:
 			std::cout << "[ DEBUG ]" << std::endl; (this->*p_level[DEBUG])();
 			std::cout << std::endl;
+			// fallthrough
 		case INFO:
 			std::cout << "[ INFO ]" << std::endl; (this->*p_level[INFO])();
 			std::cout << std::endl;
+			// fallthrough
 		case WARNING:
 			std::cout << "[ WARNING ]" << std::endl; (this->*p_level[WARNING])();
 			std::cout << std::endl;
+			// fallthrough
 		case ERROR:
 			std::cout << "[ ERROR ]" << std::endl; (this->*p_level[ERROR])();
 			break ;
