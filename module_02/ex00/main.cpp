@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/22 11:30:44 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:26:37 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	main(void)
 {
-	Fixed	instance;
-	Fixed	instance2(instance);
-
+	Fixed	a;
+	Fixed	b(a);
+	Fixed 	c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 	return (0);
 }
