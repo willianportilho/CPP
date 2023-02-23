@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/23 14:23:34 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:03:18 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ Fixed::Fixed(void) : _fixed_point_value(0)
 	return ;
 }
 
-Fixed::Fixed(Fixed const &src)
+Fixed::Fixed(Fixed const &fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
-
+	*this = fixed;
 	return ;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "const int constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	this->_fixed_point_value = (value * (1 << Fixed::_n_fractional_bits));
 	return ;
 }
@@ -36,7 +35,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	(void)value;
-	std::cout << "const float constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	this->_fixed_point_value = roundf(value * (1 << Fixed::_n_fractional_bits));
 	return ;
 }
@@ -47,23 +46,21 @@ Fixed::~Fixed(void)
 	return ;
 }
 
-Fixed	&Fixed::operator=(Fixed const &rhs)
+Fixed	&Fixed::operator=(Fixed const &fixed)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &rhs)
-	 	this->_fixed_point_value = rhs.getRawBits();
+	if (this != &fixed)
+	 	this->_fixed_point_value = fixed.getRawBits();
 	return (*this);
 }
 
 int	Fixed::getRawBits(void)  const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_fixed_point_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->_fixed_point_value = raw;
 	return ;
 }
@@ -76,6 +73,12 @@ float	Fixed::toFloat(void) const
 int	Fixed::toInt(void) const
 {
 	return (this->_fixed_point_value  / (1 << Fixed::_n_fractional_bits));
+}
+
+std::ostream	&operator<<(std::ostream &COUT, Fixed const &fixed)
+{
+	COUT << fixed.toFloat();
+	return (COUT);
 }
 
 const int	Fixed::_n_fractional_bits = 8;
