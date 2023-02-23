@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/23 18:17:08 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:38:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,34 @@
 
 Fixed::Fixed(void) : _fixed_point_value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(Fixed const &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
 	return ;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
 	this->_fixed_point_value = (value * (1 << Fixed::_n_fractional_bits));
 	return ;
 }
 
 Fixed::Fixed(const float value)
 {
-	(void)value;
-	std::cout << "Float constructor called" << std::endl;
 	this->_fixed_point_value = roundf(value * (1 << Fixed::_n_fractional_bits));
 	return ;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
 	return ;
 }
 
 Fixed	&Fixed::operator=(Fixed const &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &fixed)
 	 	this->_fixed_point_value = fixed.getRawBits();
 	return (*this);
@@ -103,6 +96,56 @@ bool	Fixed::operator==(Fixed const &fixed) const
 bool	Fixed::operator!=(Fixed const &fixed) const
 {
     return (this->getRawBits() != fixed.getRawBits());
+}
+
+Fixed	Fixed::operator+(Fixed const &fixed) const
+{
+	return (Fixed(this->toFloat() + fixed.toFloat()));
+}
+
+Fixed	Fixed::operator-(Fixed const &fixed) const
+{
+	return (Fixed(this->toFloat() - fixed.toFloat()));
+}
+
+Fixed	Fixed::operator*(Fixed const &fixed) const
+{
+	return (Fixed(this->toFloat() * fixed.toFloat()));
+}
+
+Fixed	Fixed::operator/(Fixed const &fixed) const
+{
+	return (Fixed(this->toFloat() / fixed.toFloat()));
+}
+
+Fixed	&Fixed::operator++(void)
+{
+	this->_fixed_point_value += 1;
+	return (*this);
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	this->_fixed_point_value -= 1;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	old;
+
+	old = *this;
+	operator++();
+	return (old);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	old;
+
+	old = *this;
+	operator--();
+	return (old);
 }
 
 std::ostream	&operator<<(std::ostream &COUT, Fixed const &fixed)
