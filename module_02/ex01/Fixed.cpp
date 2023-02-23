@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/23 15:03:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:13:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ void	Fixed::setRawBits(int const raw)
 	return ;
 }
 
-float	Fixed::toFloat(void) const
-{
-	return ((float)this->_fixed_point_value  / (1 << Fixed::_n_fractional_bits));
-}
-
 int	Fixed::toInt(void) const
 {
-	return (this->_fixed_point_value  / (1 << Fixed::_n_fractional_bits));
+	return (this->getRawBits() / (1 << Fixed::_n_fractional_bits));
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->getRawBits() / (float)(1 << Fixed::_n_fractional_bits));
 }
 
 std::ostream	&operator<<(std::ostream &COUT, Fixed const &fixed)
