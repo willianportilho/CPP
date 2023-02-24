@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:26:09 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/23 20:42:00 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:19:34 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,24 @@ class	Fixed
 		void				setRawBits(int const raw);
 		float				toFloat(void) const;
 		int					toInt(void) const;
-
 		bool				operator>(Fixed const &fixed) const;
 		bool				operator<(Fixed const &fixed) const;
 		bool				operator>=(Fixed const &fixed) const;
 		bool				operator<=(Fixed const &fixed) const;
 		bool				operator==(Fixed const &fixed) const;
 		bool				operator!=(Fixed const &fixed) const;
-
 		Fixed 				operator+(Fixed const &fixed) const;
 		Fixed 				operator-(Fixed const &fixed) const;
 		Fixed 				operator*(Fixed const &fixed) const;
 		Fixed 				operator/(Fixed const &fixed) const;
-
 		Fixed				&operator++(void); // prefix increment
 		Fixed				&operator--(void); // prefix decrement
 		Fixed				operator++(int); // postfix increment
 		Fixed				operator--(int); // postfix decrement
+		static Fixed		&min(Fixed &l, Fixed &r);
+		static Fixed		&max(Fixed &l, Fixed &r);
+		static Fixed const	&min(Fixed const &l, Fixed const &r);
+		static Fixed const	&max(Fixed const &l, Fixed const &r);
 	private:
 		int					_fixed_point_value;
 		static const int	_n_fractional_bits;

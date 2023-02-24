@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/23 20:38:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:21:09 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,34 @@ std::ostream	&operator<<(std::ostream &COUT, Fixed const &fixed)
 {
 	COUT << fixed.toFloat();
 	return (COUT);
+}
+
+Fixed	&Fixed::min(Fixed &l, Fixed &r)
+{
+	if (l.getRawBits() < r.getRawBits())
+		return (l);
+	return (r);
+}
+
+Fixed	&Fixed::max(Fixed &l, Fixed &r)
+{
+	if (l.getRawBits() > r.getRawBits())
+		return (l);
+	return (r);
+}
+
+Fixed const	&Fixed::min(Fixed const &l, Fixed const &r)
+{
+	if (l.getRawBits() < r.getRawBits())
+		return (l);
+	return (r);
+}
+
+Fixed const	&Fixed::max(Fixed const &l, Fixed const &r)
+{
+	if (l.getRawBits() > r.getRawBits())
+		return (l);
+	return (r);
 }
 
 const int	Fixed::_n_fractional_bits = 8;
