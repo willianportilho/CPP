@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:11:55 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/26 19:29:54 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:27:40 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,22 @@ void	ScavTrap::attack(const std::string& target)
 	else if (!this->get_hit_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer attack 😭. Hit points = \""
-		<< this->get_hit_points() << "\". Is dead! 💀⚰️"
+		<< "\" can no longer attack 😩. Hit points = \""
+		<< this->get_hit_points() << "\". Is dead! 💀⚱"
 		<< std::endl;
 	}
 	else if (!this->get_energy_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer attack 🙁. Energy points = \""
-		<< this->get_energy_points() << "\". Is tired! 🥱🛏️"
+		<< "\" can no longer attack 😞. Energy points = \""
+		<< this->get_energy_points() << "\". Is tired! 😴🛏️"
 		<< std::endl;
 	}
 	else
 	{
 		this->set_energy_points(get_energy_points() - 1);
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" attacks 🤺 \"" << target
+		<< "\" attacks 🤜 \"" << target
 		<< "\", causing \"" << this->get_attack_damage()
 		<< "\" points of damage!"
 		<< std::endl;
