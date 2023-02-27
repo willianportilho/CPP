@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:33:05 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/27 14:52:13 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:20:38 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ void	FragTrap::highFivesGuys(void)
 	else if (!this->get_hit_points())
 	{
 		std::cout << "FragTrap \"" << this->get_name()
-		<< "\" can no longer display a positive high five, guys 😭. Hit points = \""
+		<< "\" can no longer display a positive high five, guys 😭. Hit points: \""
 		<< this->get_hit_points() << "\". Is dead! 💀⚰️"
 		<< std::endl;
 	}
 	else if (!this->get_energy_points())
 	{
 		std::cout << "FragTrap \"" << this->get_name()
-		<< "\" can no longer display a positive high fives, guys 🙁. Energy points = \""
+		<< "\" can no longer display a positive high fives, guys 🙁. Energy points: \""
 		<< this->get_energy_points() << "\". Is tired! 🥱🛏️"
 		<< std::endl;
 	}

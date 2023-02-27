@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:11:55 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/27 14:29:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:20:10 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ void	ScavTrap::attack(const std::string& target)
 	else if (!this->get_hit_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer attack 😩. Hit points = \""
+		<< "\" can no longer attack 😩. Hit points: \""
 		<< this->get_hit_points() << "\". Is dead! 💀⚱"
 		<< std::endl;
 	}
 	else if (!this->get_energy_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer attack 😞. Energy points = \""
+		<< "\" can no longer attack 😞. Energy points: \""
 		<< this->get_energy_points() << "\". Is tired! 😴🛏️"
 		<< std::endl;
 	}
@@ -104,14 +104,14 @@ void	ScavTrap::guardGate(void)
 	else if (!this->get_hit_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer be in Gate keeper mode 😭. Hit points = \""
+		<< "\" can no longer be in Gate keeper mode 😭. Hit points: \""
 		<< this->get_hit_points() << "\". Is dead! 💀⚰️"
 		<< std::endl;
 	}
 	else if (!this->get_energy_points())
 	{
 		std::cout << "ScavTrap \"" << this->get_name()
-		<< "\" can no longer be in Gate keeper mode 🙁. Energy points = \""
+		<< "\" can no longer be in Gate keeper mode 🙁. Energy points: \""
 		<< this->get_energy_points() << "\". Is tired! 🥱🛏️"
 		<< std::endl;
 	}

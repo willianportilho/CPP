@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/27 14:54:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:07:06 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ void	ClapTrap::attack(const std::string& target)
 	else if (!this->_hit_points)
 	{
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer attack 😭. Hit points = \""
+		<< "\" can no longer attack 😭. Hit points: \""
 		<< this->_hit_points << "\". Is dead! 💀⚰️"
 		<< std::endl;
 	}
 	else if (!this->_energy_points)
 	{
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer attack 🙁. Energy points = \""
+		<< "\" can no longer attack 🙁. Energy points: \""
 		<< this->_energy_points << "\". Is tired! 🥱🛏️"
 		<< std::endl;
 	}
@@ -94,7 +94,7 @@ void	ClapTrap::attack(const std::string& target)
 	{
 		this->_energy_points--;
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" attacks 🤺 \"" << target
+		<< "\" attacks 💥 \"" << target
 		<< "\", causing \"" << this->_attack_damage << "\" points of damage!"
 		<< std::endl;
 	}
@@ -107,22 +107,16 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	else if (!this->_hit_points)
 	{
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer suffered more damage 😭. Hit points = \""
+		<< "\" can no longer suffered more damage 😭. Hit points: \""
 		<< this->_hit_points << "\". Is dead! 💀⚰️"
-		<< std::endl;
-	}
-	else if (!this->_energy_points)
-	{
-		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer suffered more damage 🙁. Energy points = \""
-		<< this->_energy_points << "\". Is tired! 🥱🛏️"
 		<< std::endl;
 	}
 	else
 	{
-		this->_hit_points -= amount;
-		if (this->_hit_points < 0)
+		if ((unsigned int)this->_hit_points < amount)
 			this->_hit_points = 0;
+		else
+			this->_hit_points -= amount;
 		std::cout << "ClapTrap \"" << this->_name
 		<< "\" suffered damage 😬 \""
 		<< amount << "\" hit points back!"
@@ -137,22 +131,33 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	else if (!this->_hit_points)
 	{
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer be repaired 😭. Hit points = \""
+		<< "\" can no longer be repaired 😭. Hit points: \""
 		<< this->_hit_points << "\". Is dead! 💀 ⚰️"
 		<< std::endl;
 	}
 	else if (!this->_energy_points)
 	{
 		std::cout << "ClapTrap \"" << this->_name
-		<< "\" can no longer be repaired 🙁. Energy points = \""
+		<< "\" can no longer be repaired 🙁. Energy points: \""
 		<< this->_energy_points << "\". Is tired! 🥱 🛏️"
 		<< std::endl;
 	}
 	else
 	{
-		this->_hit_points += amount;
-		if (this->_hit_points < 0)
-			this->_hit_points = 0;
+		unsigned int tmp = amount;
+		if (tmp >= __INT_MAX__)
+				this->_hit_points = __INT_MAX__;
+		else
+		{
+			for (int i = 0; i < this->_hit_points; i++)
+			{
+				tmp++;
+				if (tmp >= __INT_MAX__)
+					this->_hit_points = __INT_MAX__;
+			}		
+		}
+		if (this->_hit_points != __INT_MAX__)
+			this->_hit_points += amount;
 		this->_energy_points--;
 		std::cout << "ClapTrap \"" << this->_name 
 		<< "\" was repaired 💊, getting \""
