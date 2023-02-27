@@ -6,13 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:11:55 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/26 20:27:40 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:29:18 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	this->set_name("🧗 Eldian");
 	this->set_hit_points(100);
@@ -24,7 +24,7 @@ ScavTrap::ScavTrap(void)
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string const name)
+ScavTrap::ScavTrap(std::string const name) : ClapTrap(name)
 {
 	this->set_name(name);
 	this->set_hit_points(100);
@@ -36,7 +36,7 @@ ScavTrap::ScavTrap(std::string const name)
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &scav_trap)
+ScavTrap::ScavTrap(ScavTrap const &scav_trap) : ClapTrap(scav_trap)
 {
 	*this = scav_trap;
 	std::cout << "copy ScavTrap ("

@@ -6,13 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:33:05 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/26 21:09:46 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:39:02 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
 	this->set_name("🧗 Eldian");
 	this->set_hit_points(100);
@@ -24,7 +24,7 @@ FragTrap::FragTrap(void)
 	return ;
 }
 
-FragTrap::FragTrap(std::string const name)
+FragTrap::FragTrap(std::string const name) : ClapTrap(name)
 {
 	this->set_name(name);
 	this->set_hit_points(100);
@@ -36,7 +36,7 @@ FragTrap::FragTrap(std::string const name)
 	return ;
 }
 
-FragTrap::FragTrap(FragTrap const &frag_trap)
+FragTrap::FragTrap(FragTrap const &frag_trap) : ClapTrap(frag_trap)
 {
 	*this = frag_trap;
 	std::cout << "copy FragTrap ("
