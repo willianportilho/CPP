@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/27 17:35:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:59:40 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ static void clap_trap_tests(void)
 	ClapTrap	balrog;
 	ClapTrap	gandalf("🧙‍♂️ Gandalf");
 
+	std::cout << std::endl;
+	std::cout << "============================================================";
+	std::cout << std::endl << "CLAPTRAP TESTS:";
 	// CONSTRUCTORS AND OVERLOAD
 	std::cout << std::endl;
 	std::cout << "============================================================";
@@ -120,7 +123,11 @@ static void scav_trap_tests(void)
 	std::cout << "============================================================";
 	std::cout << std::endl;
 	std::cout << "============================================================";
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl;
+	std::cout << "============================================================";
+	std::cout << std::endl;
+	std::cout << std::endl << "SCAVTRAP TESTS:";
+	std::cout << std::endl;
 	std::cout << "============================================================";
 	std::cout << std::endl << "CONSTRUCTORS AND OVERLOAD:"
 	<< std::endl << std::endl;
@@ -168,13 +175,12 @@ static void scav_trap_tests(void)
 	std::cout << "============================================================";
 	std::cout << std::endl << "GANDALF ATTACKS BALROG (POSITIVE NUMBER ATTACK):"
 	<< std::endl << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		std::cout << "Energy points (Gandalf): " << gandalf.get_energy_points()
 		<< std::endl;
 		gandalf.attack("♨️  Balrog");
-		if (i < 4)
-			balrog.takeDamage(gandalf.get_attack_damage());
+		balrog.takeDamage(gandalf.get_attack_damage());
 		std::cout << std::endl;
 	}
 	std::cout << "Hit points (Balrog): " << balrog.get_hit_points();
@@ -193,6 +199,7 @@ static void scav_trap_tests(void)
 	<< std::endl << std::endl;
 	std::cout << "Energy points (Gandalf): " << gandalf.get_energy_points()
 	<< std::endl;
+	gandalf.guardGate(); // GUARD GATE
 	gandalf.attack("♨️  Balrog");
 	balrog.takeDamage(-1);
 	std::cout << std::endl;
@@ -202,7 +209,7 @@ static void scav_trap_tests(void)
 	balrog.beRepaired(100);
 	gandalf.beRepaired(-1);
 	std::cout << "Hit points (Gandalf): " << gandalf.get_hit_points();
-	std::cout << std::endl << std::endl;	
+	std::cout << std::endl << std::endl;
 }
 
 int main(void)
