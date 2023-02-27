@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:11:55 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/27 15:20:10 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:32:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
-	this->set_name("🧗 Eldian");
+	this->set_name("♨️  Balrog");
 	this->set_hit_points(100);
 	this->set_energy_points(50);
 	this->set_attack_damage(20);
