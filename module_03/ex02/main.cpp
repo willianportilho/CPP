@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:05:17 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/26 21:06:54 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:53:50 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 int main(void)
 {
-	FragTrap	test1;
+	FragTrap	balrog;
 
-	test1.attack("Eren");
-	test1.takeDamage(411);
+	balrog.attack("🧙‍♂️ Gandalf");
+	balrog.takeDamage(411);
 
-	test1.highFivesGuys();
+	balrog.highFivesGuys();
 
 	return (0);
 }

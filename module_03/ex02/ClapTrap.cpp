@@ -6,13 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 10:27:37 by wportilh          #+#    #+#             */
-/*   Updated: 2023/02/26 19:32:03 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:52:10 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void):	_name("🧗 Eldian"),
+ClapTrap::ClapTrap(void):	_name("♨️  Balrog"),
 							_hit_points(10),
 							_energy_points(10),
 							_attack_damage(0)
