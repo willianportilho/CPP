@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:31:27 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/02 21:54:04 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:48:13 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CAT_H
 
 #include "Animal.hpp"
+#include <iostream>
 
 class	Cat : public Animal
 {
