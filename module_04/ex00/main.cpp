@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 13:33:57 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:38:53 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	wrongTests(void)
 
 	std::cout << std::endl;
 
+	std::cout << wrong_meta->getType() << " " << std::endl;
 	std::cout << wrong_i->getType() << " " << std::endl;
 	wrong_i->makeSound(); //will output the wrongcat sound!
 	wrong_meta->makeSound();
