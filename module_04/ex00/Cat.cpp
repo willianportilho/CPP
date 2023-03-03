@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/02 21:45:13 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:26:34 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat(Cat const &src) : Animal(src)
 
 Cat::~Cat(void)
 {
-	std::cout << "destructor Cat constructor called" << std::endl;
+	std::cout << "destructor Cat called" << std::endl;
 	return ;
 }
 

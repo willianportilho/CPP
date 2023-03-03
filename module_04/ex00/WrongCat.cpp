@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 13:26:29 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/02 21:45:13 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog(void) : Animal()
+WrongCat::WrongCat(void) : WrongAnimal()
 {
-	setType("Dog");
-	std::cout << "default Dog constructor called" << std::endl;
+	setType("WrongCat");
+	std::cout << "default WrongCat constructor called" << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog const &src) : Animal(src)
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
 	*this = src;
-	std::cout << "copy Dog constructor called" << std::endl;
+	std::cout << "copy WrongCat constructor called" << std::endl;
 	return ;
 }
 
-Dog::~Dog(void)
+WrongCat::~WrongCat(void)
 {
-	std::cout << "destructor Dog called" << std::endl;
+	std::cout << "destructor WrongCat called" << std::endl;
 	return ;
 }
 
-Dog	&Dog::operator=(Dog const &rhs)
+WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 {
 	if (this != &rhs)
 		this->setType(rhs.getType());
-	std::cout << "assignment copy Dog called" << std::endl;
+	std::cout << "assignment copy WrongCat called" << std::endl;
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
+void	WrongCat::makeSound(void) const
 {
-	std::cout << "Woof, Woof!!!" << std::endl;
+	std::cout << "Meow!!!" << std::endl;
 }
