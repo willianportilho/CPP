@@ -22,10 +22,10 @@ class	WrongAnimal
 		WrongAnimal(void);
 		WrongAnimal(WrongAnimal const &src);
 		~WrongAnimal(void);
-		WrongAnimal			&operator=(WrongAnimal const &rhs);
-		void			setType(std::string const type);
-		std::string		getType(void) const;
-		void			makeSound(void) const;
+		WrongAnimal	&operator=(WrongAnimal const &rhs);
+		void		setType(std::string const type);
+		std::string	getType(void) const;
+		void		makeSound(void) const;
 	protected:
 		std::string	_type;
 };

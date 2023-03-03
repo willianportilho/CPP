@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 13:50:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:27:32 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 Brain::Brain(void)
 {
-	setType("Brain");
+	for (int i = 0; i < 100; i++)
+		this->setIdeas("", i);
 	std::cout << "default Brain constructor called" << std::endl;
 	return ;
 }
@@ -35,18 +36,25 @@ Brain::~Brain(void)
 Brain	&Brain::operator=(Brain const &rhs)
 {
 	if (this != &rhs)
-		this->setType(rhs.getType());
+	{
+		for (int i = 0; i < 100; i++)
+			this->setIdeas(rhs.getIdeas(i), i);
+	}
 	std::cout << "assignment copy Brain called" << std::endl;
 	return (*this);
 }
 
-void	Brain::setType(std::string const type)
+void	Brain::setIdeas(std::string const idea, unsigned int const i)
 {
-	this->_type = type;
+	if ((i < 100))
+		this->_ideas[i] = idea;
 	return ;
 }
 
-std::string	Brain::getType(void) const
+std::string	Brain::getIdeas(unsigned int const i) const
 {
-	return (this->_type);
+	if (i < 100)
+		return (this->_ideas[i]);
+	else
+		return ("");
 }

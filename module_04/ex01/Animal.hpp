@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:11:27 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/02 21:45:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:23:53 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	Animal
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const;
 	protected:
-		std::string	_type;
+		std::string		_type;
 };
 
 #endif
