@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 16:51:54 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:31:48 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,12 @@ static void	copyTests(void)
 
 		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
 		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
-		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
-		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		copyDog->setIdeas("Run", 0);
 
 		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
 		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
-		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
-		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		delete dog;
@@ -141,16 +137,12 @@ static void	copyTests(void)
 
 		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
 		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
-		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
-		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		copyCat->setIdeas("Milk", 0);
 
 		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
 		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
-		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
-		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		delete cat;
@@ -173,16 +165,12 @@ static void	assignmentTests(void)
 
 		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
 		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
-		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
-		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		copyDog->setIdeas("Run", 0);
 
 		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
 		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
-		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
-		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		delete dog;
@@ -199,16 +187,12 @@ static void	assignmentTests(void)
 
 		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
 		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
-		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
-		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		copyCat->setIdeas("Milk", 0);
 
 		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
 		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
-		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
-		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
 		std::cout << std::endl;
 
 		delete cat;
