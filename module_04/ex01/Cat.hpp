@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:31:27 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 15:24:19 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:03:43 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 #include <iostream>
+#include <string.h>
 
 class	Cat : public Animal
 {
@@ -23,8 +24,10 @@ class	Cat : public Animal
 		Cat(void);
 		Cat(Cat const &src);
 		~Cat(void);
-		Cat		&operator=(Cat const &rhs);
-		void	makeSound(void) const;
+		Cat			&operator=(Cat const &rhs);
+		void		makeSound(void) const;
+		void		setIdeas(std::string const idea, unsigned int const i);
+		std::string	getIdeas(unsigned int const i) const;
 	private:
 		Brain	*_brain;
 };

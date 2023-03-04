@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 18:03:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:28:01 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	Brain::setIdeas(std::string const idea, unsigned int const i)
 {
 	if ((i < 100))
 		this->_ideas[i] = idea;
+	else
+		std::cout << "error: wrong index (setIdeas)" << std::endl;
 	return ;
 }
 
@@ -56,5 +58,8 @@ std::string	Brain::getIdeas(unsigned int const i) const
 	if (i < 100)
 		return (this->_ideas[i]);
 	else
+	{
+		std::cout << "error: wrong index (getIdeas)" << std::endl;
 		return ("");
+	}
 }

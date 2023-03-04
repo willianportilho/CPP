@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 19:23:39 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:03:56 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ Cat::Cat(Cat const &src) : Animal(src), _brain(new Brain(*src._brain))
 
 Cat::~Cat(void)
 {
-	delete this->_brain;
 	std::cout << "destructor Cat called" << std::endl;
+	delete this->_brain;
 	return ;
 }
 
@@ -48,4 +48,15 @@ Cat	&Cat::operator=(Cat const &rhs)
 void	Cat::makeSound(void) const
 {
 	std::cout << "Meow!!!" << std::endl;
+}
+
+void	Cat::setIdeas(std::string const idea, unsigned int const i)
+{
+	this->_brain->setIdeas(idea, i);
+	return ;
+}
+
+std::string	Cat::getIdeas(unsigned int const i) const
+{
+	return (this->_brain->getIdeas(i));
 }

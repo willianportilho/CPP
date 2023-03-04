@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 20:43:06 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:03:53 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ Dog::Dog(Dog const &src) : Animal(src), _brain(new Brain(*src._brain))
 
 Dog::~Dog(void)
 {
-	delete this->_brain;
 	std::cout << "destructor Dog called" << std::endl;
+	delete this->_brain;
 	return ;
 }
 
