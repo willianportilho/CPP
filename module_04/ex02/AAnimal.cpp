@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:26:59 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 16:49:31 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:45:43 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,4 @@ void	AAnimal::setType(std::string const type)
 std::string	AAnimal::getType(void) const
 {
 	return (this->_type);
-}
-
-void	AAnimal::makeSound(void) const
-{
-	std::cout << "trust me, \"AAnimal\" doesn't make a sound" << std::endl;
 }
