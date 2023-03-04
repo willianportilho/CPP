@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 13:03:53 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:36:52 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ Dog::~Dog(void)
 Dog	&Dog::operator=(Dog const &rhs)
 {
 	if (this != &rhs)
-	{
-		// delete this->_brain;
-		//this->_brain = new Brain();
 		*this->_brain = *rhs._brain;
-	}
 	std::cout << "assignment copy Dog called" << std::endl;
 	return (*this);
 }
@@ -59,4 +55,9 @@ void	Dog::setIdeas(std::string const idea, unsigned int const i)
 std::string	Dog::getIdeas(unsigned int const i) const
 {
 	return (this->_brain->getIdeas(i));
+}
+
+Brain const	&Dog::getBrain(void) const
+{
+	return (*this->_brain);
 }

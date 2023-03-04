@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:31:27 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 13:03:43 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:36:44 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class	Cat : public Animal
 		void		makeSound(void) const;
 		void		setIdeas(std::string const idea, unsigned int const i);
 		std::string	getIdeas(unsigned int const i) const;
+		Brain		&getBrain(void) const;
 	private:
 		Brain	*_brain;
 };

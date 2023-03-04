@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 13:29:56 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:38:06 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,133 @@ static void	ideasTests(void)
 
 	std::cout << "Wrong index tests:" << std::endl;
 	dog->setIdeas("Woof, Woof! I wanna run!", -1);
-	dog->setIdeas("Woof, Woof! I wanna run!", 101);
+	dog->setIdeas("Woof, Woof! I wanna run!", 100);
 	cat->setIdeas("Meow, Meow! I wanna jump!", -50);
 	cat->setIdeas("Meow, Meow! I wanna jump!", 500);
+
 	dog->getIdeas(200);
 	dog->getIdeas(-200);
 	cat->getIdeas(101);
 	cat->getIdeas(-101);
+	std::cout << std::endl;
+
+	delete dog;
+	delete cat;
+
 	return ;
 }
 
-static void	deepCopyTests(void)
+static void	copyTests(void)
 {
-	printTitle("4️⃣  DEEP COPY TESTS");
+	printTitle("4️⃣  COPY TESTS");
+	{
+		Dog	*dog = new Dog();
+		Dog	*copyDog = new Dog(*dog);
+		std::cout << std::endl;
 
-	Dog	*dog = new Dog();
-	//Animal	*copyDog(dog);
+		dog->setIdeas("Bones", 0);
+		copyDog->setIdeas("Water", 0);
 
-	dog->getIdeas(0);
+		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
+		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
+		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
+		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
 
-	delete dog;
+		copyDog->setIdeas("Run", 0);
+
+		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
+		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
+		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
+		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		delete dog;
+		delete copyDog;
+	}
+	{
+		Cat	*cat = new Cat();
+		Cat	*copyCat = new Cat(*cat);
+		std::cout << std::endl;
+
+		cat->setIdeas("Mouse", 0);
+		copyCat->setIdeas("Sleep", 0);
+
+		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
+		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
+		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
+		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		copyCat->setIdeas("Milk", 0);
+
+		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
+		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
+		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
+		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		delete cat;
+		delete copyCat;
+	}
+	return ;
+}
+
+static void	assignmentTests(void)
+{
+	printTitle("5️⃣  ASSIGNMENT TESTS");
+	{
+		Dog	*dog = new Dog();
+		Dog	*copyDog = new Dog();
+		*copyDog = *dog;
+		std::cout << std::endl;
+
+		dog->setIdeas("Bones", 0);
+		copyDog->setIdeas("Water", 0);
+
+		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
+		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
+		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
+		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		copyDog->setIdeas("Run", 0);
+
+		std::cout << "    dog: " << dog->getIdeas(0) << std::endl;
+		std::cout << "copyDog: " << copyDog->getIdeas(0) << std::endl;
+		std::cout << "    dog: " << &dog->getBrain() << " address" << std::endl;
+		std::cout << "copyDog: " << &copyDog->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		delete dog;
+		delete copyDog;
+	}
+	{
+		Cat	*cat = new Cat();
+		Cat	*copyCat = new Cat();
+		*copyCat = *cat;
+		std::cout << std::endl;
+
+		cat->setIdeas("Mouse", 0);
+		copyCat->setIdeas("Sleep", 0);
+
+		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
+		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
+		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
+		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		copyCat->setIdeas("Milk", 0);
+
+		std::cout << "    cat: " << cat->getIdeas(0) << std::endl;
+		std::cout << "copyCat: " << copyCat->getIdeas(0) << std::endl;
+		std::cout << "    cat: " << &cat->getBrain() << " address" << std::endl;
+		std::cout << "copyCat: " << &copyCat->getBrain() << " address" << std::endl;
+		std::cout << std::endl;
+
+		delete cat;
+		delete copyCat;
+	}
 	return ;
 }
 
@@ -116,7 +223,8 @@ int	main(void)
 	subjectTests();
 	arrayOfAnimalsTests();
 	ideasTests();
-	deepCopyTests();
+	copyTests();
+	assignmentTests();
 
 	return (0);
 }

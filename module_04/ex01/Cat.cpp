@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:32:56 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/04 13:03:56 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:36:39 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ void	Cat::setIdeas(std::string const idea, unsigned int const i)
 std::string	Cat::getIdeas(unsigned int const i) const
 {
 	return (this->_brain->getIdeas(i));
+}
+
+Brain	&Cat::getBrain(void) const
+{
+	return (*this->_brain);
 }
