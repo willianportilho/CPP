@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/03 13:51:16 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/03 18:03:15 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,6 @@ SOURCES 	=		main.cpp		\
 					Animal.cpp		\
 					Dog.cpp			\
 					Cat.cpp			\
-					WrongAnimal.cpp	\
-					WrongCat.cpp	\
 					Brain.cpp
 
 NAME		=		brain

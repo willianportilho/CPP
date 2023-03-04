@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:31:27 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/03 15:24:24 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:30:57 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ class	Dog : public Animal
 		Dog(void);
 		Dog(Dog const &src);
 		~Dog(void);
-		Dog		&operator=(Dog const &rhs);
-		void	makeSound(void) const;
+		Dog			&operator=(Dog const &rhs);
+		void		makeSound(void) const;
+		void		setIdeas(std::string const idea, unsigned int const i);
+		std::string	getIdeas(unsigned int const i) const;
 	private:
 		Brain	*_brain;
 };
