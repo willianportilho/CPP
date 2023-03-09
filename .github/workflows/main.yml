@@ -43,3 +43,11 @@ jobs:
       run:  make -C module_03/ex02
     - name: make_module03_ex03
       run:  make -C module_03/ex03
+    - name: make_module04_ex00
+      run:  make -C module_04/ex00
+    - name: make_module04_ex01
+      run:  make -C module_04/ex01
+    - name: make_module04_ex02
+      run:  make -C module_04/ex02
+    - name: make_module05_ex00
+      run:  make -C module_05/ex00

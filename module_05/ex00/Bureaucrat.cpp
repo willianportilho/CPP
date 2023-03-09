@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/08 22:51:32 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:36:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ Bureaucrat::Bureaucrat(void) : _name(""), _grade(42)
 		throw Bureaucrat::GradeTooHighException();
 	if (getGrade() > 150)
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << "default Bureaucrat constructor called" << std::endl;
+	std::cout << "default Bureaucrat constructor called. \"grade(" << this->getGrade()
+	<< ")\" and \"name(" << this->getName() << ")\"" << std::endl;
 	return ;
 }
 
@@ -28,11 +29,12 @@ Bureaucrat::Bureaucrat(unsigned int grade, std::string const name) : _name(name)
 		throw Bureaucrat::GradeTooHighException();
 	if (getGrade() > 150)
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << "Bureaucrat constructor called with parameters (grade and name)" << std::endl;
+	std::cout << "Bureaucrat constructor called with parameters \"grade(" << this->getGrade()
+	<< ")\" and \"name(" << this->getName() << ")\"" << std::endl;
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src)
+Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name)
 {
 	*this = src;
 	std::cout << "copy Bureaucrat constructor called" << std::endl;
@@ -41,16 +43,14 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "destructor Bureaucrat called" << std::endl;
+	std::cout << "destructor Bureaucrat \"" << this->getName() << "\" called" << std::endl;
 	return ;
 }
 
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
-	{
-		;
-	}
+		this->setGrade(rhs.getGrade());
 	std::cout << "assignment copy Bureaucrat called" << std::endl;
 	return (*this);
 }
@@ -68,6 +68,7 @@ void	Bureaucrat::decrement(void)
 	this->setGrade(this->getGrade() + 1);
 	if (this->getGrade() > 150)
 		throw Bureaucrat::GradeTooLowException();
+	return ;
 }
 
 std::string const	Bureaucrat::getName(void) const
