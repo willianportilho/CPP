@@ -6,25 +6,33 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 19:56:29 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:22:29 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(void) : _name("")
+Form::Form(void) : _name(""), _grade_to_sign(150), _grade_to_execute(150)
 {
 	std::cout << "default Form constructor called. \"name(" << this->getName() << ")\"" << std::endl;
 	return ;
 }
 
-Form::Form(std::string const name) : _name(name)
+Form::Form(std::string const name, unsigned const grade_to_sign,
+									unsigned int const grade_to_execute) : _name(name),
+																			_grade_to_sign(grade_to_sign),
+																			_grade_to_execute(grade_to_execute)
 {
+	(void)grade_to_execute;
+	(void)grade_to_sign;
+	(void)name;
 	std::cout << "Form constructor called with parameter \"name(" << this->getName() << ")\"" << std::endl;
 	return ;
 }
 
-Form::Form(Form const &src) : _name(src._name)
+Form::Form(Form const &src) : _name(src._name),
+							_grade_to_sign(src._grade_to_sign),
+							_grade_to_execute(src._grade_to_execute)
 {
 	*this = src;
 	std::cout << "copy Form constructor called" << std::endl;
@@ -40,9 +48,7 @@ Form::~Form(void)
 Form	&Form::operator=(Form const &rhs)
 {
 	if (this != &rhs)
-	{
-		;
-	}
+		*this = rhs;
 	std::cout << "assignment copy Form called" << std::endl;
 	return (*this);
 }

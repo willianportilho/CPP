@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 19:56:22 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:05:17 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Form
 {
 	public:
-		Form(std::string const name);
+		Form(std::string const name, unsigned const grade_to_sign, unsigned int const grade_to_execute);
 		Form(Form const &src);
 		~Form(void);
 		Form				&operator=(Form const &rhs);
@@ -37,6 +37,9 @@ class	Form
 	private:
 		Form(void); //????????????????????????????????????????????????????????????????????????????????????
 		std::string const	_name;
+		bool				_is_signed;
+		unsigned int const	_grade_to_sign;
+		unsigned int const	_grade_to_execute;
 };
 
 std::ostream	&operator<<(std::ostream &out, Form const &src);
