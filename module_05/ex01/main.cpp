@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 12:39:52 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:53:43 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ static void	signFormTests(void)
 		Form	real_madrid("Real Madrid", 1, 1);
 		Bureaucrat cristiano(10, "Cristiano");
 		cristiano.signForm(real_madrid);
+		std::cout << real_madrid;
 	}
 	catch(std::exception & e)
 	{
@@ -168,6 +169,7 @@ static void	signFormTests(void)
 		Form	real_madrid("Real Madrid", 1, 1);
 		Bureaucrat cristiano(1, "Cristiano");
 		cristiano.signForm(real_madrid);
+		std::cout << real_madrid;
 	}
 	catch(std::exception & e)
 	{
