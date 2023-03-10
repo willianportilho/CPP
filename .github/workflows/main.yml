@@ -53,3 +53,5 @@ jobs:
       run:  make -C module_05/ex00
     - name: make_module05_ex01
       run:  make -C module_05/ex01
+    - name: make_module05_ex02
+      run:  make -C module_05/ex02
