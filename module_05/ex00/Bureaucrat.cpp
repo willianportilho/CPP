@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 19:36:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:01:01 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("error: The grade is too high! ↗️ 💥");
+	return ("the grade is too high! ↗️ 💥");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("error: The grade is too low! ↘️ 💥");
+	return ("the grade is too low! ↘️ 💥");
 }
 
 std::ostream	&operator<<(std::ostream &out, Bureaucrat const &src)
