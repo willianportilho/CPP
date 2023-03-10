@@ -6,15 +6,18 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 19:49:43 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:44:56 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
 # define BUREAUCRAT_H
 
+#include "Form.hpp"
 #include <iostream>
 #include <string>
+
+class Form;
 
 class	Bureaucrat
 {
@@ -28,6 +31,7 @@ class	Bureaucrat
 		std::string const	getName(void) const;
 		unsigned int		getGrade(void) const;
 		void				setGrade(unsigned int grade);
+		void				signForm(Form &form);
 		class	GradeTooHighException : public std::exception
 		{
 			public:

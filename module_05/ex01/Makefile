@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/09 21:25:54 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/09 21:43:40 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SOURCES 	=		main.cpp		\
 					Bureaucrat.cpp	\
 					Form.cpp
 
-NAME		=		form_up
+NAME		=		form
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
