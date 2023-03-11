@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/11 12:57:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:20:01 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,56 @@ static void	printTitle(std::string const title)
 	return ;
 }
 
-static void	assignmentAndCopyTests(void)
+static void	copyTests(void)
 {
-	printTitle("0️⃣  ASSIGNMENT AND COPY TESTS");
+	printTitle("1️⃣  COPY TESTS");
+	ShrubberyCreationForm	shrubbery("shrubbery");
+	ShrubberyCreationForm	shrubberyCopy(shrubbery);
+	std::cout << shrubbery;
+	std::cout << shrubberyCopy;
+
+	std::cout << std::endl;
+
+	RobotomyRequestForm	robotomy("robotomy");
+	RobotomyRequestForm	robotomyCopy(robotomy);
+	std::cout << robotomy;
+	std::cout << robotomyCopy;
+
+	std::cout << std::endl;
+
+	PresidentialPardonForm	president("president");
+	PresidentialPardonForm	presidentCopy(president);
+	std::cout << president;
+	std::cout << presidentCopy;
+
+	std::cout << std::endl;
+
+	return ;
+}
+
+static void	assignmentTests(void)
+{
+	printTitle("2️⃣  ASSIGNMENT TESTS");
 	ShrubberyCreationForm	shrubbery("shrubbery");
 	ShrubberyCreationForm	shrubberyCopy = shrubbery;
 	std::cout << shrubbery;
 	std::cout << shrubberyCopy;
+
+	std::cout << std::endl;
+
+	RobotomyRequestForm	robotomy("robotomy");
+	RobotomyRequestForm	robotomyCopy = robotomy;
+	std::cout << robotomy;
+	std::cout << robotomyCopy;
+
+	std::cout << std::endl;
+
+	PresidentialPardonForm	president("president");
+	PresidentialPardonForm	presidentCopy = president;
+	std::cout << president;
+	std::cout << presidentCopy;
+
+	std::cout << std::endl;
 
 	return ;
 }
@@ -61,7 +104,7 @@ static void	shrubberyTest(unsigned int grade, std::string const sub_title)
 
 static void	shrubberyAllTests(void)
 {
-	printTitle("1️⃣  SHRUBBERY TESTS");
+	printTitle("3️⃣  SHRUBBERY TESTS");
 	shrubberyTest(0, "BUREAUCRAT GRADE HIGH ERROR");
 	std::cout << std::endl;
 	shrubberyTest(151, "BUREAUCRAT GRADE LOW ERROR");
@@ -97,7 +140,7 @@ static void	robotomyTest(unsigned int grade, std::string const sub_title)
 
 static void	robotomyAllTests(void)
 {
-	printTitle("2️⃣  ROBOTOMY TESTS");
+	printTitle("4️⃣  ROBOTOMY TESTS");
 	robotomyTest(0, "BUREAUCRAT GRADE HIGH ERROR");
 	std::cout << std::endl;
 	robotomyTest(151, "BUREAUCRAT GRADE LOW ERROR");
@@ -133,7 +176,7 @@ static void	presidentialTest(unsigned int grade, std::string const sub_title)
 
 static void	presidentialAllTests(void)
 {
-	printTitle("3️⃣  PRESIDENTIAL TESTS");
+	printTitle("5️⃣  PRESIDENTIAL TESTS");
 	presidentialTest(0, "BUREAUCRAT GRADE HIGH ERROR");
 	std::cout << std::endl;
 	presidentialTest(151, "BUREAUCRAT GRADE LOW ERROR");
@@ -147,7 +190,8 @@ static void	presidentialAllTests(void)
 
 int	main(void)
 {
-	assignmentAndCopyTests();
+	copyTests();
+	assignmentTests();
 	shrubberyAllTests();
 	robotomyAllTests();
 	presidentialAllTests();	
