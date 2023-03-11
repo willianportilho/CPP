@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 18:10:13 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:29:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	generalTests(void)
 
 	try
 	{
-		Bureaucrat	willian(1, "Willian");
+		Bureaucrat	willian("Willian", 1);
 		std::cout << willian;
 	}
 	catch (std::exception & e)
@@ -40,7 +40,7 @@ static void	generalTests(void)
 
 	try
 	{
-		Bureaucrat	guilherme(150, "Guilherme");
+		Bureaucrat	guilherme("Guilherme", 150);
 		std::cout << guilherme;
 	}
 	catch (std::exception & e)
@@ -51,7 +51,7 @@ static void	generalTests(void)
 
 	try
 	{
-		Bureaucrat	wilhelm(0, "Wilhelm");
+		Bureaucrat	wilhelm("Wilhelm", 0);
 		std::cout << wilhelm;
 	}
 	catch (std::exception & e)
@@ -62,7 +62,7 @@ static void	generalTests(void)
 
 	try
 	{
-		Bureaucrat	lian(255, "Lian");
+		Bureaucrat	lian("Lian", 255);
 		std::cout << lian;
 	}
 	catch (std::exception & e)
@@ -78,7 +78,7 @@ static void	incrementAndDecrementTests(void)
 	printTitle("2️⃣  INCREMENT AND DECREMENT TESTS");
 	try
 	{
-		Bureaucrat	willian(1, "Willian");
+		Bureaucrat	willian("Willian", 1);
 		std::cout << willian;
 		std::cout << "decremented 1 time!" << std::endl;
 		willian.decrement();
@@ -96,7 +96,7 @@ static void	incrementAndDecrementTests(void)
 
 	try
 	{
-		Bureaucrat	nailliw(150, "Nailliw");
+		Bureaucrat	nailliw("Nailliw", 150);
 		std::cout << nailliw;
 		std::cout << "incremented 1 time!" << std::endl;
 		nailliw.increment();
@@ -119,7 +119,7 @@ static void	copyTests(void)
 	printTitle("3️⃣  COPY TESTS");
 	try
 	{
-		Bureaucrat	willian(1, "Willian");
+		Bureaucrat	willian("Willian", 1);
 		Bureaucrat	willianCopy(willian);
 		std::cout << willianCopy;
 		std::cout << "decremented 1 time!" << std::endl;
@@ -134,7 +134,7 @@ static void	copyTests(void)
 
 	try
 	{
-		Bureaucrat	nailliw(150, "Nailliw");
+		Bureaucrat	nailliw("Nailliw", 150);
 		Bureaucrat	nailliwCopy(nailliw);
 		std::cout << nailliwCopy;
 		std::cout << "incremented 1 time!" << std::endl;
@@ -153,7 +153,7 @@ static void	assignmentTests(void)
 	printTitle("4️⃣  ASSIGNMENT TESTS");
 	try
 	{
-		Bureaucrat	willian(1, "Willian");
+		Bureaucrat	willian("Willian", 1);
 		Bureaucrat	willianCopy = willian;
 		std::cout << willianCopy;
 		std::cout << "decremented 1 time!" << std::endl;
@@ -168,7 +168,7 @@ static void	assignmentTests(void)
 
 	try
 	{
-		Bureaucrat	nailliw(150, "Nailliw");
+		Bureaucrat	nailliw("Nailliw", 150);
 		Bureaucrat	nailliwCopy = nailliw;
 		std::cout << nailliwCopy;
 		std::cout << "incremented 1 time!" << std::endl;

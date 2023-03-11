@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 12:53:43 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:30:54 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_sign high:" << std::endl;
 		Form	real_madrid("Real Madrid", 0, 1);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -44,7 +44,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_execute high:" << std::endl;
 		Form	real_madrid("Real Madrid", 1, 0);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -56,7 +56,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_sign low:" << std::endl;
 		Form	real_madrid("Real Madrid", 151, 1);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -68,7 +68,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_execute low:" << std::endl;
 		Form	real_madrid("Real Madrid", 1, 151);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -80,7 +80,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_sign and grade_to_execute ok:" << std::endl;
 		Form	real_madrid("Real Madrid", 1, 150);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -92,7 +92,7 @@ static void	gradesConstructorTests(void)
 	{
 		std::cout << "grade_to_sign and grade_to_execute ok:" << std::endl;
 		Form	real_madrid("Real Madrid", 150, 1);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 	}
 	catch(std::exception & e)
 	{
@@ -153,7 +153,7 @@ static void	signFormTests(void)
 	{
 		std::cout << "constructor ok, but grade_to_sign low:" << std::endl;
 		Form	real_madrid("Real Madrid", 1, 1);
-		Bureaucrat cristiano(10, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 10);
 		cristiano.signForm(real_madrid);
 		std::cout << real_madrid;
 	}
@@ -167,7 +167,7 @@ static void	signFormTests(void)
 	{
 		std::cout << "constructor ok and grade_to_sign ok:" << std::endl;
 		Form	real_madrid("Real Madrid", 1, 1);
-		Bureaucrat cristiano(1, "Cristiano");
+		Bureaucrat cristiano("Cristiano", 1);
 		cristiano.signForm(real_madrid);
 		std::cout << real_madrid;
 	}

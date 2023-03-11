@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 11:01:01 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:27:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(void) : _name(""), _grade(42)
 	return ;
 }
 
-Bureaucrat::Bureaucrat(unsigned int grade, std::string const name) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string const name, unsigned int grade) : _name(name), _grade(grade)
 {
 	if (getGrade() < 1)
 		throw Bureaucrat::GradeTooHighException();

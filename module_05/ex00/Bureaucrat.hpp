@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/09 19:49:49 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:27:07 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Bureaucrat
 {
 	public:
-		Bureaucrat(unsigned int grade, std::string const name);
+		Bureaucrat(std::string const name, unsigned int grade);
 		Bureaucrat(Bureaucrat const &src);
 		~Bureaucrat(void);
 		Bureaucrat			&operator=(Bureaucrat const &rhs);

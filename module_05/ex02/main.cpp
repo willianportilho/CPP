@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/11 13:20:01 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:32:27 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	shrubberyTest(unsigned int grade, std::string const sub_title)
 	try
 	{
 		ShrubberyCreationForm	home("Home");
-		Bureaucrat				willian(grade, "Willian");
+		Bureaucrat				willian("Willian", grade);
 		
 		willian.signForm(home);
 		willian.executeForm(home);
@@ -123,7 +123,7 @@ static void	robotomyTest(unsigned int grade, std::string const sub_title)
 	try
 	{
 		RobotomyRequestForm	space_x("SpaceX");
-		Bureaucrat			willian(grade, "Willian");
+		Bureaucrat			willian("Willian", grade);
 		
 		willian.signForm(space_x);
 		willian.executeForm(space_x);
@@ -159,7 +159,7 @@ static void	presidentialTest(unsigned int grade, std::string const sub_title)
 	try
 	{
 		PresidentialPardonForm	tite("Tite");
-		Bureaucrat				willian(grade, "Willian");
+		Bureaucrat				willian("Willian", grade);
 		
 		willian.signForm(tite);
 		willian.executeForm(tite);
@@ -194,7 +194,7 @@ int	main(void)
 	assignmentTests();
 	shrubberyAllTests();
 	robotomyAllTests();
-	presidentialAllTests();	
+	presidentialAllTests();
 
 	return (0);
 }
