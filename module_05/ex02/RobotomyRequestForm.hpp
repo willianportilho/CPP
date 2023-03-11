@@ -16,6 +16,7 @@
 #include "AForm.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 class	RobotomyRequestForm : public AForm
 {
