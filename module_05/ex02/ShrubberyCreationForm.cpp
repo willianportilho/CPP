@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 21:54:43 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 22:50:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,20 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getIsSigned())
-		std::cout << "Is signed" << std::endl;
+	if (!this->getIsSigned())
+		throw ShrubberyCreationForm::FormIsNotSignedException();
 	if (executor.getGrade() > this->getGradeToExecute())
-		std::cout << "Can br Executed" << std::endl;
-	std::cout << "ShrubberyCreationForm test" << std::endl;
+		throw ShrubberyCreationForm::GradeToExecuteIsNotEnoughtException();	
+	std::cout << "               ,@@@@@@@," << std::endl;
+    std::cout << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+    std::cout << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
+	std::cout << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+	std::cout << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+	std::cout << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+	std::cout << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+	std::cout << "       |o|        | |         | |" << std::endl;
+	std::cout << "       |.|        | |         | |" << std::endl;
+	std::cout << "jgs \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
 }
 
 std::string const	ShrubberyCreationForm::getTarget(void) const

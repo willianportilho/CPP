@@ -58,9 +58,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	std::cout << "~~~*******~~~~~~~ dRiLlInG nOiSeS ~~~*******~~~~~~~" << std::endl;
 	std::srand(time(0));
 	if (std::rand() % 2)
-		std::cout << this->getTarget() << " has been robotomized successfully 🤖✅" << std::endl;
+		std::cout << "\"" << this->getTarget() << "\" has been robotomized successfully 🤖✅" << std::endl;
 	else
-		std::cout << "unfortunately " << this->getTarget() << " robotomy failed 🤖❌" << std::endl;
+		std::cout << "unfortunately \"" << this->getTarget() << "\" robotomy failed 🤖❌" << std::endl;
 }
 
 std::string const	RobotomyRequestForm::getTarget(void) const

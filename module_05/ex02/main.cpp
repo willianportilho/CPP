@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 22:17:07 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 22:46:28 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(void)
 	printTitle("Tmp");
 	try
 	{
-		RobotomyRequestForm	international("International");
-		Bureaucrat				willian(5, "Willian");
+		ShrubberyCreationForm	international("International");
+		Bureaucrat				willian(1, "Willian");
 		international.beSigned(willian);
 		international.execute(willian);
 	}
