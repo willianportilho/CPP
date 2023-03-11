@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 20:40:53 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 10:13:46 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "AForm.hpp"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class	ShrubberyCreationForm : public AForm
 {
