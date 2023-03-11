@@ -13,17 +13,19 @@
 #ifndef ROBOTOMYREQUESTFORM_H
 # define ROBOTOMYREQUESTFORM_H
 
+#include "AForm.hpp"
 #include <iostream>
 #include <string>
 
-class	RobotomyRequestForm
+class	RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm(std::string const target);
 		RobotomyRequestForm(RobotomyRequestForm const &src);
 		~RobotomyRequestForm(void);
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &rhs);
-		std::string const		getTarget(void) const;
+		std::string const	getTarget(void) const;
+		void				execute(Bureaucrat const & executor) const;
 	private:
 		RobotomyRequestForm(void);
 		std::string const		_target;

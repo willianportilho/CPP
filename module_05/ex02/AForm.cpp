@@ -100,6 +100,14 @@ void	AForm::setIsSigned(bool is_signed)
 	return ;
 }
 
+std::ostream	&operator<<(std::ostream &out, AForm const &src)
+{
+	out << src.getName() << ", Aform grade_to_sign " << src.getGradeToSign()
+	<< " and grade_to_execute " << src.getGradeToExecute()
+	<< ". The Aform is" << (src.getIsSigned() ? " " : " not ") << "signed" << std::endl;
+	return (out);
+}
+
 const char	*AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("the grade is too high! ↗️ 💥");
@@ -110,10 +118,12 @@ const char	*AForm::GradeTooLowException::what(void) const throw()
 	return ("the grade is too low! ↘️ 💥");
 }
 
-std::ostream	&operator<<(std::ostream &out, AForm const &src)
+const char	*AForm::FormIsNotSignedException::what(void) const throw()
 {
-	out << src.getName() << ", Aform grade_to_sign " << src.getGradeToSign()
-	<< " and grade_to_execute " << src.getGradeToExecute()
-	<< ". The Aform is" << (src.getIsSigned() ? " " : " not ") << "signed" << std::endl;
-	return (out);
+	return ("the form is NOT signed! ⛔");
+}
+
+const char	*AForm::GradeToExecuteIsNotEnoughtException::what(void) const throw()
+{
+	return ("the grade is too low to execute! 👎");
 }

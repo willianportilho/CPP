@@ -12,20 +12,21 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void)
+RobotomyRequestForm::RobotomyRequestForm(void) : _target("")
 {
 	std::cout << "default RobotomyRequestForm constructor called" << std::endl;
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const target) : _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string const target) : AForm("ShrubberyCreationForm", 72, 45),
+																			_target(target)
 {
 	std::cout << "RobotomyRequestForm constructor called with parameter \"target("
 	<< this->getTarget() << ")\"" << std::endl;
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : _target(src._target)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm(src), _target(src._target)
 {
 	*this = src;
 	std::cout << "copy RobotomyRequestForm constructor called" << std::endl;
@@ -46,6 +47,12 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 	}
 	std::cout << "assignment copy RobotomyRequestForm called" << std::endl;
 	return (*this);
+}
+
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	(void)executor;
+	std::cout << "RobotomyRequestForm test" << std::endl;
 }
 
 std::string const	RobotomyRequestForm::getTarget(void) const

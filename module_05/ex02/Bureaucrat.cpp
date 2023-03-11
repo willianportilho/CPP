@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/10 16:22:55 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/10 21:53:55 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,20 @@ std::string const	Bureaucrat::getName(void) const
 	return (this->_name);
 }
 
+unsigned int	Bureaucrat::getGrade(void) const
+{
+	return (this->_grade);
+}
+
 void	Bureaucrat::setGrade(unsigned int grade)
 {
 	this->_grade = grade;
 }
 
-unsigned int	Bureaucrat::getGrade(void) const
+std::ostream	&operator<<(std::ostream &out, Bureaucrat const &src)
 {
-	return (this->_grade);
+	out << src.getName() << ", bureaucrat grade " << src.getGrade() << "." << std::endl;
+	return (out);
 }
 
 const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
@@ -108,10 +114,4 @@ const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("the grade is too low! ↘️ 💥");
-}
-
-std::ostream	&operator<<(std::ostream &out, Bureaucrat const &src)
-{
-	out << src.getName() << ", bureaucrat grade " << src.getGrade() << "." << std::endl;
-	return (out);
 }
