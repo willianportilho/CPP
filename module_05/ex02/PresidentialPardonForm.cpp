@@ -26,7 +26,10 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) : AForm
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : AForm(src), _target(src._target)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : AForm(src.getName(),
+																					src.getGradeToSign(),
+																					src.getGradeToExecute()),
+																					_target(src._target)
 {
 	*this = src;
 	std::cout << "copy PresidentialPardonForm constructor called" << std::endl;
@@ -43,7 +46,7 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 {
 	if (this != &rhs)
 	{
-		;
+		this->setIsSigned(rhs.getIsSigned());
 	}
 	std::cout << "assignment copy PresidentialPardonForm called" << std::endl;
 	return (*this);
@@ -61,4 +64,12 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 std::string const	PresidentialPardonForm::getTarget(void) const
 {
 	return (this->_target);
+}
+
+std::ostream	&operator<<(std::ostream &out, PresidentialPardonForm const &src)
+{
+	out << src.getName() << ", with target " << src.getTarget() << ", grade_to_sign " << src.getGradeToSign()
+	<< " and grade_to_execute " << src.getGradeToExecute()
+	<< ". The Aform is" << (src.getIsSigned() ? " " : " not ") << "signed" << std::endl;
+	return (out);
 }

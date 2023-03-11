@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/11 10:20:49 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:04:50 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : AForm(src), _target(src._target)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : AForm(src.getName(),
+																					src.getGradeToSign(),
+																					src.getGradeToExecute()),
+																					_target(src._target)
 {
 	*this = src;
 	std::cout << "copy ShrubberyCreationForm constructor called" << std::endl;
@@ -43,7 +46,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 {
 	if (this != &rhs)
 	{
-		;
+		this->setIsSigned(rhs.getIsSigned());
 	}
 	std::cout << "assignment copy ShrubberyCreationForm called" << std::endl;
 	return (*this);
@@ -80,4 +83,12 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 std::string const	ShrubberyCreationForm::getTarget(void) const
 {
 	return (this->_target);
+}
+
+std::ostream	&operator<<(std::ostream &out, ShrubberyCreationForm const &src)
+{
+	out << src.getName() << ", with target " << src.getTarget() << ", grade_to_sign " << src.getGradeToSign()
+	<< " and grade_to_execute " << src.getGradeToExecute()
+	<< ". The Aform is" << (src.getIsSigned() ? " " : " not ") << "signed" << std::endl;
+	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/11 10:13:46 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:04:21 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ class	ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(void);
 		std::string const		_target;
 };
+
+std::ostream	&operator<<(std::ostream &out, ShrubberyCreationForm const &src);
 
 #endif

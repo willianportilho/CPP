@@ -26,7 +26,10 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target) : AForm("Shru
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm(src), _target(src._target)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm(src.getName(),
+																			src.getGradeToSign(),
+																			src.getGradeToExecute()),
+																			_target(src._target)
 {
 	*this = src;
 	std::cout << "copy RobotomyRequestForm constructor called" << std::endl;
@@ -43,7 +46,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 {
 	if (this != &rhs)
 	{
-		;
+		this->setIsSigned(rhs.getIsSigned());
 	}
 	std::cout << "assignment copy RobotomyRequestForm called" << std::endl;
 	return (*this);
@@ -66,4 +69,12 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 std::string const	RobotomyRequestForm::getTarget(void) const
 {
 	return (this->_target);
+}
+
+std::ostream	&operator<<(std::ostream &out, RobotomyRequestForm const &src)
+{
+	out << src.getName() << ", with target " << src.getTarget() << ", grade_to_sign " << src.getGradeToSign()
+	<< " and grade_to_execute " << src.getGradeToExecute()
+	<< ". The Aform is" << (src.getIsSigned() ? " " : " not ") << "signed" << std::endl;
+	return (out);
 }
