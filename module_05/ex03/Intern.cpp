@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:26:53 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/11 17:45:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/11 21:33:14 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,35 @@ Intern	&Intern::operator=(Intern const &rhs)
 	return (*this);
 }
 
+AForm	*Intern::Shrubbery(std::string const &target)
+{
+	return (new ShrubberyCreationForm(target));
+}
 
+AForm	*Intern::Robotomy(std::string const &target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm	*Intern::President(std::string const &target)
+{
+	return (new PresidentialPardonForm(target));
+}
 
 AForm	*Intern::makeForm(std::string const name, std::string const target)
 {
-	int					formIndex = -1;
 	std::string const	formType[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	AForm *(Intern::*form[3])(std::string const &target) = {&Intern::Shrubbery, &Intern::Robotomy, &Intern::President};
 
 	for (int i = 0; i < 3; i++)
 	{
 		if (name == formType[i])
 		{
-			std::cout << "Aqui!" << std::endl;
-			formIndex = i;
-			break;
+			std::cout << "Intern creates " << name << std::endl;
+			return ((this->*form[i])(target));
 		}
 	}
-	switch (formIndex)
-	{
-		case 0:
-			std::cout << "Intern creates " << name << std::endl;
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			std::cout << "Intern creates " << name << std::endl;
-			return (new RobotomyRequestForm(target));
-		case 2:
-			std::cout << "Intern creates " << name << std::endl;
-			return (new PresidentialPardonForm(target));
-		default:
-			throw Intern::FormDoesNotExistException();
-	}
+	throw Intern::FormDoesNotExistException();
 }
 
 const char	*Intern::FormDoesNotExistException::what(void) const throw()
