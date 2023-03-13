@@ -25,7 +25,7 @@ AForm::AForm(void) : _name(""), _is_signed(false), _grade_to_sign(150), _grade_t
 	return ;
 }
 
-AForm::AForm(std::string const name, unsigned const grade_to_sign,
+AForm::AForm(std::string const name, unsigned int const grade_to_sign,
 									unsigned int const grade_to_execute) : _name(name),
 																			_is_signed(false),
 																			_grade_to_sign(grade_to_sign),
