@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/15 20:02:59 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:15:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ ScalarConverter::ScalarConverter(void)
 ScalarConverter::ScalarConverter(ScalarConverter const &src)
 {
 	*this = src;
-	std::cout << "copy ScalarConverter constructor called" << std::endl;
+	//std::cout << "copy ScalarConverter constructor called" << std::endl;
 	return ;
 }
 
 ScalarConverter::~ScalarConverter(void)
 {
-	std::cout << "destructor ScalarConverter called" << std::endl;
+	//std::cout << "destructor ScalarConverter called" << std::endl;
 	return ;
 }
 
@@ -36,6 +36,18 @@ ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &rhs)
 	{
 		;
 	}
-	std::cout << "assignment copy ScalarConverter called" << std::endl;
+	//std::cout << "assignment copy ScalarConverter called" << std::endl;
 	return (*this);
+}
+
+void	ScalarConverter::detect_type(std::string const arg)
+{
+	std::cout << arg << std::endl;
+	return ;
+}
+
+void	ScalarConverter::convert(std::string const arg)
+{
+	std::cout << arg << std::endl;
+	return ;
 }

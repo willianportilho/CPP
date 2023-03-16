@@ -6,34 +6,22 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/15 20:02:14 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:16:36 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-static void	printTitle(std::string const title)
+int	main(int argc, char *argv[])
 {
-	std::cout << std::endl;
-	std::cout << "=================" << std::endl;
-	std::cout << "=================" << std::endl;
-	std::cout << title << std::endl;
-	std::cout << "=================" << std::endl;
-	std::cout << "=================" << std::endl;
-	return ;
-}
+	ScalarConverter	scalar_converter;
 
-static void	generalTests(void)
-{
-	printTitle("1️⃣  GENERAL TESTS");
-
-	return ;
-}
-
-int	main(void)
-{
-	ScalarConverter	test;
-	generalTests();
-	
+	if (argc != 2)
+	{
+		std::cerr << "convert: error: invalid number of arguments" << std::endl;
+		return (1);
+	}
+	scalar_converter.detect_type(argv[1]);
+	scalar_converter.convert(argv[1]);
 	return (0);
 }
