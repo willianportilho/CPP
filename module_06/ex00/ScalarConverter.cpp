@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/15 23:00:26 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:59:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ScalarConverter::detect_type(std::string const arg)
 		this->setType(IS_EXTREME_DOUBLE);
 	else
 		this->setType(IS_INVALID);
-		
 	return ;
 }
 
@@ -58,14 +57,31 @@ void	ScalarConverter::handleExtremeFloat(std::string const arg)
 	{
 		if (type[i] == arg)
 		{
-			std::cout << "char: impossible"
-			<< std::endl;
-			std::cout << "int: impossible"
-			<< std::endl;
-			std::cout << "float: " << arg
-			<< std::endl;
-			std::cout << "double: " << arg.substr(0, (arg.length() - 1))
-			<< std::endl;
+			std::string str = arg.substr(0, (arg.length() - 1));
+
+			std::cout << "char: impossible"	<< std::endl;
+			std::cout << "int: impossible"	<< std::endl;
+			std::cout << "float: "	<< arg	<< std::endl;
+			std::cout << "double: "	<< str	<< std::endl;
+		}
+	}
+	return ;
+}
+
+void	ScalarConverter::handleExtremeDouble(std::string const arg)
+{
+	std::string const type[3] = {"-inf", "+inf", "nan"};
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (type[i] == arg)
+		{
+			std::string str = arg + "f";
+
+			std::cout << "char: impossible"	<< std::endl;
+			std::cout << "int: impossible"	<< std::endl;
+			std::cout << "float: "	<< str	<< std::endl;
+			std::cout << "double: "	<< arg	<< std::endl;
 		}
 	}
 	return ;
@@ -75,8 +91,11 @@ void	ScalarConverter::convert(std::string const arg)
 {
 	switch (this->getType())
 	{
-		case 1:
+		case 0:
 			handleExtremeFloat(arg);
+			break;
+		case 1:
+			handleExtremeDouble(arg);
 			break;
 	}
 	return ;
