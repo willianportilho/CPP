@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/15 19:12:04 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/15 23:00:59 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					$(VAL) ./$(NAME)
+					$(VAL) ./$(NAME) nanf
 
 clean:
 					$(RM) $(OBJ_PATH)
