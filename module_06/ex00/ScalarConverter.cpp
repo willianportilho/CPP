@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 15:20:58 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:18:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,11 +192,11 @@ void	ScalarConverter::handleChar(std::string const arg)
 
 	std::cout << "char: ";
 	if (std::isprint(this->cast_char) != false)
-		std::cout << "'" << this->cast_char	<< "'"				<< std::endl;
+		std::cout << "'" << this->cast_char	<< "'" << std::endl;
 	else
-		std::cout << unprintable								<< std::endl;
+		std::cout << unprintable << std::endl;
 
-	std::cout << "int: " << this->cast_int						<< std::endl;
+	std::cout << "int: " << this->cast_int	<< std::endl;
 
 	std::cout << "float: "	<< this->cast_float
 	<< ((this->cast_float - this->cast_int) > 0 ? "f" : ".0f")	<< std::endl;
@@ -223,19 +223,21 @@ void	ScalarConverter::handleInt(std::string const arg)
 
 	std::cout << "char: ";
 	if (this->cast_int < 0 || this->cast_int > 127)
-		std::cout << "impossible"								<< std::endl;
+		std::cout << "impossible" << std::endl;
 	else if (std::isprint(this->cast_char) != false)
-		std::cout << "'" << this->cast_char	<< "'"				<< std::endl;
+		std::cout << "'" << (int)this->cast_char << "'" << std::endl;
 	else
-		std::cout << unprintable								<< std::endl;
+		std::cout << unprintable << std::endl;
 
-	std::cout << "int: " << this->cast_int						<< std::endl;
+	std::cout << "int: " << this->cast_int << std::endl;
 
-	std::cout << "float: "	<< this->cast_float
-	<< ((this->cast_float - this->cast_int) > 0 ? "f" : ".0f")	<< std::endl;
+	std::cout << "float: "	<<  std::fixed << std::setprecision(1)
+	<< (float)this->cast_float << "f" << std::endl;
 
-	std::cout << "double: "	<< this->cast_double
-	<< ((this->cast_double - this->cast_int) > 0 ? "" : ".0")	<< std::endl;
+	std::cout << "double: "	<< (double)this->cast_double << std::endl;
+
+	std::cout.unsetf(std::ios::floatfield);
+
 	return ;
 }
 
