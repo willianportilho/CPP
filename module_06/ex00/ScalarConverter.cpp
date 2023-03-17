@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 16:18:05 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 20:07:42 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,15 @@ void	ScalarConverter::detectFloatOrDouble(std::string const arg)
 	if (this->getType() != UNDEFINED_TYPE)
 		return ;
 
-	int	amount_f = 0, amount_dot = 0;
+	int	amount_f = 0, amount_dot = 0, amount_signal = 0;
 	for (int i = 0; arg[i]; i++)
 	{
 		if (arg[i] == 'f')
 			amount_f++;
 		else if (arg[i] == '.')
 			amount_dot++;
+		else if (arg[i] == '-')
+			amount_signal++;
 		else if (std::isdigit(arg[i]) == false)
 		{
 			this->setType(IS_INVALID);
@@ -106,21 +108,16 @@ void	ScalarConverter::detectFloatOrDouble(std::string const arg)
 		pos = arg.find(".");
 	if (amount_f > 1 || (amount_f > 0 && arg[arg.length() - 1] != 'f')
 	|| amount_dot > 1 || (amount_dot > 0 && arg[0] == '.')
-	|| arg[pos + 1] == 'f' || arg[pos + 1] == '\0')
+	|| arg[pos + 1] == 'f' || arg[pos + 1] == '\0'
+	|| amount_signal > 1 || (amount_signal > 0 && arg[0] != '-'))
 	{
 		this->setType(IS_INVALID);
 		return ;
 	}
 	if (amount_f == 1)
-	{
 		this->setType(IS_FLOAT);
-		std::cout << "float = " << arg << std::endl;
-	}
 	else
-	{
 		this->setType(IS_DOUBLE);
-		std::cout << "double = " << arg << std::endl;
-	}
 	return ;
 }
 
@@ -184,57 +181,51 @@ void	ScalarConverter::handleSpecialDouble(std::string const arg)
 void	ScalarConverter::handleChar(std::string const arg)
 {
 	this->cast_char = arg[0];
-	this->cast_int = static_cast<int>(arg[0]);
-	this->cast_float = static_cast<float>(arg[0]);
-	this->cast_double = static_cast<double>(arg[0]);
-
-	std::string const	unprintable = "Non displayable";
+	this->cast_int = static_cast<int>(this->cast_char);
+	this->cast_float = static_cast<float>(this->cast_char);
+	this->cast_double = static_cast<double>(this->cast_char);
 
 	std::cout << "char: ";
 	if (std::isprint(this->cast_char) != false)
 		std::cout << "'" << this->cast_char	<< "'" << std::endl;
 	else
-		std::cout << unprintable << std::endl;
+		std::cout << "Non displayable" << std::endl;
 
 	std::cout << "int: " << this->cast_int	<< std::endl;
 
-	std::cout << "float: "	<< this->cast_float
-	<< ((this->cast_float - this->cast_int) > 0 ? "f" : ".0f")	<< std::endl;
+	std::cout << "float: "	<< this->cast_float << ".0f" << std::endl;
 
-	std::cout << "double: "	<< this->cast_double
-	<< ((this->cast_double - this->cast_int) > 0 ? "" : ".0")	<< std::endl;
+	std::cout << "double: "	<< this->cast_double << ".0" << std::endl;
 	return ;
 }
 
 void	ScalarConverter::handleInt(std::string const arg)
 {
 	long int	num = strtol(arg.c_str(), NULL, 10);
-	if (num > std::numeric_limits<int>::max())
-		throw ScalarConverter::OverFlowException();
-	else if (num < std::numeric_limits<int>::min())
-		throw ScalarConverter::UnderFlowException();
+	if ((num > std::numeric_limits<int>::max())
+	|| (num < std::numeric_limits<int>::min()))
+		handleInvalid();;
 	
 	this->cast_int = num;
-	this->cast_char = static_cast<char>(num);
-	this->cast_float = static_cast<float>(num);
-	this->cast_double = static_cast<double>(num);
-
-	std::string const	unprintable = "Non displayable";
+	this->cast_char = static_cast<char>(this->cast_int);
+	this->cast_float = static_cast<float>(this->cast_int);
+	this->cast_double = static_cast<double>(this->cast_int);
 
 	std::cout << "char: ";
 	if (this->cast_int < 0 || this->cast_int > 127)
 		std::cout << "impossible" << std::endl;
 	else if (std::isprint(this->cast_char) != false)
-		std::cout << "'" << (int)this->cast_char << "'" << std::endl;
+		std::cout << "'" << this->cast_char << "'" << std::endl;
 	else
-		std::cout << unprintable << std::endl;
+		std::cout << "Non displayable" << std::endl;
 
 	std::cout << "int: " << this->cast_int << std::endl;
 
-	std::cout << "float: "	<<  std::fixed << std::setprecision(1)
-	<< (float)this->cast_float << "f" << std::endl;
+	std::cout << "float: "
+	<< std::fixed << std::setprecision(1)
+	<< this->cast_float << "f" << std::endl;
 
-	std::cout << "double: "	<< (double)this->cast_double << std::endl;
+	std::cout << "double: "	<< this->cast_double << std::endl;
 
 	std::cout.unsetf(std::ios::floatfield);
 
@@ -243,13 +234,85 @@ void	ScalarConverter::handleInt(std::string const arg)
 
 void	ScalarConverter::handleFloat(std::string const arg)
 {
-	(void)arg;
+	this->cast_float = atof(arg.c_str());
+	
+	int precision = 1;
+	size_t pos = arg.find('.');
+	if (pos != std::string::npos)
+	{
+		precision--;
+		while (arg[++pos] && arg[pos] != 'f')
+			precision++;
+	}
+
+	this->cast_int = static_cast<int>(this->cast_float);
+	this->cast_char = static_cast<char>(this->cast_float);
+	this->cast_double = static_cast<double>(this->cast_float);
+
+	std::cout << "char: ";
+	if (this->cast_double <= -1.0f || this->cast_double >= 128.0f)
+		std::cout << "impossible" << std::endl;
+	else if (std::isprint(this->cast_char) != false)
+		std::cout << "'" << this->cast_char << "'" << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+
+	std::cout << "int: ";
+	if (this->cast_float > std::numeric_limits<int>::max()
+	|| this->cast_float < std::numeric_limits<int>::min())
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << this->cast_int << std::endl;
+
+	std::cout << "float: "
+	<< std::fixed << std::setprecision(precision)
+	<< this->cast_float << "f" << std::endl;
+
+	std::cout << "double: "	<< this->cast_double << std::endl;
+
+	std::cout.unsetf(std::ios::floatfield);
+
 	return ;
 }
 
 void	ScalarConverter::handleDouble(std::string const arg)
 {
-	(void)arg;
+	this->cast_double = strtod(arg.c_str(), NULL);
+	
+	int precision = 1;
+	size_t pos = arg.find('.');
+	if (pos != std::string::npos)
+	{
+		precision--;
+		while (arg[++pos])
+			precision++;
+	}
+
+	this->cast_int = static_cast<int>(this->cast_double);
+	this->cast_char = static_cast<char>(this->cast_double);
+	this->cast_float = static_cast<float>(this->cast_double);
+
+	std::cout << "char: ";
+	if (this->cast_double <= -1.0 || this->cast_double >= 128.0)
+		std::cout << "impossible" << std::endl;
+	else if (std::isprint(this->cast_char) != false)
+		std::cout << "'" << this->cast_char << "'" << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+
+	std::cout << "int: ";
+	if (this->cast_double > std::numeric_limits<int>::max()
+	|| this->cast_double < std::numeric_limits<int>::min())
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << this->cast_int << std::endl;
+
+	std::cout << "float: " << std::fixed << std::setprecision(precision)
+	<< this->cast_float << "f" << std::endl;
+
+	std::cout << "double: "	<< this->cast_double << std::endl;
+
+	std::cout.unsetf(std::ios::floatfield);
 	return ;
 }
 
@@ -258,29 +321,21 @@ void	ScalarConverter::convert(std::string const arg)
 	switch (this->getType())
 	{
 		case 0:
-			handleInvalid();
-			break;
+			handleInvalid(); break;
 		case 1:
-			handleSpecialFloat(arg);
-			break;
+			handleSpecialFloat(arg); break;
 		case 2:
-			handleSpecialDouble(arg);
-			break;
+			handleSpecialDouble(arg); break;
 		case 3:
-			handleChar(arg);
-			break;
+			handleChar(arg); break;
 		case 4:
-			handleInt(arg);
-			break;
+			handleInt(arg); break;
 		case 5:
-			handleFloat(arg);
-			break;
+			handleFloat(arg); break;
 		case 6:
-			handleDouble(arg);
-			break;
+			handleDouble(arg); break;
 		default:
-			std::cout << "default" << std::endl;
-			break;
+			std::cout << "default" << std::endl; break;
 	}
 	return ;
 }
@@ -294,14 +349,4 @@ void	ScalarConverter::setType(int const type)
 {
 	this->_type = type;
 	return ;
-}
-
-const char	*ScalarConverter::OverFlowException::what(void) const throw()
-{
-	return ("error: overflow detected! ↗️ 💥");
-}
-
-const char	*ScalarConverter::UnderFlowException::what(void) const throw()
-{
-	return ("error: underflow detected! ↘️ 💥");
 }
