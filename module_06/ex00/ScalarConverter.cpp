@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 11:12:09 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:31:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ void	ScalarConverter::detectInt(std::string const arg)
 
 	for (int i = 0; arg[i]; i++)
 	{
-		if (std::isdigit(arg[i]) == false)
+		if ((std::isdigit(arg[i]) == false) && (i > 0))
 			return ;
 	}
+	if (std::isdigit(arg[0]) == false && arg[0] != '-')
+		return ;
 	this->setType(IS_INT);
 	return ;
 }
@@ -200,6 +202,17 @@ void	ScalarConverter::handleChar(std::string const arg)
 	return ;
 }
 
+void	ScalarConverter::handleInt(std::string const arg)
+{
+	long int	num = strtol(arg.c_str(), NULL, 10);
+	if (num > std::numeric_limits<int>::max())
+		throw ScalarConverter::OverFlowException();
+	else if (num < std::numeric_limits<int>::min())
+		throw ScalarConverter::UnderFlowException();
+
+	return ;
+}
+
 void	ScalarConverter::convert(std::string const arg)
 {
 	switch (this->getType())
@@ -215,6 +228,9 @@ void	ScalarConverter::convert(std::string const arg)
 			break;
 		case 3:
 			handleChar(arg);
+			break;
+		case 4:
+			handleInt(arg);
 			break;
 		default:
 			std::cout << "default" << std::endl;
@@ -232,4 +248,14 @@ void	ScalarConverter::setType(int const type)
 {
 	this->_type = type;
 	return ;
+}
+
+const char	*ScalarConverter::OverFlowException::what(void) const throw()
+{
+	return ("error: overflow detected! ↗️ 💥");
+}
+
+const char	*ScalarConverter::UnderFlowException::what(void) const throw()
+{
+	return ("error: underflow detected! ↘️ 💥");
 }
