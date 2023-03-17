@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 13:31:26 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:20:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,22 +183,26 @@ void	ScalarConverter::handleSpecialDouble(std::string const arg)
 
 void	ScalarConverter::handleChar(std::string const arg)
 {
-	int		cast_int = static_cast<int>(arg[0]);
-	float	cast_float = static_cast<float>(arg[0]);
-	double	cast_double = static_cast<double>(arg[0]);
+	this->cast_char = arg[0];
+	this->cast_int = static_cast<int>(arg[0]);
+	this->cast_float = static_cast<float>(arg[0]);
+	this->cast_double = static_cast<double>(arg[0]);
 
-	std::string const	unprintable = "non displayable";
+	std::string const	unprintable = "Non displayable";
 
-	std::cout << "char: " <<
-	(std::isprint(arg[0]) ? arg : unprintable)		<< std::endl;
+	std::cout << "char: ";
+	if (std::isprint(this->cast_char) != false)
+		std::cout << "'" << this->cast_char	<< "'"				<< std::endl;
+	else
+		std::cout << unprintable								<< std::endl;
 
-	std::cout << "int: " << cast_int				<< std::endl;
+	std::cout << "int: " << this->cast_int						<< std::endl;
 
-	std::cout << "float: "	<< cast_float
-	<< ((cast_float - cast_int) > 0 ? "f" : ".0f")	<< std::endl;
+	std::cout << "float: "	<< this->cast_float
+	<< ((this->cast_float - this->cast_int) > 0 ? "f" : ".0f")	<< std::endl;
 
-	std::cout << "double: "	<< cast_double
-	<< ((cast_double - cast_int) > 0 ? "" : ".0")	<< std::endl;
+	std::cout << "double: "	<< this->cast_double
+	<< ((this->cast_double - this->cast_int) > 0 ? "" : ".0")	<< std::endl;
 	return ;
 }
 
@@ -209,7 +213,41 @@ void	ScalarConverter::handleInt(std::string const arg)
 		throw ScalarConverter::OverFlowException();
 	else if (num < std::numeric_limits<int>::min())
 		throw ScalarConverter::UnderFlowException();
+	
+	this->cast_int = num;
+	this->cast_char = static_cast<char>(num);
+	this->cast_float = static_cast<float>(num);
+	this->cast_double = static_cast<double>(num);
 
+	std::string const	unprintable = "Non displayable";
+
+	std::cout << "char: ";
+	if (this->cast_int < 0 || this->cast_int > 127)
+		std::cout << "impossible"								<< std::endl;
+	else if (std::isprint(this->cast_char) != false)
+		std::cout << "'" << this->cast_char	<< "'"				<< std::endl;
+	else
+		std::cout << unprintable								<< std::endl;
+
+	std::cout << "int: " << this->cast_int						<< std::endl;
+
+	std::cout << "float: "	<< this->cast_float
+	<< ((this->cast_float - this->cast_int) > 0 ? "f" : ".0f")	<< std::endl;
+
+	std::cout << "double: "	<< this->cast_double
+	<< ((this->cast_double - this->cast_int) > 0 ? "" : ".0")	<< std::endl;
+	return ;
+}
+
+void	ScalarConverter::handleFloat(std::string const arg)
+{
+	(void)arg;
+	return ;
+}
+
+void	ScalarConverter::handleDouble(std::string const arg)
+{
+	(void)arg;
 	return ;
 }
 
@@ -231,6 +269,12 @@ void	ScalarConverter::convert(std::string const arg)
 			break;
 		case 4:
 			handleInt(arg);
+			break;
+		case 5:
+			handleFloat(arg);
+			break;
+		case 6:
+			handleDouble(arg);
 			break;
 		default:
 			std::cout << "default" << std::endl;

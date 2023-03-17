@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 13:23:22 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:33:43 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ class	ScalarConverter
 		void	handleSpecialDouble(std::string const arg);
 		void	handleChar(std::string const arg);
 		void	handleInt(std::string const arg);
+		void	handleFloat(std::string const arg);
+		void	handleDouble(std::string const arg);
 
 		void	convert(std::string const arg);
 
@@ -57,7 +59,11 @@ class	ScalarConverter
 				virtual const char	*what(void) const throw();
 		};
 	private:
-		unsigned int		_type;
+		unsigned int	_type;
+		char			cast_char;
+		int				cast_int;
+		float			cast_float;
+		double			cast_double;
 
 		enum e_type
 		{
