@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 20:09:12 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 21:46:21 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,40 @@ class	ScalarConverter
 		ScalarConverter	&operator=(ScalarConverter const &rhs);
 	
 		void	detectType(std::string const arg);
-		void	detectEmpty(std::string const arg);
-		void	detectSpecialCases(std::string const arg);
-		void	detectChar(std::string const arg);
-		void	detectInt(std::string const arg);
-		void	detectFloatOrDouble(std::string const arg);
-
-		void	handleInvalid(void);
-		void	handleSpecialFloat(std::string const arg);
-		void	handleSpecialDouble(std::string const arg);
-		void	handleChar(std::string const arg);
-		void	handleInt(std::string const arg);
-		void	handleFloat(std::string const arg);
-		void	handleDouble(std::string const arg);
-
 		void	convert(std::string const arg);
-
-		int		getType(void) const;
-		void	setType(int const type);
 	private:
 		unsigned int	_type;
-		char			cast_char;
-		int				cast_int;
-		float			cast_float;
-		double			cast_double;
+		char			_cast_char;
+		int				_cast_int;
+		float			_cast_float;
+		double			_cast_double;
 
+		void	_detectEmpty(std::string const arg);
+		void	_detectSpecialCases(std::string const arg);
+		void	_detectChar(std::string const arg);
+		void	_detectInt(std::string const arg);
+		void	_detectFloatOrDouble(std::string const arg);
+
+		void	_handleInvalid(void);
+		void	_handleSpecialFloat(std::string const arg);
+		void	_handleSpecialDouble(std::string const arg);
+		void	_handleChar(std::string const arg);
+		void	_handleInt(std::string const arg);
+		void	_handleFloat(std::string const arg);
+		void	_handleDouble(std::string const arg);
+
+		int		_getType(void) const;
+		void	_setType(int const type);
 		enum e_type
 		{
-			UNDEFINED_TYPE = -1,
-			IS_INVALID,
-    		IS_SPECIAL_FLOAT,
-			IS_SPECIAL_DOUBLE,
-			IS_CHAR,
-			IS_INT,
-			IS_FLOAT,
-			IS_DOUBLE
+			_UNDEFINED_TYPE = -1,
+			_IS_INVALID,
+    		_IS_SPECIAL_FLOAT,
+			_IS_SPECIAL_DOUBLE,
+			_IS_CHAR,
+			_IS_INT,
+			_IS_FLOAT,
+			_IS_DOUBLE
 		};
 };
 
