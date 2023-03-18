@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 22:02:12 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:16:29 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,13 @@ void	ScalarConverter::_detectFloatOrDouble(std::string const arg)
 	return ;
 }
 
-void	ScalarConverter::detectType(std::string const arg)
+void	ScalarConverter::_detectType(std::string const arg)
 {
-	_detectEmpty(arg);
-	_detectSpecialCases(arg);
-	_detectChar(arg);
-	_detectInt(arg);
-	_detectFloatOrDouble(arg);
+	this->_detectEmpty(arg);
+	this->_detectSpecialCases(arg);
+	this->_detectChar(arg);
+	this->_detectInt(arg);
+	this->_detectFloatOrDouble(arg);
 	return ;
 }
 
@@ -212,7 +212,7 @@ void	ScalarConverter::_handleInt(std::string const arg)
 	if ((num > std::numeric_limits<int>::max())
 	|| (num < std::numeric_limits<int>::min()))
 	{
-		_handleInvalid();
+		this->_handleInvalid();
 		return ;
 	}
 	
@@ -328,22 +328,23 @@ void	ScalarConverter::_handleDouble(std::string const arg)
 
 void	ScalarConverter::convert(std::string const arg)
 {
+	this->_detectType(arg);
 	switch (this->_getType())
 	{
 		case _IS_INVALID:
-			_handleInvalid(); break;
+			this->_handleInvalid(); break;
 		case _IS_SPECIAL_FLOAT:
-			_handleSpecialFloat(arg); break;
+			this->_handleSpecialFloat(arg); break;
 		case _IS_SPECIAL_DOUBLE:
-			_handleSpecialDouble(arg); break;
+			this->_handleSpecialDouble(arg); break;
 		case _IS_CHAR:
-			_handleChar(arg); break;
+			this->_handleChar(arg); break;
 		case _IS_INT:
-			_handleInt(arg); break;
+			this->_handleInt(arg); break;
 		case _IS_FLOAT:
-			_handleFloat(arg); break;
+			this->_handleFloat(arg); break;
 		case _IS_DOUBLE:
-			_handleDouble(arg); break;
+			this->_handleDouble(arg); break;
 		default:
 			std::cout << "convert: error: invalid argument" << std::endl; break;
 	}

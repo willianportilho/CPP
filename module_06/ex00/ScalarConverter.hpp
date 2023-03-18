@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 21:46:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:16:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class	ScalarConverter
 		~ScalarConverter(void);
 		ScalarConverter	&operator=(ScalarConverter const &rhs);
 	
-		void	detectType(std::string const arg);
 		void	convert(std::string const arg);
 	private:
 		unsigned int	_type;
@@ -37,6 +36,7 @@ class	ScalarConverter
 		float			_cast_float;
 		double			_cast_double;
 
+		void	_detectType(std::string const arg);
 		void	_detectEmpty(std::string const arg);
 		void	_detectSpecialCases(std::string const arg);
 		void	_detectChar(std::string const arg);
