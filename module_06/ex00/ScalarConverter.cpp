@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 20:07:42 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 21:26:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,10 @@ void	ScalarConverter::handleInt(std::string const arg)
 	long int	num = strtol(arg.c_str(), NULL, 10);
 	if ((num > std::numeric_limits<int>::max())
 	|| (num < std::numeric_limits<int>::min()))
-		handleInvalid();;
+	{
+		handleInvalid();
+		return ;
+	}
 	
 	this->cast_int = num;
 	this->cast_char = static_cast<char>(this->cast_int);
