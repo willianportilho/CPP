@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 22:37:46 by wportilh         ###   ########.fr       */
+/*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
+/*   Updated: 2023/03/19 19:22:20 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int	main(int argc, char *argv[])
+Serializer::Serializer(void)
 {
-	if (argc != 2)
+	return ;
+}
+
+Serializer::Serializer(Serializer const &src)
+{
+	*this = src;
+	return ;
+}
+
+Serializer::~Serializer(void)
+{
+	return ;
+}
+
+Serializer	&Serializer::operator=(Serializer const &rhs)
+{
+	if (this != &rhs)
 	{
-		std::cerr << "convert: error: invalid number of arguments" << std::endl;
-		return (1);
+		;
 	}
-	ScalarConverter::convert(argv[1]);	
-	return (0);
+	return (*this);
 }

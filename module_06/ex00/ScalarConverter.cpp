@@ -6,17 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:12 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/17 22:16:29 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/17 23:01:34 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(void) : _type(_UNDEFINED_TYPE),
-											_cast_char(0),
-											_cast_int(0),
-											_cast_float(0),
-											_cast_double(0)
+ScalarConverter::ScalarConverter(void)
 {
 	return ;
 }
@@ -49,34 +45,34 @@ ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &rhs)
 void	ScalarConverter::_detectEmpty(std::string const arg)
 {
 	if (!arg.length())
-			this->_setType(_IS_INVALID);
+		_setType(_IS_INVALID);
 	return ;	
 }
 
 void	ScalarConverter::_detectSpecialCases(std::string const arg)
 {
 	if ((arg == "-inff") | (arg == "+inff") | (arg == "nanf"))
-		this->_setType(_IS_SPECIAL_FLOAT);
+		_setType(_IS_SPECIAL_FLOAT);
 	else if ((arg == "-inf") | (arg == "+inf") | (arg == "nan"))
-		this->_setType(_IS_SPECIAL_DOUBLE);
+		_setType(_IS_SPECIAL_DOUBLE);
 	return ;
 }
 
 void	ScalarConverter::_detectChar(std::string const arg)
 {
-	if (this->_getType() != _UNDEFINED_TYPE)
+	if (_getType() != _UNDEFINED_TYPE)
 		return ;
 	if (arg.length() == 1)
 	{
 		if (std::isdigit(arg[0]) == false)
-			this->_setType(_IS_CHAR);
+			_setType(_IS_CHAR);
 	}
 	return ;
 }
 
 void	ScalarConverter::_detectInt(std::string const arg)
 {
-	if (this->_getType() != _UNDEFINED_TYPE)
+	if (_getType() != _UNDEFINED_TYPE)
 		return ;
 
 	for (int i = 0; arg[i]; i++)
@@ -86,13 +82,13 @@ void	ScalarConverter::_detectInt(std::string const arg)
 	}
 	if (std::isdigit(arg[0]) == false && arg[0] != '-')
 		return ;
-	this->_setType(_IS_INT);
+	_setType(_IS_INT);
 	return ;
 }
 
 void	ScalarConverter::_detectFloatOrDouble(std::string const arg)
 {
-	if (this->_getType() != _UNDEFINED_TYPE)
+	if (_getType() != _UNDEFINED_TYPE)
 		return ;
 
 	int	amount_f = 0, amount_dot = 0, amount_signal = 0;
@@ -106,7 +102,7 @@ void	ScalarConverter::_detectFloatOrDouble(std::string const arg)
 			amount_signal++;
 		else if (std::isdigit(arg[i]) == false)
 		{
-			this->_setType(_IS_INVALID);
+			_setType(_IS_INVALID);
 			return ;
 		}
 	}
@@ -118,23 +114,23 @@ void	ScalarConverter::_detectFloatOrDouble(std::string const arg)
 	|| arg[pos + 1] == 'f' || arg[pos + 1] == '\0'
 	|| amount_signal > 1 || (amount_signal > 0 && arg[0] != '-'))
 	{
-		this->_setType(_IS_INVALID);
+		_setType(_IS_INVALID);
 		return ;
 	}
 	if (amount_f == 1)
-		this->_setType(_IS_FLOAT);
+		_setType(_IS_FLOAT);
 	else
-		this->_setType(_IS_DOUBLE);
+		_setType(_IS_DOUBLE);
 	return ;
 }
 
 void	ScalarConverter::_detectType(std::string const arg)
 {
-	this->_detectEmpty(arg);
-	this->_detectSpecialCases(arg);
-	this->_detectChar(arg);
-	this->_detectInt(arg);
-	this->_detectFloatOrDouble(arg);
+	_detectEmpty(arg);
+	_detectSpecialCases(arg);
+	_detectChar(arg);
+	_detectInt(arg);
+	_detectFloatOrDouble(arg);
 	return ;
 }
 
@@ -187,22 +183,22 @@ void	ScalarConverter::_handleSpecialDouble(std::string const arg)
 
 void	ScalarConverter::_handleChar(std::string const arg)
 {
-	this->_cast_char = arg[0];
-	this->_cast_int = static_cast<int>(this->_cast_char);
-	this->_cast_float = static_cast<float>(this->_cast_char);
-	this->_cast_double = static_cast<double>(this->_cast_char);
+	_cast_char = arg[0];
+	_cast_int = static_cast<int>(_cast_char);
+	_cast_float = static_cast<float>(_cast_char);
+	_cast_double = static_cast<double>(_cast_char);
 
 	std::cout << "char: ";
-	if (std::isprint(this->_cast_char) != false)
-		std::cout << "'" << this->_cast_char	<< "'" << std::endl;
+	if (std::isprint(_cast_char) != false)
+		std::cout << "'" << _cast_char	<< "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 
-	std::cout << "int: " << this->_cast_int	<< std::endl;
+	std::cout << "int: " << _cast_int << std::endl;
 
-	std::cout << "float: "	<< this->_cast_float << ".0f" << std::endl;
+	std::cout << "float: "	<< _cast_float << ".0f" << std::endl;
 
-	std::cout << "double: "	<< this->_cast_double << ".0" << std::endl;
+	std::cout << "double: "	<< _cast_double << ".0" << std::endl;
 	return ;
 }
 
@@ -212,30 +208,30 @@ void	ScalarConverter::_handleInt(std::string const arg)
 	if ((num > std::numeric_limits<int>::max())
 	|| (num < std::numeric_limits<int>::min()))
 	{
-		this->_handleInvalid();
+		_handleInvalid();
 		return ;
 	}
 	
-	this->_cast_int = num;
-	this->_cast_char = static_cast<char>(this->_cast_int);
-	this->_cast_float = static_cast<float>(this->_cast_int);
-	this->_cast_double = static_cast<double>(this->_cast_int);
+	_cast_int = num;
+	_cast_char = static_cast<char>(_cast_int);
+	_cast_float = static_cast<float>(_cast_int);
+	_cast_double = static_cast<double>(_cast_int);
 
 	std::cout << "char: ";
-	if (this->_cast_int < 0 || this->_cast_int > 127)
+	if (_cast_int < 0 || _cast_int > 127)
 		std::cout << "impossible" << std::endl;
-	else if (std::isprint(this->_cast_char) != false)
-		std::cout << "'" << this->_cast_char << "'" << std::endl;
+	else if (std::isprint(_cast_char) != false)
+		std::cout << "'" << _cast_char << "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 
-	std::cout << "int: " << this->_cast_int << std::endl;
+	std::cout << "int: " << _cast_int << std::endl;
 
 	std::cout << "float: "
 	<< std::fixed << std::setprecision(1)
-	<< this->_cast_float << "f" << std::endl;
+	<< _cast_float << "f" << std::endl;
 
-	std::cout << "double: "	<< this->_cast_double << std::endl;
+	std::cout << "double: "	<< _cast_double << std::endl;
 
 	std::cout.unsetf(std::ios::floatfield);
 
@@ -244,7 +240,7 @@ void	ScalarConverter::_handleInt(std::string const arg)
 
 void	ScalarConverter::_handleFloat(std::string const arg)
 {
-	this->_cast_float = atof(arg.c_str());
+	_cast_float = atof(arg.c_str());
 	
 	int precision = 1;
 	size_t pos = arg.find('.');
@@ -255,30 +251,30 @@ void	ScalarConverter::_handleFloat(std::string const arg)
 			precision++;
 	}
 
-	this->_cast_int = static_cast<int>(this->_cast_float);
-	this->_cast_char = static_cast<char>(this->_cast_float);
-	this->_cast_double = static_cast<double>(this->_cast_float);
+	_cast_int = static_cast<int>(_cast_float);
+	_cast_char = static_cast<char>(_cast_float);
+	_cast_double = static_cast<double>(_cast_float);
 
 	std::cout << "char: ";
-	if (this->_cast_double <= -1.0f || this->_cast_double >= 128.0f)
+	if (_cast_double <= -1.0f || _cast_double >= 128.0f)
 		std::cout << "impossible" << std::endl;
-	else if (std::isprint(this->_cast_char) != false)
-		std::cout << "'" << this->_cast_char << "'" << std::endl;
+	else if (std::isprint(_cast_char) != false)
+		std::cout << "'" << _cast_char << "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 
 	std::cout << "int: ";
-	if (this->_cast_float > std::numeric_limits<int>::max()
-	|| this->_cast_float < std::numeric_limits<int>::min())
+	if (_cast_float > std::numeric_limits<int>::max()
+	|| _cast_float < std::numeric_limits<int>::min())
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << this->_cast_int << std::endl;
+		std::cout << _cast_int << std::endl;
 
 	std::cout << "float: "
 	<< std::fixed << std::setprecision(precision)
-	<< this->_cast_float << "f" << std::endl;
+	<< _cast_float << "f" << std::endl;
 
-	std::cout << "double: "	<< this->_cast_double << std::endl;
+	std::cout << "double: "	<< _cast_double << std::endl;
 
 	std::cout.unsetf(std::ios::floatfield);
 
@@ -287,7 +283,7 @@ void	ScalarConverter::_handleFloat(std::string const arg)
 
 void	ScalarConverter::_handleDouble(std::string const arg)
 {
-	this->_cast_double = strtod(arg.c_str(), NULL);
+	_cast_double = strtod(arg.c_str(), NULL);
 	
 	int precision = 1;
 	size_t pos = arg.find('.');
@@ -298,29 +294,29 @@ void	ScalarConverter::_handleDouble(std::string const arg)
 			precision++;
 	}
 
-	this->_cast_int = static_cast<int>(this->_cast_double);
-	this->_cast_char = static_cast<char>(this->_cast_double);
-	this->_cast_float = static_cast<float>(this->_cast_double);
+	_cast_int = static_cast<int>(_cast_double);
+	_cast_char = static_cast<char>(_cast_double);
+	_cast_float = static_cast<float>(_cast_double);
 
 	std::cout << "char: ";
-	if (this->_cast_double <= -1.0 || this->_cast_double >= 128.0)
+	if (_cast_double <= -1.0 || _cast_double >= 128.0)
 		std::cout << "impossible" << std::endl;
-	else if (std::isprint(this->_cast_char) != false)
-		std::cout << "'" << this->_cast_char << "'" << std::endl;
+	else if (std::isprint(_cast_char) != false)
+		std::cout << "'" << _cast_char << "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 
 	std::cout << "int: ";
-	if (this->_cast_double > std::numeric_limits<int>::max()
-	|| this->_cast_double < std::numeric_limits<int>::min())
+	if (_cast_double > std::numeric_limits<int>::max()
+	|| _cast_double < std::numeric_limits<int>::min())
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << this->_cast_int << std::endl;
+		std::cout << _cast_int << std::endl;
 
 	std::cout << "float: " << std::fixed << std::setprecision(precision)
-	<< this->_cast_float << "f" << std::endl;
+	<< _cast_float << "f" << std::endl;
 
-	std::cout << "double: "	<< this->_cast_double << std::endl;
+	std::cout << "double: "	<< _cast_double << std::endl;
 
 	std::cout.unsetf(std::ios::floatfield);
 	return ;
@@ -328,36 +324,42 @@ void	ScalarConverter::_handleDouble(std::string const arg)
 
 void	ScalarConverter::convert(std::string const arg)
 {
-	this->_detectType(arg);
-	switch (this->_getType())
+	_detectType(arg);
+	switch (_getType())
 	{
 		case _IS_INVALID:
-			this->_handleInvalid(); break;
+			_handleInvalid(); break;
 		case _IS_SPECIAL_FLOAT:
-			this->_handleSpecialFloat(arg); break;
+			_handleSpecialFloat(arg); break;
 		case _IS_SPECIAL_DOUBLE:
-			this->_handleSpecialDouble(arg); break;
+			_handleSpecialDouble(arg); break;
 		case _IS_CHAR:
-			this->_handleChar(arg); break;
+			_handleChar(arg); break;
 		case _IS_INT:
-			this->_handleInt(arg); break;
+			_handleInt(arg); break;
 		case _IS_FLOAT:
-			this->_handleFloat(arg); break;
+			_handleFloat(arg); break;
 		case _IS_DOUBLE:
-			this->_handleDouble(arg); break;
+			_handleDouble(arg); break;
 		default:
 			std::cout << "convert: error: invalid argument" << std::endl; break;
 	}
 	return ;
 }
 
-int	ScalarConverter::_getType(void) const
+int	ScalarConverter::_getType(void)
 {
-	return (this->_type);
+	return (_type);
 }
 
 void	ScalarConverter::_setType(int const type)
 {
-	this->_type = type;
+	_type = type;
 	return ;
 }
+
+int		ScalarConverter::_type = -1;
+char	ScalarConverter::_cast_char = '0';
+int		ScalarConverter::_cast_int = 0;
+float	ScalarConverter::_cast_float = 0;
+double	ScalarConverter::_cast_double = 0;
