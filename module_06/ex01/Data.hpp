@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/19 20:30:18 by wportilh         ###   ########.fr       */
+/*   Created: 2023/03/19 20:07:25 by wportilh          #+#    #+#             */
+/*   Updated: 2023/03/19 20:19:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_H
-# define SERIALIZER_H
+#ifndef DATA_H
+#define DATA_H
 
-#include "Data.hpp"
-#include <iostream>
-#include <stdint.h>
-
-class	Serializer
+struct Data
 {
-	public:
-		~Serializer(void);
-		static uintptr_t serialize(Data* ptr);
-		static Data* deserialize(uintptr_t raw);
-	private:
-		Serializer(void);
-		Serializer(Serializer const &src);
-		Serializer	&operator=(Serializer const &rhs);
+	int	number;
 };
 
 #endif

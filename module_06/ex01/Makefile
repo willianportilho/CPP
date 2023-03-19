@@ -6,14 +6,14 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/19 19:22:37 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/19 20:47:32 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES 	=		main.cpp		\
 					Serializer.cpp
 
-NAME		=		serializer
+NAME		=		serialization
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g3
@@ -37,7 +37,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					$(VAL) ./$(NAME) nanf
+					$(VAL) ./$(NAME)
 
 clean:
 					$(RM) $(OBJ_PATH)
