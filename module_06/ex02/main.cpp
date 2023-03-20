@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/20 09:25:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:55:16 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,13 @@ void identify(Base& p)
 
 int	main(void)
 {
-	Base *test = generate();
+	Base	*test = generate();
 
 	std::cout << std::endl << "Result:" << std::endl;
 	identify(test);
 	identify(*test);
+
+	delete test;
+
 	return (0);
 }
