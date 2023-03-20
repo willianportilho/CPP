@@ -6,11 +6,12 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/19 21:16:25 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/19 21:26:47 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp
+SOURCES 	=		main.cpp	\
+					Base.cpp
 
 NAME		=		identify
 
