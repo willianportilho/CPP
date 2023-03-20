@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/19 22:31:39 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/19 22:39:01 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 Base* generate(void)
 {
 	int	randow;
-	std::srand(time(0));
+	std::srand(time(NULL));
 	randow = std::rand() % 3;
 
 	switch (randow)
@@ -34,6 +34,18 @@ Base* generate(void)
 			return (new C);
 	}
 	return (NULL);
+}
+
+void identify(Base* p)
+{
+	(void)p;
+	return ;
+}
+
+void identify(Base& p)
+{
+	(void)p;
+	return ;	
 }
 
 int	main(void)
