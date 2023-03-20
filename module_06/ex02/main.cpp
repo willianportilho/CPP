@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/20 09:07:37 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:25:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Base* generate(void)
 		case 2:
 			std::cout << "generate returned \"C\" class" << std::endl;
 			return (new C);
+		default:
+			std::cerr << "identify: error: something went wrong (generate)" << std::endl;
 	}
 	return (NULL);
 }
