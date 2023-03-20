@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/20 10:12:04 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:34:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	main(void)
 	serialized_test = Serializer::serialize(test);
 	deserialized_test = Serializer::deserialize(serialized_test);
 
-	std::cout << "                     test = " << test					<< std::endl;
-	std::cout << "        deserialized test = " << deserialized_test	<< std::endl;
-	std::cout << "             test->number = " << test->number			<< std::endl;
-	std::cout << "deserialized_test->number = " << test->number			<< std::endl;
-	std::cout << "             test->string = " << test->string			<< std::endl;
-	std::cout << "deserialized_test->string = " << test->string			<< std::endl;
-	std::cout << "serialized_test (uintptr) = " << serialized_test		<< std::endl;
+	std::cout << "                     test = " << test							<< std::endl;
+	std::cout << "        deserialized test = " << deserialized_test			<< std::endl;
+	std::cout << "             test->number = " << test->number					<< std::endl;
+	std::cout << "deserialized_test->number = " << deserialized_test->number	<< std::endl;
+	std::cout << "             test->string = " << test->string					<< std::endl;
+	std::cout << "deserialized_test->string = " << deserialized_test->string	<< std::endl;
+	std::cout << "serialized_test (uintptr) = " << serialized_test				<< std::endl;
 
 	delete test;
 
