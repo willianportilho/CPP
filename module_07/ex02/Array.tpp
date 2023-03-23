@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 21:20:36 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/23 14:00:05 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:22:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 template<typename T>
 Array<T>::Array(void) : _elements(NULL), _size(0)
 {
-	std::cout << "default constructor Array called whith no parameter: array(NULL) and array_size(0)" << std::endl;
+	std::cout << "default constructor Array called whith no parameter: size(0)" << std::endl;
 	return ;
 }
 
@@ -45,13 +45,13 @@ Array<T>::Array(Array const &src): _elements(NULL)
 template<typename T>
 Array<T>	&Array<T>::operator=(Array<T> const &rhs)
 {
-	if (*this != &rhs)
+	if (this != &rhs)
 	{
 		if (this->_elements)
 			delete[] this->_elements;
 		this->_size = rhs.size();
 		this->_elements = new T[rhs.size()]();
-		for (int i = 0; i < rhs.size(); i++)
+		for (size_t i = 0; i < rhs.size(); i++)
 		 	this->_elements[i] = rhs._elements[i];
 	}
 	std::cout << "assignment copy Array called" << std::endl;
