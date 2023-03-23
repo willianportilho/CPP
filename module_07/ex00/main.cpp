@@ -6,12 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/22 13:09:48 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:58:51 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Whatever.hpp"
+#include "whatever.hpp"
 #include <iostream>
+#include <string>
 
 int	main(void)
 {
