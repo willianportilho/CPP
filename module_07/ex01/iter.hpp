@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:32:38 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/22 20:57:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:05:51 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ template<typename T>
 void	toLowerCase(T &arg)
 {
 	(void)arg;
-	std::cout << "type not accepted = ";
+	std::cout << "error: type not accepted: ";
 	return ;
 }
 
@@ -74,7 +74,7 @@ template<typename T>
 void	toUpperCase(T &arg)
 {
 	(void)arg;
-	std::cout << "type not accepted = ";
+	std::cout << "error: type not accepted: ";
 	return ;
 }
 
