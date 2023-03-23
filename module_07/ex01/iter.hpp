@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:32:38 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/22 21:05:51 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:58:02 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	iter(T const *array, size_t lenght, void (*f)(T const &arg))
 }
 
 template<typename T>
-void	print(T &arg)
+void	printElement(T &arg)
 {
 	std::cout << arg << " ";
 	return ;

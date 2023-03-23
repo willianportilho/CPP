@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:32:38 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/23 13:48:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:50:31 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class	Array
 		Array(Array const &src);
 		Array	&operator=(Array const &rhs);
 		T		&operator[](size_t index);
+		T const	&operator[](size_t index) const;
 		size_t	size(void) const;
 		class	outOfRangeException : public std::exception
 		{

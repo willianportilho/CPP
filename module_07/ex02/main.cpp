@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/23 16:25:48 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:56:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ static void testConstructorWhithNoParameter(void)
 
 static void testConstructorWhithParameter(void)
 {
-	printTitle("2️⃣  TEST CONSTRUCTOR WITH PARAMETER AND DEFAULT ELEMENTS INITIALIZATION");
+	printTitle("3️⃣  TEST CONSTRUCTOR WITH PARAMETER AND DEFAULT ELEMENTS INITIALIZATION");
 
 	try
 	{
@@ -147,7 +147,7 @@ static void testConstructorWhithParameter(void)
 
 static void	testConstructorCopy(void)
 {
-	printTitle("3️⃣  TEST CONSTRUCTOR COPY");
+	printTitle("4️⃣  TEST CONSTRUCTOR COPY");
 
 	{
 		Array<int>	a(5);
@@ -190,7 +190,7 @@ static void	testConstructorCopy(void)
 
 static void	testAssignmentOperator(void)
 {
-	printTitle("4️⃣  TEST ASSIGNMENT OPERATOR");
+	printTitle("5️⃣  TEST ASSIGNMENT OPERATOR");
 
 	{
 		Array<int>	a(5);
@@ -234,7 +234,7 @@ static void	testAssignmentOperator(void)
 
 static void	testArrayTypes(void)
 {
-	printTitle("5️⃣  TEST ARRAY TYPES");
+	printTitle("6️⃣  TEST ARRAY TYPES");
 	{
 		Array<char>	char_array(10);
 		for (size_t i = 0; i < char_array.size(); i++)
@@ -287,7 +287,7 @@ static void	testArrayTypes(void)
 
 static void	testException(void)
 {
-	printTitle("5️⃣  TEST EXCEPTION");
+	printTitle("7️⃣  TEST EXCEPTION");
 
 	try
 	{
@@ -324,6 +324,21 @@ static void	testException(void)
 	return ;
 }
 
+static void	testReadOnly(void)
+{
+	printTitle("8️⃣  TEST READ ONLY");
+
+	std::cout << std::endl;
+	Array<int> const	a(10);
+	for (size_t i = 0; i < 10; i++)
+	{
+		// a[i] = i * 100;
+		std::cout << a[i] << std::endl;
+	}
+
+	return ;
+}
+
 int main(int, char**)
 {
 	tests42();
@@ -333,6 +348,7 @@ int main(int, char**)
 	testAssignmentOperator();
 	testArrayTypes();
 	testException();
+	testReadOnly();
 
     return 0;
 }
