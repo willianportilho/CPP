@@ -63,3 +63,7 @@ jobs:
       run:  make -C module_06/ex02
     - name: make_module07_ex00
       run:  make -C module_07/ex00
+    - name: make_module07_ex01
+      run:  make -C module_07/ex01
+    - name: make_module07_ex02
+      run:  make -C module_07/ex02

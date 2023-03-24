@@ -6,11 +6,12 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/23 16:57:54 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/24 08:15:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+#include "utils.hpp"
 #include <cstddef>
 #include <iostream>
 #include <string>
