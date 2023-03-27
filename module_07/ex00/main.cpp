@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/22 20:58:51 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:30:04 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(void)
 	// my own tests
 	double e = 12345.6;
 	double f = 65432.1;
-	swap<double, double>(e, f);
+	swap<double>(e, f);
 	std::cout << std::endl;
 	std::cout << "e = " << e << ", f = " << f << std::endl;
 	std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
@@ -41,7 +41,7 @@ int	main(void)
 
 	float g = 4.2;
 	float h = 4.2;
-	swap<float, float>(g, h);
+	swap<float>(g, h);
 	std::cout << std::endl;
 	std::cout << "g = " << g << ", h = " << h << std::endl;
 	std::cout << "g (address) =                    " << &g << std::endl;
