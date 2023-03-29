@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   NumberNotFoundException.hpp                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 13:09:32 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:23:46 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_H
-# define EASYFIND_H
+#ifndef EXCEPTIONS_H
+# define EXCEPTIONS_H
 
-#include "NumberNotFoundException.hpp"
-#include <algorithm>
+#include <exception>
 
-template<typename T>
-typename T::iterator	easyfind(T &container, int number)
+class	NumberNotFoundException : public std::exception
 {
-	typename T::iterator it;
-	it = std::find(container.begin(), container.end(), number);
-	if (it != container.end())
-		return it;
-	throw NumberNotFoundException();
-}
+	public:
+		virtual const char	*what(void) const throw();
+};
 
 #endif
