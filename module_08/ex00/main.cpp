@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 13:09:22 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:20:37 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(void)
 		{
 			for (int i = -100; i < 100; i++)
 				data.push_back(i);
+			data.push_back(50);
 			int i = 50;
 			std::vector<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
@@ -63,13 +64,17 @@ int	main(void)
 		{
 			for (int i = -100; i < 100; i++)
 				data.push_back(i);
+			data.push_back(-100);
 			int i = -100;
 			std::list<int>::iterator it = easyfind(data, i);
 			std::list<int>::iterator find_index = data.begin();
 			for (int index = 0; find_index != data.end(); index++)
 			{
 				if (*find_index == *it)
+				{
 					std::cout << *it << " at index: " << index << std::endl;
+					break;
+				}
 				find_index++;
 			}
 		}
@@ -93,7 +98,10 @@ int	main(void)
 			for (int index = 0; find_index != data.end(); index++)
 			{
 				if (*find_index == *it)
+				{
 					std::cout << *it << " at index: " << index << std::endl;
+					break;
+				}
 				find_index++;
 			}
 		}
@@ -111,6 +119,7 @@ int	main(void)
 		{
 			for (int i = -100; i < 100; i++)
 				data.push_back(i);
+			data.push_back(8);
 			int i = 8;
 			std::deque<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
