@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 16:17:10 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:22:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ class	Span
 		unsigned int	getN(void) const;
 		void			addNumber(size_t number);
 		class	NumberLimitReachedException : std::exception
+		{
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class	OverflowException : std::exception
 		{
 			public:
 				virtual const char	*what(void) const throw();

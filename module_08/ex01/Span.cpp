@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 16:19:05 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:23:17 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,9 @@ void	addNumber(size_t number)
 const char	*Span::NumberLimitReachedException::what(void) const throw()
 {
 	return ("number limit reached exception 🌡️💥");
+}
+
+const char	*Span::OverflowException::what(void) const throw()
+{
+	return ("overflow exception ↗️💥");
 }
