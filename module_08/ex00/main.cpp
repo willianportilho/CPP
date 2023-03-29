@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 13:20:37 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:26:21 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 {
 	{
 		std::cout << "🟢 VECTOR TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: 50" << std::endl;
 		std::vector<int>	data;
 		try
 		{
@@ -29,7 +30,7 @@ int	main(void)
 			int i = 50;
 			std::vector<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
-			std::cout << *it << " at index: " << index << std::endl;
+			std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 		}
 		catch(const std::exception &e)
 		{
@@ -40,6 +41,7 @@ int	main(void)
 
 	{
 		std::cout << "🔴 VECTOR EXCEPTION TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: -101" << std::endl;
 		std::vector<int>	data;
 		try
 		{
@@ -48,7 +50,7 @@ int	main(void)
 			int i = -101;
 			std::vector<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
-			std::cout << *it << " at index: " << index << std::endl;
+			std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 		}
 		catch(const std::exception &e)
 		{
@@ -59,6 +61,7 @@ int	main(void)
 
 	{
 		std::cout << "🟢 LIST TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: 100" << std::endl;
 		std::list<int>	data;
 		try
 		{
@@ -72,7 +75,7 @@ int	main(void)
 			{
 				if (*find_index == *it)
 				{
-					std::cout << *it << " at index: " << index << std::endl;
+					std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 					break;
 				}
 				find_index++;
@@ -87,6 +90,7 @@ int	main(void)
 
 	{
 		std::cout << "🔴 LIST EXCEPTION TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: 101" << std::endl;
 		std::list<int>	data;
 		try
 		{
@@ -99,7 +103,7 @@ int	main(void)
 			{
 				if (*find_index == *it)
 				{
-					std::cout << *it << " at index: " << index << std::endl;
+					std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 					break;
 				}
 				find_index++;
@@ -114,6 +118,7 @@ int	main(void)
 
 	{
 		std::cout << "🟢 DEQUE TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: 8" << std::endl;
 		std::deque<int>	data;
 		try
 		{
@@ -123,7 +128,7 @@ int	main(void)
 			int i = 8;
 			std::deque<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
-			std::cout << *it << " at index: " << index << std::endl;
+			std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 		}
 		catch(const std::exception &e)
 		{
@@ -134,6 +139,7 @@ int	main(void)
 
 	{
 		std::cout << "🔴 DEQUE EXCEPTION TEST" << std::endl;
+		std::cout << "range: -100/100 | easyfind: 101" << std::endl;
 		std::deque<int>	data;
 		try
 		{
@@ -142,7 +148,7 @@ int	main(void)
 			int i = 101;
 			std::deque<int>::iterator it = easyfind(data, i);
 			int index = it - data.begin();
-			std::cout << *it << " at index: " << index << std::endl;
+			std::cout << "result: \"" << *it << "\" at index \"" << index << "\"" << std::endl;
 		}
 		catch(const std::exception &e)
 		{
