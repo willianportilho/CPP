@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 15:10:38 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:19:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,15 @@ Span::~Span(void)
 unsigned int	Span::getN(void) const
 {
 	return (this->_n);
+}
+
+void	addNumber(size_t number)
+{
+	(void)number;
+	return ;
+}
+
+const char	*Span::NumberLimitReachedException::what(void) const throw()
+{
+	return ("number limit reached exception 🌡️💥");
 }
