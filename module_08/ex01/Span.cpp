@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 18:41:13 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:38:51 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ unsigned int	Span::getAmountN(void) const
 unsigned int	Span::getVector(size_t const index) const
 {
 	if (index >= getAmountN())
-		throw Span::IndexOutOfRangeException();
+		throw IndexOutOfRangeException();
 	return (this->_vector[index]);
 }
 
@@ -74,7 +74,7 @@ void	Span::setAmountN(unsigned int amountN)
 void	Span::setVector(size_t const index, unsigned int const number)
 {
 	if (index >= getAmountN())
-		throw Span::IndexOutOfRangeException();
+		throw IndexOutOfRangeException();
 	this->_vector[index] = number;
 	return ;
 }
@@ -84,19 +84,19 @@ void	Span::addNumber(unsigned long int number)
 	if (this->getAmountN() < this->getN())
 	{
 		if (number > static_cast<unsigned int>(std::numeric_limits<int>::max()))
-			throw Span::OverflowException();
+			throw OverflowException();
 		this->_vector.push_back(number);
 		this->setAmountN(this->getAmountN() + 1);
 	}
 	else
-		throw Span::NumberLimitReachedException();
+		throw NumberLimitReachedException();
 	return ;
 }
 
 unsigned int	Span::shortestSpan(void)
 {
 	if (this->getAmountN() <= 1)
-		throw Span::SpanNotFoundException();
+		throw SpanNotFoundException();
 
 	std::vector<unsigned int>	vectorCopy(this->_vector.size());
 	std::copy(this->_vector.begin(), this->_vector.end(), vectorCopy.begin());
@@ -119,7 +119,7 @@ unsigned int	Span::shortestSpan(void)
 unsigned int	Span::longestSpan(void)
 {
 	if (this->getAmountN() <= 1)
-		throw Span::SpanNotFoundException();
+		throw SpanNotFoundException();
 
 	std::vector<unsigned int>	vectorCopy(this->_vector.size());
 	std::copy(this->_vector.begin(), this->_vector.end(), vectorCopy.begin());
@@ -136,7 +136,7 @@ unsigned int	Span::longestSpan(void)
 void	Span::addManyNumbers(std::vector<unsigned int>::iterator itBegin, std::vector<unsigned int>::iterator itEnd)
 {
 	if (itBegin == itEnd)
-		throw Span::EmptyVectorException();
+		throw EmptyVectorException();
 	while (itBegin != itEnd)
 	{
 		this->addNumber(*itBegin);
@@ -144,29 +144,4 @@ void	Span::addManyNumbers(std::vector<unsigned int>::iterator itBegin, std::vect
 	}
 	
 	return ;	
-}
-
-const char	*Span::NumberLimitReachedException::what(void) const throw()
-{
-	return ("span: error: number limit reached exception 🌡️ 💥");
-}
-
-const char	*Span::OverflowException::what(void) const throw()
-{
-	return ("span: error: overflow exception ↗️ 💥");
-}
-
-const char	*Span::SpanNotFoundException::what(void) const throw()
-{
-	return ("span: error: span not found exception, because there's only one (or zero) number(s) added 🔎❓❓❓");
-}
-
-const char	*Span::EmptyVectorException::what(void) const throw()
-{
-	return ("span: error: empty vector exception 🔎❓❓❓");
-}
-
-const char	*Span::IndexOutOfRangeException::what(void) const throw()
-{
-	return ("span: error: index out range exception ↗️ 💥");
 }

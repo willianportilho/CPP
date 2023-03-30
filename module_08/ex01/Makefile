@@ -6,12 +6,17 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/29 15:09:36 by wportilh         ###   ########.fr        #
+#    Updated: 2023/03/30 19:37:12 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES 	=		main.cpp		\
-					Span.cpp
+SOURCES 	=		main.cpp						\
+					Span.cpp						\
+					EmptyVectorException.cpp		\
+					IndexOutOfRangeException.cpp	\
+					NumberLimitReachedException.cpp	\
+					OverflowException.cpp			\
+					SpanNotFoundException.cpp
 
 NAME		=		span
 
