@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 13:21:25 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:06:24 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ unsigned int	Span::shortestSpan(void)
 
 	std::vector<unsigned int>	vector_copy(this->_vector.size());
 	std::copy(this->_vector.begin(), this->_vector.end(), vector_copy.begin());
+
 	std::sort(vector_copy.begin(), vector_copy.end());
-	for (std::vector<unsigned int>::iterator it = vector_copy.begin(); it != vector_copy.end(); it++)
-			std::cout << *it << std::endl;
 
 	unsigned int	shortest_span = std::numeric_limits<unsigned int>::max();
 	for (std::vector<unsigned int>::iterator it = vector_copy.begin(); it != vector_copy.end(); it++)
@@ -107,8 +106,17 @@ unsigned int	Span::longestSpan(void)
 {
 	if (this->getAmountN() <= 1)
 		throw Span::SpanNotFoundException();
-	unsigned int	result = 0;
-	return result;
+
+	std::vector<unsigned int>	vector_copy(this->_vector.size());
+	std::copy(this->_vector.begin(), this->_vector.end(), vector_copy.begin());
+
+	std::sort(vector_copy.begin(), vector_copy.end());
+
+	std::vector<unsigned int>::iterator	it = vector_copy.begin();
+	std::vector<unsigned int>::iterator	it2 = vector_copy.end() - 1;
+	unsigned int	longestSpan = *it2 - *it;
+
+	return (longestSpan);
 }
 
 const char	*Span::NumberLimitReachedException::what(void) const throw()
