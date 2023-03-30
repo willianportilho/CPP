@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 18:17:31 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:41:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ class	Span
 		unsigned int	getN(void) const;
 		unsigned int	getAmountN(void) const;
 		unsigned int	getVector(size_t const index) const;
-		void			setAmountN(unsigned int amount_n);
+		void			setAmountN(unsigned int amountN);
 		void			setVector(size_t const index, unsigned int const number);
 		void			addNumber(unsigned long int number);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
-		void			addManyNumbers(std::vector<unsigned int>::iterator it_begin, std::vector<unsigned int>::iterator it_end);
+		void			addManyNumbers(std::vector<unsigned int>::iterator itBegin, std::vector<unsigned int>::iterator itEnd);
 		class	NumberLimitReachedException : public std::exception
 		{
 			public:
@@ -63,7 +63,7 @@ class	Span
 	private:
 		Span(void);
 		unsigned int				_n;
-		unsigned int				_amount_n;
+		unsigned int				_amountN;
 		std::vector<unsigned int>	_vector;
 };
 

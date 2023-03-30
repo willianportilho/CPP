@@ -6,19 +6,19 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 18:34:10 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:41:13 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(void) : _n(0), _amount_n(0)
+Span::Span(void) : _n(0), _amountN(0)
 {
 	// std::cout << "default Span constructor called" << std::endl;
 	return ;
 }
 
-Span::Span(unsigned int N) : _n(N), _amount_n(0)
+Span::Span(unsigned int N) : _n(N), _amountN(0)
 {
 	// std::cout << "named Span constructor called with parameter N(" << this->getN() << ")" << std::endl;
 	return ;
@@ -36,7 +36,7 @@ Span	&Span::operator=(Span const &rhs)
 	if (this != &rhs)
 	{
 		this->_n = rhs.getN();
-		this->_amount_n = rhs.getAmountN();
+		this->_amountN = rhs.getAmountN();
 		this->_vector = rhs._vector;
 	}
 	return (*this);
@@ -55,7 +55,7 @@ unsigned int	Span::getN(void) const
 
 unsigned int	Span::getAmountN(void) const
 {
-	return (this->_amount_n);
+	return (this->_amountN);
 }
 
 unsigned int	Span::getVector(size_t const index) const
@@ -65,9 +65,9 @@ unsigned int	Span::getVector(size_t const index) const
 	return (this->_vector[index]);
 }
 
-void	Span::setAmountN(unsigned int amount_n)
+void	Span::setAmountN(unsigned int amountN)
 {
-	this->_amount_n = amount_n;
+	this->_amountN = amountN;
 	return ;
 }
 
@@ -98,22 +98,22 @@ unsigned int	Span::shortestSpan(void)
 	if (this->getAmountN() <= 1)
 		throw Span::SpanNotFoundException();
 
-	std::vector<unsigned int>	vector_copy(this->_vector.size());
-	std::copy(this->_vector.begin(), this->_vector.end(), vector_copy.begin());
+	std::vector<unsigned int>	vectorCopy(this->_vector.size());
+	std::copy(this->_vector.begin(), this->_vector.end(), vectorCopy.begin());
 
-	std::sort(vector_copy.begin(), vector_copy.end());
+	std::sort(vectorCopy.begin(), vectorCopy.end());
 
-	unsigned int	shortest_span = std::numeric_limits<unsigned int>::max();
-	for (std::vector<unsigned int>::iterator it = vector_copy.begin(); it != vector_copy.end(); it++)
+	unsigned int	shortestSpan = std::numeric_limits<unsigned int>::max();
+	for (std::vector<unsigned int>::iterator it = vectorCopy.begin(); it != vectorCopy.end(); it++)
 	{
-		for (std::vector<unsigned int>::iterator it2 = it + 1; it2 != vector_copy.end(); it2++)
+		for (std::vector<unsigned int>::iterator it2 = it + 1; it2 != vectorCopy.end(); it2++)
 		{
-			if (((*it2 - *it) < shortest_span))
-				shortest_span = *it2 - *it;
+			if (((*it2 - *it) < shortestSpan))
+				shortestSpan = *it2 - *it;
 		}
 	}
 
-	return (shortest_span);
+	return (shortestSpan);
 }
 
 unsigned int	Span::longestSpan(void)
@@ -121,26 +121,26 @@ unsigned int	Span::longestSpan(void)
 	if (this->getAmountN() <= 1)
 		throw Span::SpanNotFoundException();
 
-	std::vector<unsigned int>	vector_copy(this->_vector.size());
-	std::copy(this->_vector.begin(), this->_vector.end(), vector_copy.begin());
+	std::vector<unsigned int>	vectorCopy(this->_vector.size());
+	std::copy(this->_vector.begin(), this->_vector.end(), vectorCopy.begin());
 
-	std::sort(vector_copy.begin(), vector_copy.end());
+	std::sort(vectorCopy.begin(), vectorCopy.end());
 
-	std::vector<unsigned int>::iterator	it = vector_copy.begin();
-	std::vector<unsigned int>::iterator	it2 = vector_copy.end() - 1;
+	std::vector<unsigned int>::iterator	it = vectorCopy.begin();
+	std::vector<unsigned int>::iterator	it2 = vectorCopy.end() - 1;
 	unsigned int	longestSpan = *it2 - *it;
 
 	return (longestSpan);
 }
 
-void	Span::addManyNumbers(std::vector<unsigned int>::iterator it_begin, std::vector<unsigned int>::iterator it_end)
+void	Span::addManyNumbers(std::vector<unsigned int>::iterator itBegin, std::vector<unsigned int>::iterator itEnd)
 {
-	if (it_begin == it_end)
+	if (itBegin == itEnd)
 		throw Span::EmptyVectorException();
-	while (it_begin != it_end)
+	while (itBegin != itEnd)
 	{
-		this->addNumber(*it_begin);
-		it_begin++;
+		this->addNumber(*itBegin);
+		itBegin++;
 	}
 	
 	return ;	
