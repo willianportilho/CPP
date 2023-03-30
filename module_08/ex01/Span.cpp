@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 15:38:01 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:18:19 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Span::setAmountN(unsigned int amount_n)
 	return ;
 }
 
-void	Span::addNumber(long unsigned int number)
+void	Span::addNumber(unsigned long int number)
 {
 	if (this->getAmountN() < this->getN())
 	{
@@ -71,11 +71,6 @@ void	Span::addNumber(long unsigned int number)
 	}
 	else
 		throw Span::NumberLimitReachedException();
-	// if (this->getAmountN() == this->getN())
-	// {
-	// 	for (std::vector<unsigned int>::iterator it = _vector.begin(); it != this->_vector.end(); it++)
-	// 		std::cout << *it << std::endl;
-	// }
 	return ;
 }
 
@@ -119,10 +114,16 @@ unsigned int	Span::longestSpan(void)
 	return (longestSpan);
 }
 
-void	addManyNumbers(std::vector<unsigned int> it_begin, std::vector<unsigned int> it_end)
+void	Span::addManyNumbers(std::vector<unsigned int>::iterator it_begin, std::vector<unsigned int>::iterator it_end)
 {
-	(void)it_begin;
-	(void)it_end;
+	if (it_begin == it_end)
+		throw Span::EmptyVectorException();
+	while (it_begin != it_end)
+	{
+		this->addNumber(*it_begin);
+		it_begin++;
+	}
+	
 	return ;	
 }
 
@@ -138,5 +139,10 @@ const char	*Span::OverflowException::what(void) const throw()
 
 const char	*Span::SpanNotFoundException::what(void) const throw()
 {
-	return ("span: error: span not found exception 🔎❓❓❓");
+	return ("span: error: span not found exception, because there's only one (or zero) number(s) added 🔎❓❓❓");
+}
+
+const char	*Span::EmptyVectorException::what(void) const throw()
+{
+	return ("span: error: empty vector exception 🔎❓❓❓");
 }

@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 15:30:26 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:44:30 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class	Span
 		unsigned int	getN(void) const;
 		unsigned int	getAmountN(void) const;
 		void			setAmountN(unsigned int amount_n);
-		void			addNumber(long unsigned int number);
+		void			addNumber(unsigned long int number);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
-		void			addManyNumbers(std::vector<unsigned int> it_begin, std::vector<unsigned int> it_end);
+		void			addManyNumbers(std::vector<unsigned int>::iterator it_begin, std::vector<unsigned int>::iterator it_end);
 		class	NumberLimitReachedException : public std::exception
 		{
 			public:
@@ -44,6 +44,11 @@ class	Span
 				virtual const char	*what(void) const throw();
 		};
 		class	SpanNotFoundException : public std::exception
+		{
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class	EmptyVectorException : public std::exception
 		{
 			public:
 				virtual const char	*what(void) const throw();
