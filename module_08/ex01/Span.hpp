@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 12:41:50 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:30:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class	Span
 		void			addNumber(long unsigned int number);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
+		void			addManyNumbers(std::vector<unsigned int> it_begin, std::vector<unsigned int> it_end);
 		class	NumberLimitReachedException : public std::exception
 		{
 			public:

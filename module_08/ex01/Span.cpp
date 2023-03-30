@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 14:06:24 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:38:01 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 Span::Span(void) : _n(0), _amount_n(0)
 {
-	std::cout << "default Span constructor called" << std::endl;
+	// std::cout << "default Span constructor called" << std::endl;
 	return ;
 }
 
 Span::Span(unsigned int N) : _n(N), _amount_n(0)
 {
-	std::cout << "named Span constructor called with parameter N(" << this->getN() << ")" << std::endl;
+	// std::cout << "named Span constructor called with parameter N(" << this->getN() << ")" << std::endl;
 	return ;
 }
 
 Span::Span(Span const &src)
 {
 	*this = src;
-	std::cout << "copy Span constructor called" << std::endl;
+	// std::cout << "copy Span constructor called" << std::endl;
 	return ;
 }
 
@@ -40,7 +40,7 @@ Span	&Span::operator=(Span const &rhs)
 
 Span::~Span(void)
 {
-	std::cout << "destructor Span called" << std::endl;
+	// std::cout << "destructor Span called" << std::endl;
 	return ;
 }
 
@@ -117,6 +117,13 @@ unsigned int	Span::longestSpan(void)
 	unsigned int	longestSpan = *it2 - *it;
 
 	return (longestSpan);
+}
+
+void	addManyNumbers(std::vector<unsigned int> it_begin, std::vector<unsigned int> it_end)
+{
+	(void)it_begin;
+	(void)it_end;
+	return ;	
 }
 
 const char	*Span::NumberLimitReachedException::what(void) const throw()
