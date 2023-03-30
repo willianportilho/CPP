@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 17:35:38 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:36:45 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,62 @@ static void	emptyVectorTests(void)
 	return ;
 }
 
+static void	copyTests(void)
+{
+	printTitle("7️⃣  COPY CONSTRUCTOR TESTS");
+
+	try
+	{
+		std::cout << "🟢 vector limit: 10 numbers | try add: 10 numbers | changed sp vector value at index 9 to detect deep copy" << std::endl;
+		Span	sp(10);
+
+		for (int i = 0; i < 10; i++)
+			sp.addNumber(i);
+
+		Span	spCopy(sp);
+		sp.setVector(9, 8);
+
+		std::cout << "sp     shortestSpan: " << sp.shortestSpan() << std::endl;
+		std::cout << "sp      longestSpan: " << sp.longestSpan() << std::endl;
+		std::cout << "spCopy shortestSpan: " << spCopy.shortestSpan() << std::endl;
+		std::cout << "spCopy  longestSpan: " << spCopy.longestSpan() << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return ;
+}
+
+static void	assignmentTests(void)
+{
+	printTitle("8️⃣  ASSIGNMENT OPERATOR TESTS");
+
+	try
+	{
+		std::cout << "🟢 vector limit: 10 numbers | try add: 10 numbers | changed sp vector value at index 9 to detect deep copy" << std::endl;
+		Span	sp(10);
+
+		for (int i = 0; i < 10; i++)
+			sp.addNumber(i);
+
+		Span	spCopy = sp;
+		sp.setVector(9, 8);
+
+		std::cout << "sp     shortestSpan: " << sp.shortestSpan() << std::endl;
+		std::cout << "sp      longestSpan: " << sp.longestSpan() << std::endl;
+		std::cout << "spCopy shortestSpan: " << spCopy.shortestSpan() << std::endl;
+		std::cout << "spCopy  longestSpan: " << spCopy.longestSpan() << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return ;
+}
+
 int main()
 {
 	subjectTests();
@@ -197,6 +253,8 @@ int main()
 	overflowTests();
 	snapNotFoundTests();
 	emptyVectorTests();
+	copyTests();
+	assignmentTests();
 
 	return (0);
 }

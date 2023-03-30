@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 16:44:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:17:31 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ class	Span
 		Span			&operator=(Span const &rhs);
 		unsigned int	getN(void) const;
 		unsigned int	getAmountN(void) const;
+		unsigned int	getVector(size_t const index) const;
 		void			setAmountN(unsigned int amount_n);
+		void			setVector(size_t const index, unsigned int const number);
 		void			addNumber(unsigned long int number);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
@@ -49,6 +51,11 @@ class	Span
 				virtual const char	*what(void) const throw();
 		};
 		class	EmptyVectorException : public std::exception
+		{
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class	IndexOutOfRangeException : public std::exception
 		{
 			public:
 				virtual const char	*what(void) const throw();

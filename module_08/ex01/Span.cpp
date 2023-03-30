@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:03 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 17:18:19 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:34:10 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ Span::Span(Span const &src)
 Span	&Span::operator=(Span const &rhs)
 {
 	if (this != &rhs)
+	{
 		this->_n = rhs.getN();
+		this->_amount_n = rhs.getAmountN();
+		this->_vector = rhs._vector;
+	}
 	return (*this);
 }
 
@@ -54,9 +58,24 @@ unsigned int	Span::getAmountN(void) const
 	return (this->_amount_n);
 }
 
+unsigned int	Span::getVector(size_t const index) const
+{
+	if (index >= getAmountN())
+		throw Span::IndexOutOfRangeException();
+	return (this->_vector[index]);
+}
+
 void	Span::setAmountN(unsigned int amount_n)
 {
 	this->_amount_n = amount_n;
+	return ;
+}
+
+void	Span::setVector(size_t const index, unsigned int const number)
+{
+	if (index >= getAmountN())
+		throw Span::IndexOutOfRangeException();
+	this->_vector[index] = number;
 	return ;
 }
 
@@ -145,4 +164,9 @@ const char	*Span::SpanNotFoundException::what(void) const throw()
 const char	*Span::EmptyVectorException::what(void) const throw()
 {
 	return ("span: error: empty vector exception 🔎❓❓❓");
+}
+
+const char	*Span::IndexOutOfRangeException::what(void) const throw()
+{
+	return ("span: error: index out range exception ↗️ 💥");
 }
