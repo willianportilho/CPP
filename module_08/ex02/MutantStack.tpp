@@ -15,22 +15,15 @@
 template<typename T>
 MutantStack<T>::MutantStack(void)
 {
-	std::cout << "default MutantStack constructor called." << std::endl;
+	// std::cout << "default MutantStack constructor called." << std::endl;
 	return ;
 }
 
 template<typename T>
-MutantStack<T>::MutantStack(MutantStack const &src)
+MutantStack<T>::MutantStack(MutantStack const &src) : std::stack<T>(src)
 {
 	*this = src;
-	std::cout << "copy MutantStack constructor called" << std::endl;
-	return ;
-}
-
-template<typename T>
-MutantStack<T>::~MutantStack(void)
-{
-	std::cout << "destructor MutantStack called" << std::endl;
+	// std::cout << "copy MutantStack constructor called" << std::endl;
 	return ;
 }
 
@@ -38,11 +31,16 @@ template<typename T>
 MutantStack<T>	&MutantStack<T>::operator=(MutantStack const &rhs)
 {
 	if (this != &rhs)
-	{
-		;
-	}
-	std::cout << "assignment copy MutantStack called" << std::endl;
+		std::stack<T>::operator=(rhs);
+	// std::cout << "assignment copy MutantStack called" << std::endl;
 	return (*this);
+}
+
+template<typename T>
+MutantStack<T>::~MutantStack(void)
+{
+	// std::cout << "destructor MutantStack called" << std::endl;
+	return ;
 }
 
 template<typename T>

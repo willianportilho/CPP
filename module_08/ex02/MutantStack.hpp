@@ -31,7 +31,7 @@ class	MutantStack : public std::stack<T>
 
 		iterator			begin(void);
 		reverse_iterator	rbegin(void);
-		const_iterator		cbegin(void);
+		const_iterator		cbegin(void) const;
 
 		iterator			end(void);
 		reverse_iterator	rend(void);
