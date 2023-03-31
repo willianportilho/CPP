@@ -12,26 +12,30 @@
 
 #include "MutantStack.hpp"
 
-MutantStack::MutantStack(void)
+template<typename T>
+MutantStack<T>::MutantStack(void)
 {
 	std::cout << "default MutantStack constructor called." << std::endl;
 	return ;
 }
 
-MutantStack::MutantStack(MutantStack const &src)
+template<typename T>
+MutantStack<T>::MutantStack(MutantStack const &src)
 {
 	*this = src;
 	std::cout << "copy MutantStack constructor called" << std::endl;
 	return ;
 }
 
-MutantStack::~MutantStack(void)
+template<typename T>
+MutantStack<T>::~MutantStack(void)
 {
 	std::cout << "destructor MutantStack called" << std::endl;
 	return ;
 }
 
-MutantStack	&MutantStack::operator=(MutantStack const &rhs)
+template<typename T>
+MutantStack<T>	&MutantStack<T>::operator=(MutantStack const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -39,4 +43,40 @@ MutantStack	&MutantStack::operator=(MutantStack const &rhs)
 	}
 	std::cout << "assignment copy MutantStack called" << std::endl;
 	return (*this);
+}
+
+template<typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::begin(void)
+{
+	return (std::stack<T>::c.begin());
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator	MutantStack<T>::rbegin(void)
+{
+	return (std::stack<T>::c.rbegin());
+}
+
+template<typename T>
+typename MutantStack<T>::const_iterator	MutantStack<T>::cbegin(void)
+{
+	return (std::stack<T>::c.cbegin());
+}
+
+template<typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::end(void)
+{
+	return (std::stack<T>::c.end());
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator	MutantStack<T>::rend(void)
+{
+	return (std::stack<T>::c.rend());
+}
+
+template<typename T>
+typename MutantStack<T>::const_iterator	MutantStack<T>::cend(void)
+{
+	return (std::stack<T>::c.cend());
 }

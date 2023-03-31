@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/31 13:04:20 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:08:38 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,39 @@ static void	printTitle(std::string const title)
 	return ;
 }
 
-static void	generalTests(void)
+static void	subjectTests(void)
 {
-	printTitle("1️⃣  GENERAL TESTS");
+	printTitle("1️⃣  SUBJECT TESTS");
+
+	MutantStack<int> mstack;
+
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::stack<int> s(mstack);
 
 	return ;
 }
 
 int	main(void)
 {
-	generalTests();
-	
+	subjectTests();
 	return (0);
 }
