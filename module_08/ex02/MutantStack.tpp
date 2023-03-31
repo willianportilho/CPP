@@ -56,12 +56,6 @@ typename MutantStack<T>::reverse_iterator	MutantStack<T>::rbegin(void)
 }
 
 template<typename T>
-typename MutantStack<T>::const_iterator	MutantStack<T>::cbegin(void)
-{
-	return (std::stack<T>::c.cbegin());
-}
-
-template<typename T>
 typename MutantStack<T>::iterator	MutantStack<T>::end(void)
 {
 	return (std::stack<T>::c.end());
@@ -71,10 +65,4 @@ template<typename T>
 typename MutantStack<T>::reverse_iterator	MutantStack<T>::rend(void)
 {
 	return (std::stack<T>::c.rend());
-}
-
-template<typename T>
-typename MutantStack<T>::const_iterator	MutantStack<T>::cend(void)
-{
-	return (std::stack<T>::c.cend());
 }

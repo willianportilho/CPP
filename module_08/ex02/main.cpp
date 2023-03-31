@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/31 17:57:46 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/03/31 20:06:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ static void	beginEndTests(void)
 		MutantStack<int>::iterator ite = mstack.end();
 		while (it != ite)
 		{
-			std::cout << *it << std::endl;
+			std::cout << *it << " ";
 			++it;
 		}
-		std::cout << std::endl;
+		std::cout << std::endl << std::endl;
 
 		std::cout << "🟢 removes '2', '3' and '4' elements from stack: " << std::endl;
 		for (int i = 0; i < 3; i++)
@@ -111,7 +111,7 @@ static void	beginEndTests(void)
 		ite = mstack.end();
 		while (it != ite)
 		{
-			std::cout << *it << std::endl;
+			std::cout << *it << " ";
 			++it;
 		}
 		std::cout << std::endl;
@@ -135,10 +135,10 @@ static void	rbeginRendTests(void)
 		MutantStack<int>::reverse_iterator ite = mstack.rend();
 		while (it != ite)
 		{
-			std::cout << *it << std::endl;
+			std::cout << *it << " ";
 			++it;
 		}
-		std::cout << std::endl;
+		std::cout << std::endl << std::endl;
 
 		std::cout << "🟢 removes '2', '3' and '4' elements from stack: " << std::endl;
 		for (int i = 0; i < 3; i++)
@@ -147,7 +147,7 @@ static void	rbeginRendTests(void)
 		ite = mstack.rend();
 		while (it != ite)
 		{
-			std::cout << *it << std::endl;
+			std::cout << *it << " ";
 			++it;
 		}
 		std::cout << std::endl;
@@ -156,48 +156,129 @@ static void	rbeginRendTests(void)
 	return ;	
 }
 
-// static void	cbeginCendTests(void)
-// {
-// 	printTitle("4️⃣  CBEGIN()/CEND() TESTS");
+static void	copyTests(void)
+{
+	printTitle("4️⃣  COPY TESTS");
 
-// 	{
-// 		std::cout << "🟢 prints 0-4 using cbegin() and cend() const iterators: " << std::endl;
-// 		MutantStack<int> mstack;
+	{
+		std::cout << "🟢 prints ORIGINAL INSTANCE 0-4, using begin() and end() iterators: " << std::endl;
+		MutantStack<int> stack;
 
-// 		for (int i = 0; i < 5; i++)
-// 			mstack.push(i);
+		for (int i = 0; i < 5; i++)
+			stack.push(i);
 
-// 		MutantStack<int>::const_iterator it = mstack.cbegin();
-// 		MutantStack<int>::const_iterator ite = mstack.cend();
-// 		while (it != ite)
-// 		{
-// 			std::cout << *it << std::endl;
-// 			++it;
-// 		}
-// 		std::cout << std::endl;
+		MutantStack<int>::iterator it = stack.begin();
+		MutantStack<int>::iterator ite = stack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
 
-// 		std::cout << "🟢 removes '2', '3' and '4' elements from stack: " << std::endl;
-// 		for (int i = 0; i < 3; i++)
-// 			mstack.pop();
-// 		it = mstack.cbegin();
-// 		ite = mstack.cend();
-// 		while (it != ite)
-// 		{
-// 			std::cout << *it << std::endl;
-// 			++it;
-// 		}
-// 		std::cout << std::endl;
-// 	}
+		std::cout << "🟢 prints COPY INSTANCE: " << std::endl;
+		MutantStack<int>	copyStack(stack);
+		it = copyStack.begin();
+		ite = copyStack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
 
-// 	return ;	
-// }
+		std::cout << "🟢 prints ORIGINAL INSTANCE (MODIFIED) | DEEP COPY TEST: " << std::endl;
+		stack.pop();
+		stack.pop();
+
+		it = stack.begin();
+		ite = stack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
+
+		std::cout << "🟢 prints COPY INSTANCE (UNMODIFIED) | DEEP COPY TEST: " << std::endl;
+		it = copyStack.begin();
+		ite = copyStack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl;
+	}
+
+	return ;	
+}
+
+static void	assignmentTests(void)
+{
+	printTitle("5️⃣  ASSIGNMENT TESTS");
+
+	{
+		std::cout << "🟢 prints ORIGINAL INSTANCE 0-4, using begin() and end() iterators: " << std::endl;
+		MutantStack<int> stack;
+
+		for (int i = 0; i < 5; i++)
+			stack.push(i);
+
+		MutantStack<int>::iterator it = stack.begin();
+		MutantStack<int>::iterator ite = stack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
+
+		std::cout << "🟢 prints COPY INSTANCE: " << std::endl;
+		MutantStack<int>	copyStack = stack;
+		it = copyStack.begin();
+		ite = copyStack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
+
+		std::cout << "🟢 prints ORIGINAL INSTANCE (MODIFIED) | DEEP COPY TEST: " << std::endl;
+		stack.pop();
+		stack.pop();
+
+		it = stack.begin();
+		ite = stack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl << std::endl;
+
+		std::cout << "🟢 prints COPY INSTANCE (UNMODIFIED) | DEEP COPY TEST: " << std::endl;
+		it = copyStack.begin();
+		ite = copyStack.end();
+		while (it != ite)
+		{
+			std::cout << *it << " ";
+			++it;
+		}
+		std::cout << std::endl;
+	}
+
+	return ;	
+}
 
 int	main(void)
 {
 	subjectTests();
 	beginEndTests();
 	rbeginRendTests();
-	// cbeginCendTests();
+	copyTests();
+	assignmentTests();
 
 	return (0);
 }
