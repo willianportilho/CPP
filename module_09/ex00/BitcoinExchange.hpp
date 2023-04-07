@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 18:34:57 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:39:03 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <map>
 #include <ctime>
 #include <stdlib.h>
+#include <cstdlib>
 #include <cctype>
 #include "Exceptions.hpp"
 
@@ -41,20 +42,23 @@ class	BitcoinExchange
 		void			checkDay(std::string const &line);
 		bool			isLeapYear(unsigned int const year) const;
 		bool			isValidDate(unsigned int day, unsigned int month, unsigned int year);
+		void			checkMultiplier(std::string const &line);
 		void			handleData(void);
 		void			checkImput(std::string const fileName);
 		void			handleImput(std::string const fileName);
 		std::ifstream	_infile;
-		unsigned int	_currentYear;
-		unsigned int	_currentMonth;
-		unsigned int	_currentDay;
+		int				_currentYear;
+		int				_currentMonth;
+		int				_currentDay;
 		enum e_format
 		{
     		DELIMITER1 = 4,
 			DELIMITER2 = 7,
 			DELIMITER3 = 10,
 			DELIMITER5 = 11,
-			DELIMITER4 = 12
+			DELIMITER4 = 12,
+			MINIMUM_LINE_SIZE = 14,
+			BITCOIN_YEAR_FOUNDATION = 2009
 		};
 };
 

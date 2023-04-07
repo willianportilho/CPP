@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/04/06 20:44:50 by wportilh         ###   ########.fr        #
+#    Updated: 2023/04/07 20:03:34 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					@$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					@$(VAL) ./$(NAME)
+					@$(VAL) ./$(NAME) input.txt
 
 clean:
 					$(RM) $(OBJ_PATH)

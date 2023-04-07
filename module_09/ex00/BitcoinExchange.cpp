@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 19:41:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:42:59 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,14 @@ void	BitcoinExchange::checkMultiplierFormat(std::string const &line)
 
 void	BitcoinExchange::checkFormat(std::string const &line)
 {
-	if ((line.size() < 14)
+	if ((line.size() < MINIMUM_LINE_SIZE)
 	|| (line[DELIMITER1] != '-') || (line[DELIMITER2] != '-')
 	|| (line[DELIMITER3] != ' ') || (line[DELIMITER4] != ' ')
 	|| (line[DELIMITER5] != '|'))
 		badImput(line);
 	for (int i = 0; i < 10; i++)
 	{
-		if ((i != 4) && (i != 7) && (i != 10))
+		if ((i != DELIMITER1) && (i != DELIMITER2) && (i != DELIMITER3))
 		{
 			if (!isdigit(line[i]))
 				badImput(line);
@@ -142,9 +142,11 @@ void	BitcoinExchange::checkFormat(std::string const &line)
 
 void	BitcoinExchange::checkYear(std::string const &line)
 {
-	if (atoi(line.substr(0, 4).c_str()) < 2009)
+	const char	*year	= line.substr(0, 4).c_str();
+
+	if (atoi(year) < BITCOIN_YEAR_FOUNDATION)
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
-	else if (atoi(line.substr(0, 4).c_str()) > static_cast<int>(this->_currentYear))
+	else if (atoi(year) > this->_currentYear)
 		throw Exceptions("the searched date is later than the current date");
 
 	return ;
@@ -152,7 +154,9 @@ void	BitcoinExchange::checkYear(std::string const &line)
 
 void	BitcoinExchange::checkMonth(std::string const &line)
 {
-	if ((atoi(line.substr(5, 2).c_str()) < 1) || (atoi(line.substr(5, 2).c_str()) > 12))
+	const char	*month	= line.substr(5, 2).c_str();
+
+	if ((atoi(month) < 1) || (atoi(month) > 12))
 		throw Exceptions("the searched month is out of range");
 
 	return ;
@@ -160,14 +164,26 @@ void	BitcoinExchange::checkMonth(std::string const &line)
 
 void	BitcoinExchange::checkDay(std::string const &line)
 {
-	if ((atoi(line.substr(8, 2).c_str()) < 1) || (atoi(line.substr(8, 2).c_str()) > 31))
+	const char	*day	= line.substr(8, 2).c_str();
+	const char	*year	= line.substr(0, 4).c_str();
+	const char	*month	= line.substr(5, 2).c_str();
+
+	if ((atoi(day) < 1) || (atoi(day) > 31))
 		throw Exceptions("the searched day is out of range");
-	else if ((atoi(line.substr(0, 4).c_str()) == 2009)
-	&& (atoi(line.substr(5, 2).c_str()) == 1) && (atoi(line.substr(8, 2).c_str()) == 1))
+	else if ((atoi(year) == BITCOIN_YEAR_FOUNDATION) && (atoi(month) == 1) && (atoi(day) == 1))
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
-	else if (!isValidDate(atoi(line.substr(8, 2).c_str()),
-	atoi(line.substr(5, 2).c_str()), atoi(line.substr(0, 4).c_str())))
+	else if (!isValidDate(atoi(day), atoi(month), atoi(year)))
 		throw Exceptions("impossible date");
+
+	return ;
+}
+
+void	BitcoinExchange::checkMultiplier(std::string const &line)
+{
+	const char	*multiplier = line.substr(13, line.size() - 1).c_str();
+
+	if (std::atof(multiplier) > 1000)
+		throw Exceptions("too large a number.");
 
 	return ;
 }
@@ -189,6 +205,7 @@ void	BitcoinExchange::handleData(void)
 			checkYear(line);
 			checkMonth(line);
 			checkDay(line);
+			checkMultiplier(line);
 		}
 		catch(std::exception const &e)
 		{
