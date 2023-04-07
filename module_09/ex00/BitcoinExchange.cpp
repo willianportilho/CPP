@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 17:33:59 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:41:27 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,25 @@ void	BitcoinExchange::get_time(void)
 	return ;
 }
 
+bool	BitcoinExchange::isLeapYear(unsigned int const year) const
+{
+	return ((year % 4 == 0) && ((year % 100 != 0) || year % 400 == 0));
+}
+
+bool	BitcoinExchange::isValidDate(unsigned int day, unsigned int month, unsigned int year)
+{
+	unsigned int	maxDays = 31;
+
+	if ((month == 4) || (month == 6) || (month == 9) || (month == 11))
+		maxDays = 30;
+	else if (month == 2)
+		isLeapYear(year) ? maxDays = 29 : maxDays = 28;
+	if (day > maxDays)
+		return (false);
+
+	return (true);
+}
+
 void	BitcoinExchange::checkImput(std::string const fileName)
 {
 	if (fileName.empty())
@@ -91,10 +110,7 @@ void	BitcoinExchange::checkMultiplierFormat(std::string const &line)
 		else if (line[i] == '+')
 			amount_signal++;
 		else if (!isdigit(line[i]))
-		{
-			std::cout << line << std::endl;
 			badImput(line);
-		}
 	}
 	if ((amount_dot > 1) || (amount_dot && line[13] == '.') || (amount_dot && line[line.size() - 1] == '.'))
 		badImput(line);
@@ -137,7 +153,21 @@ void	BitcoinExchange::checkYear(std::string const &line)
 void	BitcoinExchange::checkMonth(std::string const &line)
 {
 	if ((atoi(line.substr(5, 2).c_str()) < 1) || (atoi(line.substr(5, 2).c_str()) > 12))
-		throw Exceptions("the searched month is invalid");
+		throw Exceptions("the searched month is out of range");
+
+	return ;
+}
+
+void	BitcoinExchange::checkDay(std::string const &line)
+{
+	if ((atoi(line.substr(8, 2).c_str()) < 1) || (atoi(line.substr(8, 2).c_str()) > 31))
+		throw Exceptions("the searched day is out of range");
+	else if ((atoi(line.substr(0, 4).c_str()) == 2009)
+	&& (atoi(line.substr(5, 2).c_str()) == 1) && (atoi(line.substr(8, 2).c_str()) == 1))
+		throw Exceptions("bitcoin mining emerged from january.02.2009");
+	else if (!isValidDate(atoi(line.substr(8, 2).c_str()),
+	atoi(line.substr(5, 2).c_str()), atoi(line.substr(0, 4).c_str())))
+		throw Exceptions("impossible date");
 
 	return ;
 }
@@ -158,6 +188,7 @@ void	BitcoinExchange::handleData(void)
 			checkFormat(line);
 			checkYear(line);
 			checkMonth(line);
+			checkDay(line);
 		}
 		catch(std::exception const &e)
 		{
