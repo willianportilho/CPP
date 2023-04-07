@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 20:54:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:09:03 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class	BitcoinExchange
 		~BitcoinExchange(void);
 		void	exchange(std::string const fileName);
 	private:
+		void	handleImput(std::string const fileName);
 };
 
 #endif
