@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 20:55:50 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:43:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int main(int argc, char **argv)
 	{	
 		BitcoinExchange	bitCoinExchange;
 		if (argc != 2)
-			throw Exceptions("invalid number of arguments");
+			throw Exceptions("could not open file.");
 		bitCoinExchange.exchange(argv[1]);	
 	}
 	catch(std::exception const &e)
 	{
-		std::cerr << "btc: error: " << e.what() << std::endl;
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
 	return (0);
 }
