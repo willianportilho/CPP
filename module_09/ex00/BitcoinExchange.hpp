@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 22:27:18 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:55:15 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <map>
 #include "Exceptions.hpp"
 
 class	BitcoinExchange
@@ -27,6 +28,8 @@ class	BitcoinExchange
 		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 		void			exchange(std::string const fileName);
 	private:
+		void			checkBreakLine(std::string const line) const;
+		void			checkData(void);
 		void			checkImput(std::string const fileName);
 		void			handleImput(std::string const fileName);
 		std::ifstream	_infile;

@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 22:28:49 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:56:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,33 @@ void	BitcoinExchange::checkImput(std::string const fileName)
 	return ;
 }
 
+void	BitcoinExchange::checkBreakLine(std::string const line) const
+{
+	if (line == "")
+			throw Exceptions("empty line detected");
+	return ;
+}
+
+void	BitcoinExchange::checkData(void)
+{
+	std::string	line;
+
+	std::getline(this->_infile, line);
+	if (line != "date | value")
+		throw Exceptions("wrong header format");
+	while (std::getline(this->_infile, line))
+	{
+		checkBreakLine(line);
+	}
+	checkBreakLine(line);
+	
+	return ;
+}
+
 void	BitcoinExchange::handleImput(std::string const fileName)
 {
 	checkImput(fileName);
+	checkData();
 
 	return ;
 }
