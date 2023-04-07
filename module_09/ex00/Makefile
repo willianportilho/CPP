@@ -6,12 +6,13 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/04/06 14:18:49 by wportilh         ###   ########.fr        #
+#    Updated: 2023/04/06 20:44:50 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES 	=		main.cpp			\
-					BitcoinExchange.cpp
+					BitcoinExchange.cpp	\
+					Exceptions.cpp
 
 NAME		=		btc
 
