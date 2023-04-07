@@ -6,13 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 22:09:17 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:28:49 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(void)
+BitcoinExchange::BitcoinExchange(void) : _infile("")
 {
 	return ;
 }
@@ -26,9 +26,7 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &src)
 BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 {
 	if (this != &rhs)
-	{
-		;
-	}
+		this->_infile.copyfmt(rhs._infile);
 	return (*this);
 }
 
@@ -37,15 +35,20 @@ BitcoinExchange::~BitcoinExchange(void)
 	return ;
 }
 
-void	BitcoinExchange::handleImput(std::string const fileName)
+void	BitcoinExchange::checkImput(std::string const fileName)
 {
-	std::ifstream	infile;
-
 	if (fileName.empty())
 		throw Exceptions("filename is empty");
-	infile.open(fileName.c_str());
-	if (!infile.is_open())
+	this->_infile.open(fileName.c_str());
+	if (!this->_infile.is_open())
 		throw Exceptions("cannot open the file");
+
+	return ;
+}
+
+void	BitcoinExchange::handleImput(std::string const fileName)
+{
+	checkImput(fileName);
 
 	return ;
 }

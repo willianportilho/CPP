@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/06 22:09:03 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:27:18 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ class	BitcoinExchange
 {
 	public:
 		BitcoinExchange(void);
-		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 		BitcoinExchange(BitcoinExchange const &src);
 		~BitcoinExchange(void);
-		void	exchange(std::string const fileName);
+		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
+		void			exchange(std::string const fileName);
 	private:
-		void	handleImput(std::string const fileName);
+		void			checkImput(std::string const fileName);
+		void			handleImput(std::string const fileName);
+		std::ifstream	_infile;
 };
 
 #endif
