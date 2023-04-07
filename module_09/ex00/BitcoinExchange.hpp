@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 16:56:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:28:26 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class	BitcoinExchange
 		void			checkMultiplierFormat(std::string const &line);
 		void			checkFormat(std::string const &line);
 		void			checkYear(std::string const &line);
-		void			checkData(void);
+		void			checkMonth(std::string const &line);
+		void			handleData(void);
 		void			checkImput(std::string const fileName);
 		void			handleImput(std::string const fileName);
 		std::ifstream	_infile;

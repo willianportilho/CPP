@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 17:15:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:33:59 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,15 @@ void	BitcoinExchange::checkYear(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::checkData(void)
+void	BitcoinExchange::checkMonth(std::string const &line)
+{
+	if ((atoi(line.substr(5, 2).c_str()) < 1) || (atoi(line.substr(5, 2).c_str()) > 12))
+		throw Exceptions("the searched month is invalid");
+
+	return ;
+}
+
+void	BitcoinExchange::handleData(void)
 {
 	std::string	line;
 
@@ -144,9 +152,17 @@ void	BitcoinExchange::checkData(void)
 	get_time();
 	while (std::getline(this->_infile, line))
 	{
-		checkEmptyLine(line);
-		checkFormat(line);
-		checkYear(line);
+		try
+		{	
+			checkEmptyLine(line);
+			checkFormat(line);
+			checkYear(line);
+			checkMonth(line);
+		}
+		catch(std::exception const &e)
+		{
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
 	}
 	checkEmptyLine(line);
 	
@@ -156,7 +172,7 @@ void	BitcoinExchange::checkData(void)
 void	BitcoinExchange::handleImput(std::string const fileName)
 {
 	checkImput(fileName);
-	checkData();
+	handleData();
 
 	return ;
 }
