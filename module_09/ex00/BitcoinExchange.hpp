@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 20:39:03 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:46:14 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ class	BitcoinExchange
 			DELIMITER5 = 11,
 			DELIMITER4 = 12,
 			MINIMUM_LINE_SIZE = 14,
+			MULTIPLIER_MAX = 1000,
 			BITCOIN_YEAR_FOUNDATION = 2009
 		};
 };
