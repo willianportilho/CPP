@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 20:46:20 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 22:41:06 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ bool	BitcoinExchange::isValidDate(unsigned int day, unsigned int month, unsigned
 	return (true);
 }
 
-void	BitcoinExchange::checkImput(std::string const fileName)
+void	BitcoinExchange::openImput(std::string const fileName)
 {
 	if (fileName.empty())
 		throw Exceptions("filename is empty");
@@ -213,20 +213,38 @@ void	BitcoinExchange::handleData(void)
 		}
 	}
 	checkEmptyLine(line);
+	this->_infile.close();
 	
 	return ;
 }
 
 void	BitcoinExchange::handleImput(std::string const fileName)
 {
-	checkImput(fileName);
+	openImput(fileName);
 	handleData();
+
+	return ;
+}
+
+void	BitcoinExchange::openDataBase(void)
+{
+	this->_infileDb.open("data.csv");
+	if (!this->_infileDb.is_open())
+		throw Exceptions("could not open data.csv.");
+
+	return ;
+}
+
+void	BitcoinExchange::handleDataBase(void)
+{
+	openDataBase();
 
 	return ;
 }
 
 void	BitcoinExchange::exchange(std::string const fileName)
 {
+	handleDataBase();
 	handleImput(fileName);
 
 	return ;
