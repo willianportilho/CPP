@@ -6,13 +6,13 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 22:41:06 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/07 22:43:09 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(void) : _infile(""), _currentYear(0), _currentMonth(0), _currentDay(0)
+BitcoinExchange::BitcoinExchange(void) : _infile(""), _infileDb(""), _currentYear(0), _currentMonth(0), _currentDay(0)
 {
 	return ;
 }
@@ -29,6 +29,7 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 	if (this != &rhs)
 	{
 		this->_infile.copyfmt(rhs._infile);
+		this->_infileDb.copyfmt(rhs._infileDb);
 		this->_currentYear = rhs._currentYear;
 		this->_currentMonth = rhs._currentMonth;
 		this->_currentDay = rhs._currentDay;
