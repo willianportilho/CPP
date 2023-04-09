@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 22:40:19 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 13:38:34 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ class	BitcoinExchange
 		bool			isLeapYear(unsigned int const year) const;
 		bool			isValidDate(unsigned int day, unsigned int month, unsigned int year);
 		void			checkMultiplier(std::string const &line);
-		void			handleData(void);
 		void			openDataBase(void);
 		void			handleDataBase(void);
 		void			openImput(std::string const fileName);
-		void			handleImput(std::string const fileName);
+		void			handleDataImput(std::string const &fileName);
 		std::ifstream	_infile;
 		std::ifstream	_infileDb;
 		int				_currentYear;

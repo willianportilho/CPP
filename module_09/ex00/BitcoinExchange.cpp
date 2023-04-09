@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/07 22:43:09 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 13:42:58 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,13 +189,13 @@ void	BitcoinExchange::checkMultiplier(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::handleData(void)
+void	BitcoinExchange::handleDataImput(std::string const &fileName)
 {
+	openImput(fileName);
 	std::string	line;
-
 	std::getline(this->_infile, line);
 	if (line != "date | value")
-		throw Exceptions("wrong header format");
+		throw Exceptions("wrong header format: " + fileName);
 	get_time();
 	while (std::getline(this->_infile, line))
 	{
@@ -219,14 +219,6 @@ void	BitcoinExchange::handleData(void)
 	return ;
 }
 
-void	BitcoinExchange::handleImput(std::string const fileName)
-{
-	openImput(fileName);
-	handleData();
-
-	return ;
-}
-
 void	BitcoinExchange::openDataBase(void)
 {
 	this->_infileDb.open("data.csv");
@@ -239,6 +231,11 @@ void	BitcoinExchange::openDataBase(void)
 void	BitcoinExchange::handleDataBase(void)
 {
 	openDataBase();
+	std::string	line;
+	std::getline(this->_infile, line);
+	if (line != "date,exchange_rate")
+		throw Exceptions("wrong header format: data.csv");
+	this->_infileDb.close();
 
 	return ;
 }
@@ -246,7 +243,7 @@ void	BitcoinExchange::handleDataBase(void)
 void	BitcoinExchange::exchange(std::string const fileName)
 {
 	handleDataBase();
-	handleImput(fileName);
+	handleDataImput(fileName);
 
 	return ;
 }
