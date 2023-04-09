@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 13:38:34 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:14:48 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	BitcoinExchange
 		void			get_time(void);
 		void			badImput(std::string const &line);
 		void			checkEmptyLine(std::string const &line) const;
-		void			checkMultiplierFormat(std::string const &line);
+		void			checkFloatFormat(std::string const &line, std::string const &completeLine);
 		void			checkFormat(std::string const &line);
 		void			checkYear(std::string const &line);
 		void			checkMonth(std::string const &line);
@@ -43,10 +43,11 @@ class	BitcoinExchange
 		bool			isLeapYear(unsigned int const year) const;
 		bool			isValidDate(unsigned int day, unsigned int month, unsigned int year);
 		void			checkMultiplier(std::string const &line);
-		void			openDataBase(void);
-		void			handleDataBase(void);
 		void			openImput(std::string const fileName);
 		void			handleDataImput(std::string const &fileName);
+		void			checkDbFormat(std::string const &line);
+		void			openDataBase(void);
+		void			handleDataBase(void);
 		std::ifstream	_infile;
 		std::ifstream	_infileDb;
 		int				_currentYear;

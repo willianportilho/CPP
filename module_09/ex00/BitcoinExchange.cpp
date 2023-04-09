@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 13:42:58 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:16:14 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,25 +98,25 @@ void	BitcoinExchange::badImput(std::string const &line)
 	return (throw Exceptions("bad imput => " + line));
 }
 
-void	BitcoinExchange::checkMultiplierFormat(std::string const &line)
+void	BitcoinExchange::checkFloatFormat(std::string const &line, std::string const &completeLine)
 {
 	int	amount_dot = 0, amount_signal = 0;
 
-	if (line[13] == '-')
+	if (line[0] == '-')
 			throw Exceptions("not a positive number.");
-	for (long unsigned int i = 13; i < line.size(); i++)
+	for (long unsigned int i = 0; i < line.size(); i++)
 	{
 		if (line[i] == '.')
 			amount_dot++;
 		else if (line[i] == '+')
 			amount_signal++;
 		else if (!isdigit(line[i]))
-			badImput(line);
+			badImput(completeLine);
 	}
-	if ((amount_dot > 1) || (amount_dot && line[13] == '.') || (amount_dot && line[line.size() - 1] == '.'))
-		badImput(line);
-	else if ((amount_signal > 1) || (amount_signal && line[13] != '+'))
-		badImput(line);
+	if ((amount_dot > 1) || (amount_dot && line[0] == '.') || (amount_dot && line[line.size() - 1] == '.'))
+		badImput(completeLine);
+	else if ((amount_signal > 1) || (amount_signal && line[0] != '+'))
+		badImput(completeLine);
 	
 	return ;
 }
@@ -136,7 +136,7 @@ void	BitcoinExchange::checkFormat(std::string const &line)
 				badImput(line);
 		}
 	}
-	checkMultiplierFormat(line);
+	checkFloatFormat(line.substr(13, line.size()), line);
 
 	return ;
 }
@@ -219,6 +219,24 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 	return ;
 }
 
+void	BitcoinExchange::checkDbFormat(std::string const &line)
+{
+	if ((line.size() < MINIMUM_LINE_SIZE - 2)
+	|| (line[DELIMITER1] != '-') || (line[DELIMITER2] != '-')
+	|| (line[DELIMITER3] != ','))
+		badImput(line);
+	for (int i = 0; i < 10; i++)
+	{
+		if ((i != DELIMITER1) && (i != DELIMITER2) && (i != DELIMITER3))
+		{
+			if (!isdigit(line[i]))
+				badImput(line);
+		}
+	}
+	checkFloatFormat(line.substr(11, line.size()), line);
+
+	return ;
+}
 void	BitcoinExchange::openDataBase(void)
 {
 	this->_infileDb.open("data.csv");
@@ -232,9 +250,18 @@ void	BitcoinExchange::handleDataBase(void)
 {
 	openDataBase();
 	std::string	line;
-	std::getline(this->_infile, line);
+	std::getline(this->_infileDb, line);
 	if (line != "date,exchange_rate")
 		throw Exceptions("wrong header format: data.csv");
+	while (std::getline(this->_infileDb, line))
+	{
+		checkEmptyLine(line);
+		checkDbFormat(line);
+		// checkYear(line);
+		// checkMonth(line);
+		// checkDay(line);
+		// checkMultiplier(line);
+	}
 	this->_infileDb.close();
 
 	return ;
