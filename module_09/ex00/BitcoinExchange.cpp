@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 14:16:14 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:34:04 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	BitcoinExchange::checkFormat(std::string const &line)
 				badImput(line);
 		}
 	}
-	checkFloatFormat(line.substr(13, line.size()), line);
+	checkFloatFormat(line.substr(13, line.size() - 1), line);
 
 	return ;
 }
@@ -196,7 +196,6 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 	std::getline(this->_infile, line);
 	if (line != "date | value")
 		throw Exceptions("wrong header format: " + fileName);
-	get_time();
 	while (std::getline(this->_infile, line))
 	{
 		try
@@ -233,7 +232,7 @@ void	BitcoinExchange::checkDbFormat(std::string const &line)
 				badImput(line);
 		}
 	}
-	checkFloatFormat(line.substr(11, line.size()), line);
+	checkFloatFormat(line.substr(11, line.size() - 1), line);
 
 	return ;
 }
@@ -246,6 +245,16 @@ void	BitcoinExchange::openDataBase(void)
 	return ;
 }
 
+void	BitcoinExchange::checkExchangeRate(std::string const &line)
+{
+	const char	*multiplier = line.substr(11, line.size() - 1).c_str();
+
+	if (std::atof(multiplier) > EXCHANGE_RATE_MAX)
+		throw Exceptions("too large a number: data.csv");
+
+	return ;
+}
+
 void	BitcoinExchange::handleDataBase(void)
 {
 	openDataBase();
@@ -253,14 +262,15 @@ void	BitcoinExchange::handleDataBase(void)
 	std::getline(this->_infileDb, line);
 	if (line != "date,exchange_rate")
 		throw Exceptions("wrong header format: data.csv");
+	get_time();
 	while (std::getline(this->_infileDb, line))
 	{
 		checkEmptyLine(line);
 		checkDbFormat(line);
-		// checkYear(line);
-		// checkMonth(line);
-		// checkDay(line);
-		// checkMultiplier(line);
+		checkYear(line);
+		checkMonth(line);
+		checkDay(line);
+		checkExchangeRate(line);
 	}
 	this->_infileDb.close();
 

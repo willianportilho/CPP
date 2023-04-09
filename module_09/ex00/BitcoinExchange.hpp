@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 14:14:48 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:33:10 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class	BitcoinExchange
 		bool			isValidDate(unsigned int day, unsigned int month, unsigned int year);
 		void			checkMultiplier(std::string const &line);
 		void			openImput(std::string const fileName);
+		void			checkExchangeRate(std::string const &line);
 		void			handleDataImput(std::string const &fileName);
 		void			checkDbFormat(std::string const &line);
 		void			openDataBase(void);
@@ -62,7 +63,8 @@ class	BitcoinExchange
 			DELIMITER4 = 12,
 			MINIMUM_LINE_SIZE = 14,
 			MULTIPLIER_MAX = 1000,
-			BITCOIN_YEAR_FOUNDATION = 2009
+			BITCOIN_YEAR_FOUNDATION = 2009,
+			EXCHANGE_RATE_MAX = 2147483647
 		};
 };
 
