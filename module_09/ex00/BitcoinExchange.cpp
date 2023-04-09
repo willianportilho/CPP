@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 14:34:04 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:17:44 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,17 @@ void	BitcoinExchange::checkMultiplier(std::string const &line)
 	return ;
 }
 
+void	BitcoinExchange::fillMapImput(std::string line)
+{
+	line.erase(DELIMITER1, 1);
+	line.erase((DELIMITER2 - 1), 1);
+	unsigned int	date = atoi(line.substr(0, 8).c_str());
+	float			rateExchange = strtof(line.substr(11, line.size() - 1).c_str(), NULL);
+	this->mapImput[date] = rateExchange;
+
+	return ;
+}
+
 void	BitcoinExchange::handleDataImput(std::string const &fileName)
 {
 	openImput(fileName);
@@ -206,13 +217,13 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 			checkMonth(line);
 			checkDay(line);
 			checkMultiplier(line);
+			fillMapImput(line);
 		}
 		catch(std::exception const &e)
 		{
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
 	}
-	checkEmptyLine(line);
 	this->_infile.close();
 	
 	return ;
@@ -255,6 +266,17 @@ void	BitcoinExchange::checkExchangeRate(std::string const &line)
 	return ;
 }
 
+void	BitcoinExchange::fillMapDataBase(std::string line)
+{
+	line.erase(DELIMITER1, 1);
+	line.erase((DELIMITER2 - 1), 1);
+	unsigned int	date = atoi(line.substr(0, 8).c_str());
+	float			rateExchange = strtof(line.substr(9, line.size() - 1).c_str(), NULL);
+	this->mapDb[date] = rateExchange;
+
+	return ;
+}
+
 void	BitcoinExchange::handleDataBase(void)
 {
 	openDataBase();
@@ -271,6 +293,7 @@ void	BitcoinExchange::handleDataBase(void)
 		checkMonth(line);
 		checkDay(line);
 		checkExchangeRate(line);
+		fillMapDataBase(line);
 	}
 	this->_infileDb.close();
 
@@ -281,6 +304,9 @@ void	BitcoinExchange::exchange(std::string const fileName)
 {
 	handleDataBase();
 	handleDataImput(fileName);
+	// std::map<unsigned int, float>::iterator	it;
+	// for (it = mapImput.begin(); it != mapImput.end(); it++)
+	// 	std::cout << it->second << std::endl;
 
 	return ;
 }

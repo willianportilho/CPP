@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 14:33:10 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:12:20 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,35 @@ class	BitcoinExchange
 		BitcoinExchange(void);
 		BitcoinExchange(BitcoinExchange const &src);
 		~BitcoinExchange(void);
-		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
-		void			exchange(std::string const fileName);
+		BitcoinExchange					&operator=(BitcoinExchange const &rhs);
+		void							exchange(std::string const fileName);
 	private:
-		void			get_time(void);
-		void			badImput(std::string const &line);
-		void			checkEmptyLine(std::string const &line) const;
-		void			checkFloatFormat(std::string const &line, std::string const &completeLine);
-		void			checkFormat(std::string const &line);
-		void			checkYear(std::string const &line);
-		void			checkMonth(std::string const &line);
-		void			checkDay(std::string const &line);
-		bool			isLeapYear(unsigned int const year) const;
-		bool			isValidDate(unsigned int day, unsigned int month, unsigned int year);
-		void			checkMultiplier(std::string const &line);
-		void			openImput(std::string const fileName);
-		void			checkExchangeRate(std::string const &line);
-		void			handleDataImput(std::string const &fileName);
-		void			checkDbFormat(std::string const &line);
-		void			openDataBase(void);
-		void			handleDataBase(void);
-		std::ifstream	_infile;
-		std::ifstream	_infileDb;
-		int				_currentYear;
-		int				_currentMonth;
-		int				_currentDay;
+		void							get_time(void);
+		void							badImput(std::string const &line);
+		void							checkEmptyLine(std::string const &line) const;
+		void							checkFloatFormat(std::string const &line, std::string const &completeLine);
+		void							checkFormat(std::string const &line);
+		void							checkYear(std::string const &line);
+		void							checkMonth(std::string const &line);
+		void							checkDay(std::string const &line);
+		bool							isLeapYear(unsigned int const year) const;
+		bool							isValidDate(unsigned int day, unsigned int month, unsigned int year);
+		void							checkMultiplier(std::string const &line);
+		void							fillMapImput(std::string line);
+		void							openImput(std::string const fileName);
+		void							fillMapDataBase(std::string line);
+		void							checkExchangeRate(std::string const &line);
+		void							handleDataImput(std::string const &fileName);
+		void							checkDbFormat(std::string const &line);
+		void							openDataBase(void);
+		void							handleDataBase(void);
+		std::map<unsigned int, float>	mapDb;
+		std::map<unsigned int, float>	mapImput;
+		std::ifstream					_infile;
+		std::ifstream					_infileDb;
+		int								_currentYear;
+		int								_currentMonth;
+		int								_currentDay;
 		enum e_format
 		{
     		DELIMITER1 = 4,
