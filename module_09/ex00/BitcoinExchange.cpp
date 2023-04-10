@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:29:02 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:43:50 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,26 @@ void	BitcoinExchange::_checkDay(std::string const &line)
 	int	day		= atoi(line.substr(8, 2).c_str());
 
 	if ((day < 1) || (day > 31))
-		throw Exceptions("the searched day is out of range");
+		throw Exceptions("the searched day does not exist");
 	else if ((year == BITCOIN_YEAR_FOUNDATION) && (month == 1) && (day == 1))
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
 	else if (!_isValidDate(day, month, year))
 		throw Exceptions("impossible date");
+	else if ((year >= this->_currentYear) && (month >= this->_currentMonth) && (day > this->_currentDay))
+		throw Exceptions("the searched date is later than the current date");
 
 	return ;
 }
 
 void	BitcoinExchange::_checkMonth(std::string const &line)
 {
+	int	year	= atoi(line.substr(0, 4).c_str());
 	int month	= atoi(line.substr(5, 2).c_str());
 
 	if ((month < 1) || (month > 12))
-		throw Exceptions("the searched month is out of range");
+		throw Exceptions("the searched month does not exist");
+	else if ((year >= this->_currentYear) && (month > this->_currentMonth))
+		throw Exceptions("the searched date is later than the current date");
 
 	return ;
 }
