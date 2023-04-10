@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 17:36:47 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:54:06 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ _multiple(src._multiple), _divide(src._divide), _space(src._space), _zero(src._z
 RPN	&RPN::operator=(RPN const &rhs)
 {
 	if (this != &rhs)
-		return (*this);
+	{
+		// this->_stack.;
+		// this->_stack = rhs._stack;
+		;
+	}
 
 	return (*this);
 }
@@ -127,10 +131,18 @@ void	RPN::_handleExpression(std::string &expression)
 	return ;
 }
 
+void	RPN::_fillStack(std::string &expression)
+{
+	for (int i = 0; expression[i]; i++)
+		this->_stack.push(expression[i]);	
+
+	return ;
+}
+
 void	RPN::reversePolishNotation(std::string expression)
 {
 	_handleExpression(expression);
-	// _fillStack(expression);
+	_fillStack(expression);
 
 	return ;
 }
