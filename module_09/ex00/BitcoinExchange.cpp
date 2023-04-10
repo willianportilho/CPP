@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:27:07 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:29:02 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,7 +276,7 @@ void	BitcoinExchange::_checkFloatFormat(std::string const &line, std::string con
 	return ;
 }
 
-void	BitcoinExchange::_checkFormat(std::string const &line)
+void	BitcoinExchange::_checkImputFormat(std::string const &line)
 {
 	if ((line.size() < MINIMUM_LINE_SIZE)
 	|| (line[DELIMITER1] != '-') || (line[DELIMITER2] != '-')
@@ -319,7 +319,7 @@ void	BitcoinExchange::_handleImput(std::string const &fileName)
 		try
 		{	
 			_checkEmptyLine(line);
-			_checkFormat(line);
+			_checkImputFormat(line);
 			_checkYear(line);
 			_checkMonth(line);
 			_checkDay(line);

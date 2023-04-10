@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:26:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:29:10 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class	BitcoinExchange
 		void							_badImput(std::string const &line);
 		void							_checkEmptyLine(std::string const &line) const;
 		void							_checkFloatFormat(std::string const &line, std::string const &completeLine);
-		void							_checkFormat(std::string const &line);
+		void							_checkImputFormat(std::string const &line);
 		void							_checkYear(std::string const &line);
 		void							_checkMonth(std::string const &line);
 		void							_checkDay(std::string const &line);
