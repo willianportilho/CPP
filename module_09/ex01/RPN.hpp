@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 01:41:30 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:24:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <stdlib.h>
 #include "Exceptions.hpp"
 
 class	RPN
@@ -23,10 +24,16 @@ class	RPN
 		RPN(void);
 		RPN(RPN const &src);
 		~RPN(void);
-		RPN		&operator=(RPN const &rhs);
-		void	reversePolishNotation(std::string expression);
+		RPN			&operator=(RPN const &rhs);
+		void		reversePolishNotation(std::string expression);
 	private:
-		void	_checkExpression(std::string &expression);
+		int			_isValidCharacter(char c);
+		void		_checkExpressionCharacters(std::string &expression);
+		const char	_plus;
+		const char	_minus;
+		const char	_multiple;
+		const char	_divide;
+		const char	_space;
 };
 
 #endif
