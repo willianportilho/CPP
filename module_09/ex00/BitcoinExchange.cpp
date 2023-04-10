@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:09:28 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:14:06 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,8 +221,8 @@ void	BitcoinExchange::_bitCoinResult(std::string line)
 		{
 			std::map<unsigned int, float>::iterator	nextIt = it;
 			++nextIt;
-			if (((date >= it->first) && (date < nextIt->first))
-			|| ((date >= it->first) && (nextIt == _mapDb.end())))
+			if (((date >= it->first) && (nextIt == _mapDb.end()))
+			|| ((date >= it->first) && (date < nextIt->first)))
 			{
 				result = it->second * multipler;
 				_printResult(dateWithDelimiters, multipler, result);
