@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:25:01 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:27:07 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ void	BitcoinExchange::_checkMonth(std::string const &line)
 
 	return ;
 }
-
 
 void	BitcoinExchange::_checkYear(std::string const &line)
 {
