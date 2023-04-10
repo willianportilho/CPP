@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 17:23:05 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:36:47 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	RPN::_removeLeadingZeros(std::string &expression)
 			i--;
 		}
 	}
-	std::cout << expression << std::endl;
 
 	return ;
 }
@@ -101,6 +100,20 @@ void	RPN::_checkValues(std::string &expression)
 	return ;
 }
 
+void	RPN::_removeSpaces(std::string &expression)
+{
+	for (int i = 0; expression[i]; i++)
+	{
+		if (expression[i] == this->_space)
+		{
+			expression.erase(i, 1);
+			i--;
+		}
+	}
+
+	return ;
+}
+
 void	RPN::_handleExpression(std::string &expression)
 {
 	if (expression.empty())
@@ -108,6 +121,7 @@ void	RPN::_handleExpression(std::string &expression)
 	_checkCharacters(expression);
 	_removeLeadingZeros(expression);
 	_checkValues(expression);
+	_removeSpaces(expression);
 	_checkMinimumExpression(expression);
 
 	return ;
@@ -116,6 +130,7 @@ void	RPN::_handleExpression(std::string &expression)
 void	RPN::reversePolishNotation(std::string expression)
 {
 	_handleExpression(expression);
+	// _fillStack(expression);
 
 	return ;
 }

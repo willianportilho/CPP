@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 17:21:33 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:33:09 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	RPN
 		void		_checkCharacters(std::string &expression);
 		void		_removeLeadingZeros(std::string &expression);
 		void		_checkValues(std::string &expression);
+		void		_removeSpaces(std::string &expression);
 		void		_checkMinimumExpression(std::string &expression);
 		void		_handleExpression(std::string &expression);
 		const char	_plus;
