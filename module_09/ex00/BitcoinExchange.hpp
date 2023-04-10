@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:04:04 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:25:09 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class	BitcoinExchange
 		void							_openImput(std::string const fileName);
 		void							_fillMapDataBase(std::string line);
 		void							_checkExchangeRate(std::string const &line);
-		void							_handleDataImput(std::string const &fileName);
+		void							_handleImput(std::string const &fileName);
 		void							_checkDbFormat(std::string const &line);
 		void							_openDataBase(void);
 		void							_handleDataBase(void);
