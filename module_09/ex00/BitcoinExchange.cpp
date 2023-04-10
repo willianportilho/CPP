@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 20:17:44 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:59:35 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,11 @@ void	BitcoinExchange::checkFormat(std::string const &line)
 
 void	BitcoinExchange::checkYear(std::string const &line)
 {
-	const char	*year	= line.substr(0, 4).c_str();
+	int year	= atoi(line.substr(0, 4).c_str());
 
-	if (atoi(year) < BITCOIN_YEAR_FOUNDATION)
+	if (year < BITCOIN_YEAR_FOUNDATION)
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
-	else if (atoi(year) > this->_currentYear)
+	else if (year > this->_currentYear)
 		throw Exceptions("the searched date is later than the current date");
 
 	return ;
@@ -155,9 +155,9 @@ void	BitcoinExchange::checkYear(std::string const &line)
 
 void	BitcoinExchange::checkMonth(std::string const &line)
 {
-	const char	*month	= line.substr(5, 2).c_str();
+	int month	= atoi(line.substr(5, 2).c_str());
 
-	if ((atoi(month) < 1) || (atoi(month) > 12))
+	if ((month < 1) || (month > 12))
 		throw Exceptions("the searched month is out of range");
 
 	return ;
@@ -165,15 +165,15 @@ void	BitcoinExchange::checkMonth(std::string const &line)
 
 void	BitcoinExchange::checkDay(std::string const &line)
 {
-	const char	*day	= line.substr(8, 2).c_str();
-	const char	*year	= line.substr(0, 4).c_str();
-	const char	*month	= line.substr(5, 2).c_str();
+	int	year	= atoi(line.substr(0, 4).c_str());
+	int	month	= atoi(line.substr(5, 2).c_str());
+	int	day		= atoi(line.substr(8, 2).c_str());
 
-	if ((atoi(day) < 1) || (atoi(day) > 31))
+	if ((day < 1) || (day > 31))
 		throw Exceptions("the searched day is out of range");
-	else if ((atoi(year) == BITCOIN_YEAR_FOUNDATION) && (atoi(month) == 1) && (atoi(day) == 1))
+	else if ((year == BITCOIN_YEAR_FOUNDATION) && (month == 1) && (day == 1))
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
-	else if (!isValidDate(atoi(day), atoi(month), atoi(year)))
+	else if (!isValidDate(day, month, year))
 		throw Exceptions("impossible date");
 
 	return ;
@@ -189,13 +189,46 @@ void	BitcoinExchange::checkMultiplier(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::fillMapImput(std::string line)
+void	BitcoinExchange::printResult(std::string const dateWithDelimiters, float multipler, float result) const
 {
+	std::cout << dateWithDelimiters << " => " << multipler << " = " << result << std::endl;
+
+	return ;
+}
+
+void	BitcoinExchange::bitCoinResult(std::string line)
+{
+	std::string	dateWithDelimiters = line.substr(0, 10);
 	line.erase(DELIMITER1, 1);
 	line.erase((DELIMITER2 - 1), 1);
-	unsigned int	date = atoi(line.substr(0, 8).c_str());
-	float			rateExchange = strtof(line.substr(11, line.size() - 1).c_str(), NULL);
-	this->mapImput[date] = rateExchange;
+	unsigned int	date		= atoi(line.substr(0, 8).c_str());
+	float			multipler	= strtof(line.substr(11, line.size() - 1).c_str(), NULL);
+	float			result;
+
+	std::map<unsigned int, float>::iterator	it;
+	it = mapDb.find(date);
+	if (it != this->mapDb.end())
+	{
+		result = this->mapDb[date] * multipler;
+		printResult(dateWithDelimiters, multipler, result);
+		return ;
+	}
+	else
+	{
+		for (it = mapDb.begin(); it != mapDb.end(); it++)
+		{
+			std::map<unsigned int, float>::iterator	nextIt = it;
+			++nextIt;
+			if (((date >= it->first) && (date < nextIt->first))
+			|| ((date >= it->first) && (nextIt == mapDb.end())))
+			{
+				result = it->second * multipler;
+				printResult(dateWithDelimiters, multipler, result);
+				return ;
+			}
+		}
+		badImput(line);
+	}
 
 	return ;
 }
@@ -217,7 +250,7 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 			checkMonth(line);
 			checkDay(line);
 			checkMultiplier(line);
-			fillMapImput(line);
+			bitCoinResult(line);
 		}
 		catch(std::exception const &e)
 		{
@@ -247,6 +280,7 @@ void	BitcoinExchange::checkDbFormat(std::string const &line)
 
 	return ;
 }
+
 void	BitcoinExchange::openDataBase(void)
 {
 	this->_infileDb.open("data.csv");
@@ -304,9 +338,6 @@ void	BitcoinExchange::exchange(std::string const fileName)
 {
 	handleDataBase();
 	handleDataImput(fileName);
-	// std::map<unsigned int, float>::iterator	it;
-	// for (it = mapImput.begin(); it != mapImput.end(); it++)
-	// 	std::cout << it->second << std::endl;
 
 	return ;
 }

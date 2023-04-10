@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 20:12:20 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:59:50 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ class	BitcoinExchange
 		bool							isLeapYear(unsigned int const year) const;
 		bool							isValidDate(unsigned int day, unsigned int month, unsigned int year);
 		void							checkMultiplier(std::string const &line);
-		void							fillMapImput(std::string line);
+		void							printResult(std::string const date, float multipler, float result) const;
+		void							bitCoinResult(std::string line);
 		void							openImput(std::string const fileName);
 		void							fillMapDataBase(std::string line);
 		void							checkExchangeRate(std::string const &line);
@@ -52,7 +53,6 @@ class	BitcoinExchange
 		void							openDataBase(void);
 		void							handleDataBase(void);
 		std::map<unsigned int, float>	mapDb;
-		std::map<unsigned int, float>	mapImput;
 		std::ifstream					_infile;
 		std::ifstream					_infileDb;
 		int								_currentYear;
