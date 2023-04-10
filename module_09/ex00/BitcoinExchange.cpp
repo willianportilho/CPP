@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 21:59:35 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:09:28 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 		this->_currentYear = rhs._currentYear;
 		this->_currentMonth = rhs._currentMonth;
 		this->_currentDay = rhs._currentDay;
+		this->_mapDb.clear();
+		this->_mapDb = rhs._mapDb;
 	}
 
 	return (*this);
@@ -43,7 +45,7 @@ BitcoinExchange::~BitcoinExchange(void)
 	return ;
 }
 
-void	BitcoinExchange::get_time(void)
+void	BitcoinExchange::_get_time(void)
 {
 	time_t	now = time(0);
 	tm		*localTime = localtime(&now);
@@ -55,26 +57,26 @@ void	BitcoinExchange::get_time(void)
 	return ;
 }
 
-bool	BitcoinExchange::isLeapYear(unsigned int const year) const
+bool	BitcoinExchange::_isLeapYear(unsigned int const year) const
 {
 	return ((year % 4 == 0) && ((year % 100 != 0) || year % 400 == 0));
 }
 
-bool	BitcoinExchange::isValidDate(unsigned int day, unsigned int month, unsigned int year)
+bool	BitcoinExchange::_isValidDate(unsigned int day, unsigned int month, unsigned int year)
 {
 	unsigned int	maxDays = 31;
 
 	if ((month == 4) || (month == 6) || (month == 9) || (month == 11))
 		maxDays = 30;
 	else if (month == 2)
-		isLeapYear(year) ? maxDays = 29 : maxDays = 28;
+		_isLeapYear(year) ? maxDays = 29 : maxDays = 28;
 	if (day > maxDays)
 		return (false);
 
 	return (true);
 }
 
-void	BitcoinExchange::openImput(std::string const fileName)
+void	BitcoinExchange::_openImput(std::string const fileName)
 {
 	if (fileName.empty())
 		throw Exceptions("filename is empty");
@@ -85,7 +87,7 @@ void	BitcoinExchange::openImput(std::string const fileName)
 	return ;
 }
 
-void	BitcoinExchange::checkEmptyLine(std::string const &line) const
+void	BitcoinExchange::_checkEmptyLine(std::string const &line) const
 {
 	if (line.empty())
 			throw Exceptions("empty line detected");
@@ -93,12 +95,12 @@ void	BitcoinExchange::checkEmptyLine(std::string const &line) const
 	return ;
 }
 
-void	BitcoinExchange::badImput(std::string const &line)
+void	BitcoinExchange::_badImput(std::string const &line)
 {
 	return (throw Exceptions("bad imput => " + line));
 }
 
-void	BitcoinExchange::checkFloatFormat(std::string const &line, std::string const &completeLine)
+void	BitcoinExchange::_checkFloatFormat(std::string const &line, std::string const &completeLine)
 {
 	int	amount_dot = 0, amount_signal = 0;
 
@@ -111,37 +113,37 @@ void	BitcoinExchange::checkFloatFormat(std::string const &line, std::string cons
 		else if (line[i] == '+')
 			amount_signal++;
 		else if (!isdigit(line[i]))
-			badImput(completeLine);
+			_badImput(completeLine);
 	}
 	if ((amount_dot > 1) || (amount_dot && line[0] == '.') || (amount_dot && line[line.size() - 1] == '.'))
-		badImput(completeLine);
+		_badImput(completeLine);
 	else if ((amount_signal > 1) || (amount_signal && line[0] != '+'))
-		badImput(completeLine);
+		_badImput(completeLine);
 	
 	return ;
 }
 
-void	BitcoinExchange::checkFormat(std::string const &line)
+void	BitcoinExchange::_checkFormat(std::string const &line)
 {
 	if ((line.size() < MINIMUM_LINE_SIZE)
 	|| (line[DELIMITER1] != '-') || (line[DELIMITER2] != '-')
 	|| (line[DELIMITER3] != ' ') || (line[DELIMITER4] != ' ')
 	|| (line[DELIMITER5] != '|'))
-		badImput(line);
+		_badImput(line);
 	for (int i = 0; i < 10; i++)
 	{
 		if ((i != DELIMITER1) && (i != DELIMITER2) && (i != DELIMITER3))
 		{
 			if (!isdigit(line[i]))
-				badImput(line);
+				_badImput(line);
 		}
 	}
-	checkFloatFormat(line.substr(13, line.size() - 1), line);
+	_checkFloatFormat(line.substr(13, line.size() - 1), line);
 
 	return ;
 }
 
-void	BitcoinExchange::checkYear(std::string const &line)
+void	BitcoinExchange::_checkYear(std::string const &line)
 {
 	int year	= atoi(line.substr(0, 4).c_str());
 
@@ -153,7 +155,7 @@ void	BitcoinExchange::checkYear(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::checkMonth(std::string const &line)
+void	BitcoinExchange::_checkMonth(std::string const &line)
 {
 	int month	= atoi(line.substr(5, 2).c_str());
 
@@ -163,7 +165,7 @@ void	BitcoinExchange::checkMonth(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::checkDay(std::string const &line)
+void	BitcoinExchange::_checkDay(std::string const &line)
 {
 	int	year	= atoi(line.substr(0, 4).c_str());
 	int	month	= atoi(line.substr(5, 2).c_str());
@@ -173,13 +175,13 @@ void	BitcoinExchange::checkDay(std::string const &line)
 		throw Exceptions("the searched day is out of range");
 	else if ((year == BITCOIN_YEAR_FOUNDATION) && (month == 1) && (day == 1))
 		throw Exceptions("bitcoin mining emerged from january.02.2009");
-	else if (!isValidDate(day, month, year))
+	else if (!_isValidDate(day, month, year))
 		throw Exceptions("impossible date");
 
 	return ;
 }
 
-void	BitcoinExchange::checkMultiplier(std::string const &line)
+void	BitcoinExchange::_checkMultiplier(std::string const &line)
 {
 	const char	*multiplier = line.substr(13, line.size() - 1).c_str();
 
@@ -189,14 +191,14 @@ void	BitcoinExchange::checkMultiplier(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::printResult(std::string const dateWithDelimiters, float multipler, float result) const
+void	BitcoinExchange::_printResult(std::string const dateWithDelimiters, float multipler, float result) const
 {
 	std::cout << dateWithDelimiters << " => " << multipler << " = " << result << std::endl;
 
 	return ;
 }
 
-void	BitcoinExchange::bitCoinResult(std::string line)
+void	BitcoinExchange::_bitCoinResult(std::string line)
 {
 	std::string	dateWithDelimiters = line.substr(0, 10);
 	line.erase(DELIMITER1, 1);
@@ -206,36 +208,36 @@ void	BitcoinExchange::bitCoinResult(std::string line)
 	float			result;
 
 	std::map<unsigned int, float>::iterator	it;
-	it = mapDb.find(date);
-	if (it != this->mapDb.end())
+	it = _mapDb.find(date);
+	if (it != this->_mapDb.end())
 	{
-		result = this->mapDb[date] * multipler;
-		printResult(dateWithDelimiters, multipler, result);
+		result = this->_mapDb[date] * multipler;
+		_printResult(dateWithDelimiters, multipler, result);
 		return ;
 	}
 	else
 	{
-		for (it = mapDb.begin(); it != mapDb.end(); it++)
+		for (it = _mapDb.begin(); it != _mapDb.end(); it++)
 		{
 			std::map<unsigned int, float>::iterator	nextIt = it;
 			++nextIt;
 			if (((date >= it->first) && (date < nextIt->first))
-			|| ((date >= it->first) && (nextIt == mapDb.end())))
+			|| ((date >= it->first) && (nextIt == _mapDb.end())))
 			{
 				result = it->second * multipler;
-				printResult(dateWithDelimiters, multipler, result);
+				_printResult(dateWithDelimiters, multipler, result);
 				return ;
 			}
 		}
-		badImput(line);
+		_badImput(line);
 	}
 
 	return ;
 }
 
-void	BitcoinExchange::handleDataImput(std::string const &fileName)
+void	BitcoinExchange::_handleDataImput(std::string const &fileName)
 {
-	openImput(fileName);
+	_openImput(fileName);
 	std::string	line;
 	std::getline(this->_infile, line);
 	if (line != "date | value")
@@ -244,13 +246,13 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 	{
 		try
 		{	
-			checkEmptyLine(line);
-			checkFormat(line);
-			checkYear(line);
-			checkMonth(line);
-			checkDay(line);
-			checkMultiplier(line);
-			bitCoinResult(line);
+			_checkEmptyLine(line);
+			_checkFormat(line);
+			_checkYear(line);
+			_checkMonth(line);
+			_checkDay(line);
+			_checkMultiplier(line);
+			_bitCoinResult(line);
 		}
 		catch(std::exception const &e)
 		{
@@ -262,26 +264,26 @@ void	BitcoinExchange::handleDataImput(std::string const &fileName)
 	return ;
 }
 
-void	BitcoinExchange::checkDbFormat(std::string const &line)
+void	BitcoinExchange::_checkDbFormat(std::string const &line)
 {
 	if ((line.size() < MINIMUM_LINE_SIZE - 2)
 	|| (line[DELIMITER1] != '-') || (line[DELIMITER2] != '-')
 	|| (line[DELIMITER3] != ','))
-		badImput(line);
+		_badImput(line);
 	for (int i = 0; i < 10; i++)
 	{
 		if ((i != DELIMITER1) && (i != DELIMITER2) && (i != DELIMITER3))
 		{
 			if (!isdigit(line[i]))
-				badImput(line);
+				_badImput(line);
 		}
 	}
-	checkFloatFormat(line.substr(11, line.size() - 1), line);
+	_checkFloatFormat(line.substr(11, line.size() - 1), line);
 
 	return ;
 }
 
-void	BitcoinExchange::openDataBase(void)
+void	BitcoinExchange::_openDataBase(void)
 {
 	this->_infileDb.open("data.csv");
 	if (!this->_infileDb.is_open())
@@ -290,7 +292,7 @@ void	BitcoinExchange::openDataBase(void)
 	return ;
 }
 
-void	BitcoinExchange::checkExchangeRate(std::string const &line)
+void	BitcoinExchange::_checkExchangeRate(std::string const &line)
 {
 	const char	*multiplier = line.substr(11, line.size() - 1).c_str();
 
@@ -300,34 +302,34 @@ void	BitcoinExchange::checkExchangeRate(std::string const &line)
 	return ;
 }
 
-void	BitcoinExchange::fillMapDataBase(std::string line)
+void	BitcoinExchange::_fillMapDataBase(std::string line)
 {
 	line.erase(DELIMITER1, 1);
 	line.erase((DELIMITER2 - 1), 1);
 	unsigned int	date = atoi(line.substr(0, 8).c_str());
 	float			rateExchange = strtof(line.substr(9, line.size() - 1).c_str(), NULL);
-	this->mapDb[date] = rateExchange;
+	this->_mapDb[date] = rateExchange;
 
 	return ;
 }
 
-void	BitcoinExchange::handleDataBase(void)
+void	BitcoinExchange::_handleDataBase(void)
 {
-	openDataBase();
+	_openDataBase();
 	std::string	line;
 	std::getline(this->_infileDb, line);
 	if (line != "date,exchange_rate")
 		throw Exceptions("wrong header format: data.csv");
-	get_time();
+	_get_time();
 	while (std::getline(this->_infileDb, line))
 	{
-		checkEmptyLine(line);
-		checkDbFormat(line);
-		checkYear(line);
-		checkMonth(line);
-		checkDay(line);
-		checkExchangeRate(line);
-		fillMapDataBase(line);
+		_checkEmptyLine(line);
+		_checkDbFormat(line);
+		_checkYear(line);
+		_checkMonth(line);
+		_checkDay(line);
+		_checkExchangeRate(line);
+		_fillMapDataBase(line);
 	}
 	this->_infileDb.close();
 
@@ -336,8 +338,8 @@ void	BitcoinExchange::handleDataBase(void)
 
 void	BitcoinExchange::exchange(std::string const fileName)
 {
-	handleDataBase();
-	handleDataImput(fileName);
+	_handleDataBase();
+	_handleDataImput(fileName);
 
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 21:59:50 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:04:04 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,27 @@ class	BitcoinExchange
 		BitcoinExchange					&operator=(BitcoinExchange const &rhs);
 		void							exchange(std::string const fileName);
 	private:
-		void							get_time(void);
-		void							badImput(std::string const &line);
-		void							checkEmptyLine(std::string const &line) const;
-		void							checkFloatFormat(std::string const &line, std::string const &completeLine);
-		void							checkFormat(std::string const &line);
-		void							checkYear(std::string const &line);
-		void							checkMonth(std::string const &line);
-		void							checkDay(std::string const &line);
-		bool							isLeapYear(unsigned int const year) const;
-		bool							isValidDate(unsigned int day, unsigned int month, unsigned int year);
-		void							checkMultiplier(std::string const &line);
-		void							printResult(std::string const date, float multipler, float result) const;
-		void							bitCoinResult(std::string line);
-		void							openImput(std::string const fileName);
-		void							fillMapDataBase(std::string line);
-		void							checkExchangeRate(std::string const &line);
-		void							handleDataImput(std::string const &fileName);
-		void							checkDbFormat(std::string const &line);
-		void							openDataBase(void);
-		void							handleDataBase(void);
-		std::map<unsigned int, float>	mapDb;
+		void							_get_time(void);
+		void							_badImput(std::string const &line);
+		void							_checkEmptyLine(std::string const &line) const;
+		void							_checkFloatFormat(std::string const &line, std::string const &completeLine);
+		void							_checkFormat(std::string const &line);
+		void							_checkYear(std::string const &line);
+		void							_checkMonth(std::string const &line);
+		void							_checkDay(std::string const &line);
+		bool							_isLeapYear(unsigned int const year) const;
+		bool							_isValidDate(unsigned int day, unsigned int month, unsigned int year);
+		void							_checkMultiplier(std::string const &line);
+		void							_printResult(std::string const date, float multipler, float result) const;
+		void							_bitCoinResult(std::string line);
+		void							_openImput(std::string const fileName);
+		void							_fillMapDataBase(std::string line);
+		void							_checkExchangeRate(std::string const &line);
+		void							_handleDataImput(std::string const &fileName);
+		void							_checkDbFormat(std::string const &line);
+		void							_openDataBase(void);
+		void							_handleDataBase(void);
+		std::map<unsigned int, float>	_mapDb;
 		std::ifstream					_infile;
 		std::ifstream					_infileDb;
 		int								_currentYear;
