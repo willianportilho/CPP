@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/09 22:43:50 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:31:28 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,9 @@ void	BitcoinExchange::_checkFloatFormat(std::string const &line, std::string con
 	}
 	if ((amount_dot > 1) || (amount_dot && line[0] == '.') || (amount_dot && line[line.size() - 1] == '.'))
 		_badImput(completeLine);
-	else if ((amount_signal > 1) || (amount_signal && line[0] != '+'))
+	else if ((amount_signal > 1)
+	|| ((amount_signal == 1) && (line[0] != '+'))
+	|| ((amount_signal == 1) && (!line[1])))
 		_badImput(completeLine);
 	
 	return ;
