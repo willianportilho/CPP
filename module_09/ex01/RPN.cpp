@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 22:42:37 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:48:53 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ RPN	&RPN::operator=(RPN const &rhs)
 {
 	if (this != &rhs)
 	{
-		// this->_stack = rhs._stack;
+		while (!this->_stack.empty())
+			this->_stack.pop();
+		this->_stack = rhs._stack;
 		this->_operator = rhs._operator;
 		this->_operandA	= rhs._operandA;
 		this->_operandB	= rhs._operandB;

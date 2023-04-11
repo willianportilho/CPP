@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 22:44:32 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:50:57 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <string>
 #include <iostream>
 #include <stack>
-#include <stdlib.h>
 #include "Exceptions.hpp"
 
 class	RPN
