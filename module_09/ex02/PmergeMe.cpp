@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 19:16:07 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:23:16 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,17 @@ void	PmergeMe::_checkCharacters(std::string &argument)
 		if (argument[i] == _plus)
 			amount_plus++;
 	}
-	if ((amount_plus > 1) || ((amount_plus == 1) && argument[0] != _plus))
+	if ((amount_plus > 1)
+	|| ((amount_plus == 1) && argument[0] != _plus)
+	|| ((amount_plus == 1) && argument.size() == 1))
 		throw Exceptions("invalid character(s)");
+
+	return ;
+}
+
+void	PmergeMe::_duplicateNumbers(std::string &argument)
+{
+	(void)argument;
 
 	return ;
 }
@@ -61,6 +70,7 @@ void	PmergeMe::_checkArgument(std::string argument)
 	if (argument.empty())
 		throw Exceptions("empty argument(s)");
 	_checkCharacters(argument);
+	_duplicateNumbers(argument);
 
 	return ;
 }
