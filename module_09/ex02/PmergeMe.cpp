@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 20:16:53 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:51:12 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	PmergeMe::_checkNumbers(char **argv)
 		for (int j = (i + 1); argv[j]; j++)
 		{
 			if (number == atol(argv[j]))
-				throw Exceptions("duplicate number");
+				throw Exceptions("duplicate number detected");
 		}
 	}
 
