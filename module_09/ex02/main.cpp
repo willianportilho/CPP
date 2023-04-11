@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 23:09:11 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:48:03 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ int main(int argc, char **argv)
 {
 	try
 	{
-		if (argc != 2)
+		if (argc == 1)
 			throw Exceptions("invalid number of arguments");
-		(void)argv;
+		PmergeMe	merge;
+		merge.pMergeMe(argv);
 	}
 	catch(std::exception const &e)
 	{
