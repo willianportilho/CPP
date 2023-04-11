@@ -6,22 +6,23 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 22:01:44 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:42:37 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(void) :	_operator(' '),
-					_operandA(0), _operandB(0), _result(0),
-					 _plus('+'), _minus('-'), _multiple('*'),
-					_divide('/'), _space(' '), _zero('0')
+RPN::RPN(void) :	_operandA(0), _operandB(0), _result(0),
+					_operator(' '), _plus('+'), _minus('-'),
+					_multiple('*'), _divide('/'), _space(' '),
+					_zero('0')
 {
 	return ;
 }
 
-RPN::RPN(RPN const &src) : _plus(src._plus), _minus(src._minus),
-_multiple(src._multiple), _divide(src._divide), _space(src._space), _zero(src._zero)
+RPN::RPN(RPN const &src) :	_plus(src._plus), _minus(src._minus),
+							_multiple(src._multiple), _divide(src._divide),
+							_space(src._space), _zero(src._zero)
 {
 	*this = src;
 
@@ -180,6 +181,11 @@ void	RPN::_calc(void)
 		break;
 	}
 
+	if (this->_result > VALUE_MAX)
+		throw Exceptions("overflow detected");
+	else if (this->_result < VALUE_MIN)
+		throw Exceptions("underflow detected");
+	
 	this->_stack.push(this->_result);
 
 	return ;

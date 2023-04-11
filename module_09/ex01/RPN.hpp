@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 21:44:16 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:44:32 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class	RPN
 		RPN							&operator=(RPN const &rhs);
 		void						reversePolishNotation(std::string expression);
 	private:
-		char						_operator;
 		long long int				_operandA;
 		long long int				_operandB;
 		long long int				_result;
+		char						_operator;
 		std::stack<long long int>	_stack;
 		bool						_isValidCharacter(char c);
 		void						_checkCharacters(std::string &expression);
@@ -52,6 +52,11 @@ class	RPN
 		const char					_divide;
 		const char					_space;
 		const char					_zero;
+		enum	e_limits
+		{
+			VALUE_MIN = -9999999999999999,
+			VALUE_MAX = 9999999999999999
+		};
 };
 
 #endif
