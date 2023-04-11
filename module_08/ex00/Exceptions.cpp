@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SpanNotFoundException.cpp                          :+:      :+:    :+:   */
+/*   Exceptions.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 19:30:12 by wportilh         ###   ########.fr       */
+/*   Created: 2023/04/06 20:38:33 by wportilh          #+#    #+#             */
+/*   Updated: 2023/04/06 21:00:24 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SpanNotFoundException.hpp"
+#include "Exceptions.hpp"
 
-SpanNotFoundException::SpanNotFoundException(void)
+Exceptions::Exceptions(void) : _message("")
 {
 	return ;
 }
 
-SpanNotFoundException::SpanNotFoundException(SpanNotFoundException const &src)
+Exceptions::Exceptions(std::string const &message) : _message(message)
+{
+	return ;
+}
+
+Exceptions::Exceptions(Exceptions const &src) : _message(src._message)
 {
 	*this = src;
 	return ;
 }
 
-SpanNotFoundException	&SpanNotFoundException::operator=(SpanNotFoundException const &rhs)
+Exceptions	&Exceptions::operator=(Exceptions const &rhs)
 {
 	if (this != &rhs)
-	{
-		;
-	}
+		return(*this);
 	return (*this);
 }
 
-SpanNotFoundException::~SpanNotFoundException(void) throw()
+Exceptions::~Exceptions(void) throw()
 {
 	return ;
 }
 
-const char *SpanNotFoundException::what(void) const throw()
+const char *Exceptions::what(void) const throw()
 {
-	return ("span: error: span not found exception, because there's only one (or zero) number(s) added 🔎❓❓❓");
+	return (this->_message.c_str());
 }

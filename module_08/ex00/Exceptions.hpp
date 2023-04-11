@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OverflowException.hpp                              :+:      :+:    :+:   */
+/*   Exceptions.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 19:27:46 by wportilh         ###   ########.fr       */
+/*   Created: 2023/04/06 20:38:37 by wportilh          #+#    #+#             */
+/*   Updated: 2023/04/06 20:58:45 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OVERFLOWEXCEPTION_H
-# define OVERFLOWEXCEPTION_H
+#ifndef EXCEPTIONS_H
+# define EXCEPTIONS_H
 
 #include <exception>
+#include <string>
 
-class	OverflowException : public std::exception
+class	Exceptions : public std::exception
 {
 	public:
-		OverflowException(void);
-		OverflowException	&operator=(OverflowException const &rhs);
-		OverflowException(OverflowException const &src);
-		virtual ~OverflowException(void) throw ();
+		Exceptions(std::string const &message);
+		Exceptions	&operator=(Exceptions const &rhs);
+		Exceptions(Exceptions const &src);
+		virtual	~Exceptions(void) throw ();
 		virtual const char	*what(void) const throw();
 	private:
+		Exceptions(void);
+		std::string const	_message;
 };
 
 #endif

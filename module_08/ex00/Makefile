@@ -6,12 +6,12 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/03/27 18:43:31 by wportilh         ###   ########.fr        #
+#    Updated: 2023/04/11 20:42:45 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES 	=		main.cpp		\
-					NumberNotFoundException.cpp
+					Exceptions.cpp
 
 NAME		=		easyfind
 

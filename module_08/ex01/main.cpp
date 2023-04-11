@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 18:36:45 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:40:42 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	subjectTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -72,7 +72,7 @@ static void	addManyNumbersTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 	
 	return ;
@@ -95,7 +95,7 @@ static void	numberLimitReachedTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -120,7 +120,7 @@ static void	overflowTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -140,7 +140,7 @@ static void	snapNotFoundTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 
@@ -156,7 +156,7 @@ static void	snapNotFoundTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -183,7 +183,7 @@ static void	emptyVectorTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -211,7 +211,7 @@ static void	copyTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;
@@ -239,7 +239,7 @@ static void	assignmentTests(void)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "span: error: " << e.what() << std::endl;
 	}
 
 	return ;

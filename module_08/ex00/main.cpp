@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:02:42 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/29 13:26:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:44:05 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -54,7 +54,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -83,7 +83,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -111,7 +111,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -132,7 +132,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -152,7 +152,7 @@ int	main(void)
 		}
 		catch(const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cerr << "easyfind: error: " << e.what() << std::endl;
 		}
 	}
 

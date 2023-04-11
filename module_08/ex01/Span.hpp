@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:45:00 by wportilh          #+#    #+#             */
-/*   Updated: 2023/03/30 19:35:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:35:37 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 # define SPAN_H
 
 #include <iostream>
-#include <exception>
 #include <limits>
 #include <vector>
 #include <algorithm>
-#include "EmptyVectorException.hpp"
-#include "IndexOutOfRangeException.hpp"
-#include "NumberLimitReachedException.hpp"
-#include "OverflowException.hpp"
-#include "SpanNotFoundException.hpp"
+#include "Exceptions.hpp"
 
 class	Span
 {
