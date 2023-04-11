@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/04/10 17:36:29 by wportilh         ###   ########.fr        #
+#    Updated: 2023/04/10 21:15:53 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					@$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					@$(VAL) ./$(NAME) "001 0001+00       + 0000000000002 2"
+					@$(VAL) ./$(NAME) "1 0 +"
 
 clean:
 					$(RM) $(OBJ_PATH)
