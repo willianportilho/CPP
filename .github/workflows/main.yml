@@ -77,3 +77,5 @@ jobs:
       run:  make -C module_09/ex00
     - name: make_module09_ex01
       run:  make -C module_09/ex01
+    - name: make_module09_ex02
+      run:  make -C module_09/ex02
