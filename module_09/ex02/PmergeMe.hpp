@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 20:11:31 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:38:21 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class	PmergeMe
 		void		_checkCharacters(std::string &argument);
 		void		_checkNumbers(char **argv);
 		void		_checkArgument(std::string argument);
-		const char	_plus;
-		const char	_minus;
+		const char	_PLUS;
+		const char	_MINUS;
 };
 
 #endif

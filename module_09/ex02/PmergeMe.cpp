@@ -6,18 +6,18 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 20:51:12 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:38:59 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) : _plus('+'), _minus('-')
+PmergeMe::PmergeMe(void) : _PLUS('+'), _MINUS('-')
 {
 	return ;
 }
 
-PmergeMe::PmergeMe(PmergeMe const &src) : _plus('+'), _minus('-')
+PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-')
 {
 	*this = src;
 
@@ -39,20 +39,20 @@ PmergeMe::~PmergeMe(void)
 
 void	PmergeMe::_checkCharacters(std::string &argument)
 {
-	int	amount_plus = 0;
+	int	amountPlus = 0;
 
-	if (argument[0] == _minus)
+	if (argument[0] == _MINUS)
 		throw Exceptions("possible negative number(s)");
 	for (int i= 0; argument[i]; i++)
 	{
-		if ((!isdigit(argument[i])) && (argument[i] != _plus))
+		if ((!isdigit(argument[i])) && (argument[i] != _PLUS))
 			throw Exceptions("invalid character(s)");
-		if (argument[i] == _plus)
-			amount_plus++;
+		if (argument[i] == _PLUS)
+			amountPlus++;
 	}
-	if ((amount_plus > 1)
-	|| ((amount_plus == 1) && argument[0] != _plus)
-	|| ((amount_plus == 1) && argument.size() == 1))
+	if ((amountPlus > 1)
+	|| ((amountPlus == 1) && argument[0] != _PLUS)
+	|| ((amountPlus == 1) && argument.size() == 1))
 		throw Exceptions("invalid character(s)");
 	else if (argument.size() > 11)
 		throw Exceptions("overflow detected");

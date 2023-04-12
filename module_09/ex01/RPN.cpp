@@ -6,23 +6,23 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 22:48:53 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:37:56 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 RPN::RPN(void) :	_operandA(0), _operandB(0), _result(0),
-					_operator(' '), _plus('+'), _minus('-'),
-					_multiple('*'), _divide('/'), _space(' '),
-					_zero('0')
+					_operator(' '), _PLUS('+'), _MINUS('-'),
+					_MULTIPLE('*'), _DIVIDE('/'), _SPACE(' '),
+					_ZERO('0')
 {
 	return ;
 }
 
-RPN::RPN(RPN const &src) :	_plus(src._plus), _minus(src._minus),
-							_multiple(src._multiple), _divide(src._divide),
-							_space(src._space), _zero(src._zero)
+RPN::RPN(RPN const &src) :	_PLUS(src._PLUS), _MINUS(src._MINUS),
+							_MULTIPLE(src._MULTIPLE), _DIVIDE(src._DIVIDE),
+							_SPACE(src._SPACE), _ZERO(src._ZERO)
 {
 	*this = src;
 
@@ -52,8 +52,8 @@ RPN::~RPN(void)
 
 bool		RPN::_isValidCharacter(char c)
 {
-	if ((!isdigit(c)) && (c != this->_plus) && (c != this->_minus)
-	&& (c != this->_multiple) && (c != this->_divide) && (c != this->_space))
+	if ((!isdigit(c)) && (c != _PLUS) && (c != _MINUS)
+	&& (c != _MULTIPLE) && (c != _DIVIDE) && (c != _SPACE))
 		return (false);
 
 	return (true);
@@ -78,8 +78,8 @@ void	RPN::_checkMinimumExpression(std::string &expression)
 	{
 		if (isdigit(expression[i]))
 			amountdigits++;
-		else if ((expression[i] == this->_plus) || (expression[i] == this->_minus)
-		|| (expression[i] == this->_multiple) || (expression[i] == this->_divide))
+		else if ((expression[i] == _PLUS) || (expression[i] == _MINUS)
+		|| (expression[i] == _MULTIPLE) || (expression[i] == _DIVIDE))
 			amountOperators++;			
 	}
 	if ((amountdigits < 2) || (amountOperators == 0))
@@ -91,7 +91,7 @@ void	RPN::_removeLeadingZeros(std::string &expression)
 {
 	for (int i = 0; expression[i]; i++)
 	{
-		if ((expression[i] == this->_zero) && (isdigit(expression[i + 1])))
+		if ((expression[i] == _ZERO) && (isdigit(expression[i + 1])))
 		{
 			expression.erase(i, 1);
 			i--;
@@ -116,7 +116,7 @@ void	RPN::_removeSpaces(std::string &expression)
 {
 	for (int i = 0; expression[i]; i++)
 	{
-		if (expression[i] == this->_space)
+		if (expression[i] == _SPACE)
 		{
 			expression.erase(i, 1);
 			i--;
@@ -141,8 +141,8 @@ void	RPN::_handleExpression(std::string &expression)
 
 bool	RPN::_isOperator(char c)
 {
-	if ((c != this->_plus) && (c != this->_minus)
-	&& (c != this->_multiple) && (c != this->_divide))
+	if ((c != _PLUS) && (c != _MINUS)
+	&& (c != _MULTIPLE) && (c != _DIVIDE))
 		return (false);
 
 	return (true);

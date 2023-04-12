@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/10 22:50:57 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:34:15 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ class	RPN
 		void						_checkFinalResult(void);
 		void						_calcExpression(std::string &expression);
 		void						_printResult(void);
-		const char					_plus;
-		const char					_minus;
-		const char					_multiple;
-		const char					_divide;
-		const char					_space;
-		const char					_zero;
+		const char					_PLUS;
+		const char					_MINUS;
+		const char					_MULTIPLE;
+		const char					_DIVIDE;
+		const char					_SPACE;
+		const char					_ZERO;
 		enum	e_limits
 		{
 			VALUE_MIN = -9999999999999999,
