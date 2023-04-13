@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 15:09:28 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:04:31 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ void	PmergeMe::pMergeMe(char **argv)
 	_checkNumbers(argv);
 	_fillContainers(argv);
 	_sort(this->_vector, 0, this->_vector.size() - 1);
+
+	for (unsigned int i = 0; i < this->_vector.size(); i++)
+		std::cout << this->_vector[i] << " ";
+	std::cout << std::endl;
 
 	return ;
 }

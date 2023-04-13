@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:10:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 17:39:35 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:21:32 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ void	PmergeMe::_insertionSort(T &container, int beginIndex, int endIndex)
 		}
 		container[j] = tempValue;
 	}
-	std::cout << "insert: ";
-	for (int k = beginIndex; k <= endIndex; k++)
-		std::cout << container[k] << " ";
-	std::cout << std::endl;
 
 	return ;
 }
@@ -37,43 +33,29 @@ void	PmergeMe::_insertionSort(T &container, int beginIndex, int endIndex)
 template<typename T>
 void	PmergeMe::_merge(T &container, int beginIndex, int middleIndex, int endIndex)
 {
-	T	containerLeft;
-	T	containerRight;
-	int	sizeContainerL = middleIndex - beginIndex + 1;
-	int	sizeContainerR = endIndex - middleIndex;
-	int	indexContainerL = 0;
-	int	indexContainerR = 0;
-
-	
+	T	containerL, containerR;
 	for (int i = beginIndex; i <= endIndex; i++)
 	{
 		if (i <= middleIndex)
-			containerLeft.push_back(container[i]);
+			containerL.push_back(container[i]);
 		else
-			containerRight.push_back(container[i]);
+			containerR.push_back(container[i]);
 	}
-	for (int i = beginIndex; i < (endIndex - beginIndex + 1); i++)
+
+	int	sizeL = middleIndex - beginIndex + 1;
+	int	sizeR = endIndex - middleIndex;
+	int indexL = 0, indexR = 0, index = beginIndex;
+	while ((indexL < sizeL) && (indexR < sizeR))
 	{
-		if (indexContainerL == sizeContainerL)
-			container[i] = containerRight[indexContainerR++];
-		else if (indexContainerR == sizeContainerR)
-			container[i] = containerLeft[indexContainerL++];
-		else if (containerLeft[indexContainerL] > containerRight[indexContainerR])
-			container[i] = containerRight[indexContainerR++];
+		if (containerL[indexL] < containerR[indexR])
+			container[index++] = containerL[indexL++];
 		else
-			container[i] = containerLeft[indexContainerL++];
+			container[index++] = containerR[indexR++];
 	}
-	
-	for (int i = 0; i <= endIndex; i++)
-		std::cout << container[i] << " ";
-	std::cout << std::endl;
-	// for (int i = 0; i < sizeContainerL; i++)
-	// 	std::cout << containerLeft[i] << " ";
-	// std::cout << std::endl;
-	// for (int i = 0; i < sizeContainerR; i++)
-	// 	std::cout << containerRight[i] << " ";
-	// std::cout << std::endl;
-	// std::cout << std::endl;
+	while(indexL < sizeL)
+		container[index++] = containerL[indexL++];
+	while(indexR < sizeR)
+		container[index++] = containerR[indexR++];
 
 	return ;
 }
