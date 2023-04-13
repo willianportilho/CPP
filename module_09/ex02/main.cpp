@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/12 22:26:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:50:43 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		merge.pMergeMe(argv);
 
 		std::vector<int> vector;
-		merge.sort(vector);
+		merge.sort(vector, 0, vector.size() - 1);
 	}
 	catch(std::exception const &e)
 	{

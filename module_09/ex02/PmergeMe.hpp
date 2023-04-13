@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/12 22:41:00 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:44:15 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	PmergeMe
 		PmergeMe	&operator=(PmergeMe const &rhs);
 		void		pMergeMe(char **argv);
 		template<typename T>
-		void		sort(T &container);
+		void		sort(T &container, size_t begin_index, size_t end_index);
 	private:
 		void		_checkCharacters(std::string &argument);
 		void		_checkNumbers(char **argv);
