@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:10:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 19:21:32 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:33:09 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,20 @@ void	PmergeMe::_insertionSort(T &container, int beginIndex, int endIndex)
 template<typename T>
 void	PmergeMe::_merge(T &container, int beginIndex, int middleIndex, int endIndex)
 {
-	T	containerL, containerR;
-	for (int i = beginIndex; i <= endIndex; i++)
-	{
-		if (i <= middleIndex)
-			containerL.push_back(container[i]);
-		else
-			containerR.push_back(container[i]);
-	}
-
 	int	sizeL = middleIndex - beginIndex + 1;
 	int	sizeR = endIndex - middleIndex;
 	int indexL = 0, indexR = 0, index = beginIndex;
+	T	containerL(sizeL), containerR(sizeR);
+
+	while (index <= endIndex)
+	{
+		if (index <= middleIndex)
+			containerL[indexL++] = container[index++];
+		else
+			containerR[indexR++] = container[index++];
+	}
+
+	indexL = 0, indexR = 0, index = beginIndex;
 	while ((indexL < sizeL) && (indexR < sizeR))
 	{
 		if (containerL[indexL] < containerR[indexR])
