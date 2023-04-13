@@ -6,11 +6,12 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:59:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 17:48:03 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:26:36 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <vector>
 
 int main(int argc, char **argv)
 {
@@ -20,6 +21,9 @@ int main(int argc, char **argv)
 			throw Exceptions("invalid number of arguments");
 		PmergeMe	merge;
 		merge.pMergeMe(argv);
+
+		std::vector<int> vector;
+		merge.sort(vector);
 	}
 	catch(std::exception const &e)
 	{
