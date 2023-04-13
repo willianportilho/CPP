@@ -6,18 +6,18 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/12 22:39:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:56:46 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) : _PLUS('+'), _MINUS('-')
+PmergeMe::PmergeMe(void) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5)
 {
 	return ;
 }
 
-PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-')
+PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5)
 {
 	*this = src;
 
@@ -87,11 +87,25 @@ void	PmergeMe::_checkNumbers(char **argv)
 	return ;
 }
 
+void	PmergeMe::_fillContainers(char **argv)
+{
+	int number;
+	for (int i = 0; argv[i]; i++)
+	{
+		number = atoi(argv[i]);
+		this->_vector.push_back(number);
+	}
+
+	return ;
+}
+
 void	PmergeMe::pMergeMe(char **argv)
 {
 	for (int i = 1; argv[i]; i++)
 		_checkArgument(argv[i]);
 	_checkNumbers(argv);
+	_fillContainers(argv);
+	_sort(this->_vector, 0, this->_vector.size() - 1);
 
 	return ;
 }
