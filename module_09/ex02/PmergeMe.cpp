@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 19:04:31 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 20:03:11 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,42 @@ void	PmergeMe::_fillContainers(char **argv)
 	return ;
 }
 
+void	PmergeMe::_printUnsorted(char **argv)
+{
+	std::cout << "Before:	";
+	for (int i = 1; argv[i]; i++)
+	{
+		for (int j = 0; argv[i][j]; j++)
+		{
+			if (argv[i][j] != _PLUS)
+				std::cout << argv[i][j];
+		}
+		std::cout << " ";	
+	}
+	std::cout << std::endl;
+
+	return ;
+}
+
+void	PmergeMe::_printSorted(void)
+{
+	std::cout << "After:	";
+	for (unsigned int i = 0; i < this->_vector.size(); i++)
+		std::cout << this->_vector[i] << " ";
+	std::cout << std::endl;
+
+	return ;
+}
+
 void	PmergeMe::pMergeMe(char **argv)
 {
 	for (int i = 1; argv[i]; i++)
 		_checkArgument(argv[i]);
 	_checkNumbers(argv);
 	_fillContainers(argv);
-	_sort(this->_vector, 0, this->_vector.size() - 1);
-
-	for (unsigned int i = 0; i < this->_vector.size(); i++)
-		std::cout << this->_vector[i] << " ";
-	std::cout << std::endl;
+	_mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
+	_printUnsorted(argv);
+	_printSorted();
 
 	return ;
 }

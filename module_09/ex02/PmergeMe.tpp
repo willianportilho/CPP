@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:10:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 19:33:09 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:51:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ void	PmergeMe::_merge(T &container, int beginIndex, int middleIndex, int endInde
 }
 
 template<typename T>
-void	PmergeMe::_sort(T &container, int beginIndex, int endIndex)
+void	PmergeMe::_mergeInsertSort(T &container, int beginIndex, int endIndex)
 {
 	if ((endIndex - beginIndex) > _BLOCK_MIN)
 	{
 		int middleIndex = (beginIndex + endIndex) / 2;
-		_sort(container, beginIndex, middleIndex);
-		_sort(container, (middleIndex + 1), endIndex);
+		_mergeInsertSort(container, beginIndex, middleIndex);
+		_mergeInsertSort(container, (middleIndex + 1), endIndex);
 		_merge(container, beginIndex, middleIndex, endIndex);
 	}
 	else
