@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 12:56:46 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:09:28 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	PmergeMe::_checkNumbers(char **argv)
 void	PmergeMe::_fillContainers(char **argv)
 {
 	int number;
-	for (int i = 0; argv[i]; i++)
+	for (int i = 1; argv[i]; i++)
 	{
 		number = atoi(argv[i]);
 		this->_vector.push_back(number);

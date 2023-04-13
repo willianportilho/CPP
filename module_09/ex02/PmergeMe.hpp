@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 12:56:11 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:40:31 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ class	PmergeMe
 		void				pMergeMe(char **argv);
 	private:
 		template<typename T>
-		void				_sort(T &container, size_t beginIndex, size_t endIndex);
+		void				_insertionSort(T &container, int beginIndex, int endIndex);
+		template<typename T>
+		void				_sort(T &container, int beginIndex, int endIndex);
 		void				_checkCharacters(std::string &argument);
 		void				_checkNumbers(char **argv);
 		void				_checkArgument(std::string argument);
 		void				_fillContainers(char **argv);
 		const char			_PLUS;
 		const char			_MINUS;
-		const size_t		_BLOCK_MIN;
+		const int			_BLOCK_MIN;
 		std::vector<int>	_vector;
 };
 
