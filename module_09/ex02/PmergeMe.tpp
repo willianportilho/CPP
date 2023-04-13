@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:10:23 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 17:10:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:22:22 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	PmergeMe::_insertionSort(T &container, int beginIndex, int endIndex)
 		}
 		container[j] = tempValue;
 	}
-	// for (int k = beginIndex; k <= endIndex; k++)
-	// 	std::cout << container[k] << " ";
-	// std::cout << std::endl;
+	std::cout << "insert: ";
+	for (int k = beginIndex; k <= endIndex; k++)
+		std::cout << container[k] << " ";
+	std::cout << std::endl;
 
 	return ;
 }
@@ -39,30 +40,26 @@ void	PmergeMe::_merge(T &container, int beginIndex, int middleIndex, int endInde
 	T	containerLeft;
 	T	containerRight;
 
-	for (int i = beginIndex; i < endIndex; i++)
+	
+	for (int i = beginIndex; i <= endIndex; i++)
 	{
-		if (i < middleIndex)
+		if (i <= middleIndex)
 			containerLeft.push_back(container[i]);
 		else
 			containerRight.push_back(container[i]);
 	}
-	for (int i = 0; i < endIndex; i++)
+
+	
+	for (int i = 0; i <= endIndex; i++)
 		std::cout << container[i] << " ";
 	std::cout << std::endl;
-	for (int i = 0; i < middleIndex; i++)
+	for (int i = 0; i <= middleIndex; i++)
 		std::cout << containerLeft[i] << " ";
 	std::cout << std::endl;
 	for (int i = 0; i < middleIndex; i++)
 		std::cout << containerRight[i] << " ";
 	std::cout << std::endl;
 	std::cout << std::endl;
-
-	(void)containerLeft;
-	(void)containerRight;
-	(void)container;
-	(void)beginIndex;
-	(void)middleIndex;
-	(void)endIndex;
 
 	return ;
 }
