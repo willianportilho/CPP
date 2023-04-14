@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 20:03:27 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 21:48:45 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <limits>
 #include <vector>
+#include <deque>
 #include "Exceptions.hpp"
 
 class	PmergeMe
@@ -45,6 +46,7 @@ class	PmergeMe
 		const char			_MINUS;
 		const int			_BLOCK_MIN;
 		std::vector<int>	_vector;
+		std::deque<int>		_deque;
 };
 
 #include "PmergeMe.tpp"

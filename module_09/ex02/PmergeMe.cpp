@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 20:03:11 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 21:50:29 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	PmergeMe::_fillContainers(char **argv)
 	{
 		number = atoi(argv[i]);
 		this->_vector.push_back(number);
+		this->_deque.push_back(number);
 	}
 
 	return ;
@@ -123,6 +124,11 @@ void	PmergeMe::_printSorted(void)
 		std::cout << this->_vector[i] << " ";
 	std::cout << std::endl;
 
+	// std::cout << "After:	";
+	// for (unsigned int i = 0; i < this->_deque.size(); i++)
+	// 	std::cout << this->_deque[i] << " ";
+	// std::cout << std::endl;
+
 	return ;
 }
 
@@ -133,6 +139,7 @@ void	PmergeMe::pMergeMe(char **argv)
 	_checkNumbers(argv);
 	_fillContainers(argv);
 	_mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
+	_mergeInsertSort(this->_deque, 0, this->_deque.size() - 1);
 	_printUnsorted(argv);
 	_printSorted();
 
