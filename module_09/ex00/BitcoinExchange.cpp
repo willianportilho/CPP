@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/11 19:31:28 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:43:42 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	BitcoinExchange::_fillMapDataBase(std::string line)
 
 void	BitcoinExchange::_checkExchangeRate(std::string const &line)
 {
-	const char	*multiplier = line.substr(11, line.size() - 1).c_str();
+	std::string	temp = line.substr(11, line.size() - 1);
+	const char	*multiplier = temp.c_str();
 
 	if (std::atof(multiplier) > EXCHANGE_RATE_MAX)
 		throw Exceptions("too large a number: data.csv");
@@ -250,7 +251,8 @@ void	BitcoinExchange::_bitCoinResult(std::string line)
 
 void	BitcoinExchange::_checkMultiplier(std::string const &line)
 {
-	const char	*multiplier = line.substr(13, line.size() - 1).c_str();
+	std::string	temp = line.substr(13, line.size() - 1);
+	const char	*multiplier = temp.c_str();
 
 	if (std::atof(multiplier) > MULTIPLIER_MAX)
 		throw Exceptions("too large a number.");
