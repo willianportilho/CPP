@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 21:59:41 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 23:20:21 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &rhs)
 PmergeMe::~PmergeMe(void)
 {
 	return ;
+}
+
+long int	PmergeMe::_elapsedTime(struct timeval start, struct timeval end)
+{
+	return (((end.tv_sec - start.tv_sec) + 1000000) + (end.tv_usec - start.tv_usec));
 }
 
 void	PmergeMe::_checkCharacters(std::string &argument)
@@ -138,16 +143,54 @@ void	PmergeMe::_printSorted(void)
 	return ;
 }
 
-void	PmergeMe::pMergeMe(char **argv)
+void	PmergeMe::_sortVector(char **argv)
 {
+	gettimeofday(&this->_startVec, NULL);
 	for (int i = 1; argv[i]; i++)
 		_checkArgument(argv[i]);
 	_checkNumbers(argv);
 	_fillContainers(argv);
 	_mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
+	_printUnsorted(argv);
+	_printSorted();
+	gettimeofday(&this->_endVec, NULL);
+
+	return ;
+}
+
+void	PmergeMe::_sortDeque(char **argv)
+{
+	gettimeofday(&this->_startDeq, NULL);
+	for (int i = 1; argv[i]; i++)
+		_checkArgument(argv[i]);
+	_checkNumbers(argv);
+	_fillContainers(argv);
 	_mergeInsertSort(this->_deque, 0, this->_deque.size() - 1);
 	_printUnsorted(argv);
 	_printSorted();
+	gettimeofday(&this->_endDeq, NULL);
+
+	return ;
+}
+
+void	PmergeMe::_printTimeToProcess(void)
+{
+	std::cout << "Time to process a range of " << std::setw(3)
+	<< this->_vector.size() << " elements with std::vector : "
+	<< _elapsedTime(this->_startVec, this->_endVec) << " us" << std::endl;
+
+	std::cout << "Time to process a range of " << std::setw(3)
+	<< this->_deque.size() << " elements with std::deque : "
+	<< _elapsedTime(this->_startDeq, this->_endDeq) << " us" << std::endl;
+
+	return ;
+}
+
+void	PmergeMe::pMergeMe(char **argv)
+{
+	_sortVector(argv);
+	_sortDeque(argv);
+	_printTimeToProcess();
 
 	return ;
 }
