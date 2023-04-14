@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 21:50:29 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/13 21:59:41 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5)
 PmergeMe	&PmergeMe::operator=(PmergeMe const &rhs)
 {
 	if (this != &rhs)
+	{
+		this->_vector.clear();
+		this->_vector = rhs._vector;
+		this->_deque.clear();
+		this->_deque = rhs._deque;
 		return (*this);
+	}
 
 	return (*this);
 }
