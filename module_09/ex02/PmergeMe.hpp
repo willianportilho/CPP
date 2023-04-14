@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 13:58:14 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 23:20:03 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:10:53 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class	PmergeMe
 		void				_checkCharacters(std::string &argument);
 		void				_checkNumbers(char **argv);
 		void				_checkArgument(std::string argument);
-		void				_fillContainers(char **argv);
+		void				_fillContainer(char **argv, const int container);
 		void				_printUnsorted(char **argv);
 		void				_printSorted(void);
 		long int			_elapsedTime(struct timeval start, struct timeval end);
@@ -51,6 +51,8 @@ class	PmergeMe
 		const char			_PLUS;
 		const char			_MINUS;
 		const int			_BLOCK_MIN;
+		const int			_VECTOR;
+		const int			_DEQUE;
 		std::vector<int>	_vector;
 		std::deque<int>		_deque;
 		struct timeval		_startVec;

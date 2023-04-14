@@ -6,18 +6,18 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/13 23:20:21 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:10:36 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5)
+PmergeMe::PmergeMe(void) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5), _VECTOR(1), _DEQUE(2)
 {
 	return ;
 }
 
-PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5)
+PmergeMe::PmergeMe(PmergeMe const &src) : _PLUS('+'), _MINUS('-'), _BLOCK_MIN(5), _VECTOR(1), _DEQUE(2)
 {
 	*this = src;
 
@@ -98,14 +98,24 @@ void	PmergeMe::_checkNumbers(char **argv)
 	return ;
 }
 
-void	PmergeMe::_fillContainers(char **argv)
+void	PmergeMe::_fillContainer(char **argv, const int container)
 {
 	int number;
-	for (int i = 1; argv[i]; i++)
+	if(container == _VECTOR)
+	{	
+		for (int i = 1; argv[i]; i++)
+		{
+			number = atoi(argv[i]);
+			this->_vector.push_back(number);
+		}
+	}
+	else
 	{
-		number = atoi(argv[i]);
-		this->_vector.push_back(number);
-		this->_deque.push_back(number);
+		for (int i = 1; argv[i]; i++)
+		{
+			number = atoi(argv[i]);
+			this->_deque.push_back(number);
+		}
 	}
 
 	return ;
@@ -149,10 +159,8 @@ void	PmergeMe::_sortVector(char **argv)
 	for (int i = 1; argv[i]; i++)
 		_checkArgument(argv[i]);
 	_checkNumbers(argv);
-	_fillContainers(argv);
+	_fillContainer(argv, _VECTOR);
 	_mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
-	_printUnsorted(argv);
-	_printSorted();
 	gettimeofday(&this->_endVec, NULL);
 
 	return ;
@@ -164,10 +172,8 @@ void	PmergeMe::_sortDeque(char **argv)
 	for (int i = 1; argv[i]; i++)
 		_checkArgument(argv[i]);
 	_checkNumbers(argv);
-	_fillContainers(argv);
+	_fillContainer(argv, _DEQUE);
 	_mergeInsertSort(this->_deque, 0, this->_deque.size() - 1);
-	_printUnsorted(argv);
-	_printSorted();
 	gettimeofday(&this->_endDeq, NULL);
 
 	return ;
@@ -190,6 +196,8 @@ void	PmergeMe::pMergeMe(char **argv)
 {
 	_sortVector(argv);
 	_sortDeque(argv);
+	_printUnsorted(argv);
+	_printSorted();
 	_printTimeToProcess();
 
 	return ;
