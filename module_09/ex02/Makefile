@@ -6,7 +6,7 @@
 #    By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 18:26:19 by wportilh          #+#    #+#              #
-#    Updated: 2023/04/14 00:02:48 by wportilh         ###   ########.fr        #
+#    Updated: 2023/04/14 00:27:52 by wportilh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.cpp
 					@$(CC) $(FLAGS) -c $< -o $@
 
 run:				$(NAME)
-					@ARG=$$(seq 500 | shuf); $(VAL) ./$(NAME) $$ARG
+					@ARG=$$(seq 3000 | shuf); $(VAL) ./$(NAME) $$ARG
 
 clean:
 					$(RM) $(OBJ_PATH)

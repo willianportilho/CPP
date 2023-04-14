@@ -6,7 +6,7 @@
 /*   By: wportilh <wportilh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:45:11 by wportilh          #+#    #+#             */
-/*   Updated: 2023/04/14 00:10:36 by wportilh         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:27:42 by wportilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,17 +138,19 @@ void	PmergeMe::_printUnsorted(char **argv)
 	return ;
 }
 
+/*
+	optional test
+	std::cout << "After:	";
+	for (unsigned int i = 0; i < this->_deque.size(); i++)
+		std::cout << this->_deque[i] << " ";
+	std::cout << std::endl;
+*/
 void	PmergeMe::_printSorted(void)
 {
 	std::cout << "After:	";
 	for (unsigned int i = 0; i < this->_vector.size(); i++)
 		std::cout << this->_vector[i] << " ";
 	std::cout << std::endl;
-
-	// std::cout << "After:	";
-	// for (unsigned int i = 0; i < this->_deque.size(); i++)
-	// 	std::cout << this->_deque[i] << " ";
-	// std::cout << std::endl;
 
 	return ;
 }
